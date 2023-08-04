@@ -79,12 +79,12 @@ parts:
   - file: dramatis_personae/under_grads/under_grads_3.ipynb
   - file: dramatis_personae/under_grads/under_grads_4.ipynb
   - file: dramatis_personae/under_grads/under_grads_5.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates_1.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates_2.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates_3.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates_4.ipynb
-  - file: dramatis_personae/grad_graduates/grad_graduates_5.ipynb
+  - file: dramatis_personae/grad_students_1/grad_students_1.ipynb
+  - file: dramatis_personae/grad_students_2/grad_students_2.ipynb
+  - file: dramatis_personae/grad_students_3/grad_students_3.ipynb
+  - file: dramatis_personae/grad_students_4/grad_students_4.ipynb
+  - file: dramatis_personae/grad_students_5/grad_students_5.ipynb
+  - file: dramatis_personae/grad_students/grad_students.ipynb
   - file: dramatis_personae/medical_students/medical_students.ipynb
   - file: dramatis_personae/medical_students/medical_students_1.ipynb
   - file: dramatis_personae/medical_students/medical_students_2.ipynb
