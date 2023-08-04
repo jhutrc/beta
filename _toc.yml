@@ -1,0 +1,135 @@
+format: jb-book
+root: intro.ipynb
+title: Play
+
+parts:
+- caption: Prologue
+  chapters:
+  - file: prologue.ipynb
+
+- caption: Act I
+  chapters:
+  - file: Act I/act1_1.ipynb
+  - file: Act I/act1_2.ipynb
+  - file: Act I/act1_3.ipynb
+
+- caption: Act II
+  chapters:
+  - file: Act II/act2_1.ipynb
+  - file: Act II/act2_2.ipynb
+  - file: Act II/act2_3.ipynb
+  - file: Act II/act2_4.ipynb
+
+- caption: Act III
+  chapters:
+  - file: Act III/act3_1.ipynb
+  - file: Act III/act3_2.ipynb
+  - file: Act III/act3_3.ipynb
+  - file: Act III/act3_4.ipynb
+  - file: Act III/act3_5.ipynb
+
+- caption: Act IV
+  chapters:
+  - file: Act IV/act4_1.ipynb
+  - file: Act IV/act4_2.ipynb
+  - file: Act IV/act4_3.ipynb
+  - file: Act IV/act4_4.ipynb
+  - file: Act IV/act4_5.ipynb
+  - file: Act IV/act4_6.ipynb
+
+- caption: Act V
+  chapters:
+  - file: Act V/act5_1.ipynb
+  - file: Act V/act5_2.ipynb
+  - file: Act V/act5_3.ipynb
+  - file: Act V/act5_4.ipynb
+  - file: Act V/act5_5.ipynb
+  - file: Act V/act5_6.ipynb
+
+- caption: Epilogue
+  chapters:
+  - file: Epilogue/epi_1.ipynb
+  - file: Epilogue/epi_2.ipynb
+  - file: Epilogue/epi_3.ipynb
+  - file: Epilogue/epi_4.ipynb
+  - file: Epilogue/epi_5.ipynb
+  - file: Epilogue/epi_6.ipynb
+  - file: Epilogue/epi_7.ipynb
+  - file: Epilogue/epi_8.ipynb
+
+- caption: Gas & Spoke
+  chapters:
+  - file: Gas & Spoke/gas_1.ipynb
+  - file: Gas & Spoke/gas_2.ipynb
+  - file: Gas & Spoke/gas_3.ipynb
+
+- caption: Courses
+  chapters: 
+  - url: https://publichealth.jhu.edu/courses
+    title: Stata Programming 
+  - file: dramatispersonae/high_school_students/high_school_students.ipynb
+  - file: dramatispersonae/high_school_students/high_school_students_1.ipynb
+  - file: dramatispersonae/high_school_students/high_school_students_2.ipynb
+  - file: dramatispersonae/high_school_students/high_school_students_3.ipynb
+  - file: dramatispersonae/high_school_students/high_school_students_4.ipynb
+  - file: dramatispersonae/high_school_students/high_school_students_5.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates_1.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates_2.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates_3.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates_4.ipynb
+  - file: dramatispersonae/undergraduates/undergraduates_5.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students_1.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students_2.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students_3.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students_4.ipynb
+  - file: dramatispersonae/graduate_students/graduate_students_5.ipynb
+  - file: dramatispersonae/medical_students/medical_students.ipynb
+  - file: dramatispersonae/medical_students/medical_students_1.ipynb
+  - file: dramatispersonae/medical_students/medical_students_2.ipynb
+  - file: dramatispersonae/medical_students/medical_students_3.ipynb
+  - file: dramatispersonae/medical_students/medical_students_4.ipynb
+  - file: dramatispersonae/medical_students/medical_students_5.ipynb
+  - file: dramatispersonae/residents/residents.ipynb
+  - file: dramatispersonae/residents/residents_1.ipynb
+  - file: dramatispersonae/residents/residents_2.ipynb
+  - file: dramatispersonae/residents/residents_3.ipynb
+  - file: dramatispersonae/residents/residents_4.ipynb
+  - file: dramatispersonae/residents/residents_5.ipynb
+  - file: dramatispersonae/fellows/fellows.ipynb
+  - file: dramatispersonae/fellows/fellows_1.ipynb
+  - file: dramatispersonae/fellows/fellows_2.ipynb
+  - file: dramatispersonae/fellows/fellows_3.ipynb
+  - file: dramatispersonae/fellows/fellows_4.ipynb
+  - file: dramatispersonae/fellows/fellows_5.ipynb
+  - file: dramatispersonae/faculty/faculty.ipynb
+  - file: dramatispersonae/faculty/faculty_1.ipynb
+  - file: dramatispersonae/faculty/faculty_2.ipynb
+  - file: dramatispersonae/faculty/faculty_3.ipynb
+  - file: dramatispersonae/faculty/faculty_4.ipynb
+  - file: dramatispersonae/faculty/faculty_5.ipynb
+  - file: dramatispersonae/analysts/analysts.ipynb
+  - file: dramatispersonae/analysts/analysts_1.ipynb
+  - file: dramatispersonae/analysts/analysts_2.ipynb
+  - file: dramatispersonae/analysts/analysts_3.ipynb
+  - file: dramatispersonae/analysts/analysts_4.ipynb
+  - file: dramatispersonae/analysts/analysts_5.ipynb
+  - file: dramatispersonae/staff/staff.ipynb
+  - file: dramatispersonae/staff/staff_1.ipynb
+  - file: dramatispersonae/staff/staff_2.ipynb
+  - file: dramatispersonae/staff/staff_3.ipynb
+  - file: dramatispersonae/staff/staff_4.ipynb
+  - file: dramatispersonae/staff/staff_5.ipynb
+  - file: dramatispersonae/collaborators/collaborators.ipynb
+  - file: dramatispersonae/collaborators/collaborators_1.ipynb
+  - file: dramatispersonae/collaborators/collaborators_2.ipynb
+  - file: dramatispersonae/collaborators/collaborators_3.ipynb
+  - file: dramatispersonae/collaborators/collaborators_4.ipynb
+  - file: dramatispersonae/collaborators/collaborators_5.ipynb
+  - file: dramatispersonae/graduates/graduates.ipynb
+  - file: dramatispersonae/graduates/graduates_1.ipynb
+  - file: dramatispersonae/graduates/graduates_2.ipynb
+  - file: dramatispersonae/graduates/graduates_3.ipynb
+  - file: dramatispersonae/graduates/graduates_4.ipynb
+  - file: dramatispersonae/graduates/graduates_5.ipynb
