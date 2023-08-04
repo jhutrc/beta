@@ -73,18 +73,18 @@ parts:
   - file: dramatis_personae/high_school_students/high_school_students_3.ipynb
   - file: dramatis_personae/high_school_students/high_school_students_4.ipynb
   - file: dramatis_personae/high_school_students/high_school_students_5.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates_1.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates_2.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates_3.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates_4.ipynb
-  - file: dramatis_personae/undergraduates/undergraduates_5.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students_1.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students_2.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students_3.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students_4.ipynb
-  - file: dramatis_personae/graduate_students/graduate_students_5.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates_1.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates_2.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates_3.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates_4.ipynb
+  - file: dramatis_personae/under_graduates/under_graduates_5.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates_1.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates_2.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates_3.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates_4.ipynb
+  - file: dramatis_personae/grad_graduates/grad_graduates_5.ipynb
   - file: dramatis_personae/medical_students/medical_students.ipynb
   - file: dramatis_personae/medical_students/medical_students_1.ipynb
   - file: dramatis_personae/medical_students/medical_students_2.ipynb
