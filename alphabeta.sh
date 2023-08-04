@@ -3,7 +3,7 @@ jb build alpha
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "basic content, next hyperlinks"
+git commit -m "dramatis personae links"
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
