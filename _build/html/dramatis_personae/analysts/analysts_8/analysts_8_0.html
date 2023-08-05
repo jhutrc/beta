@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell. &#8212; Beta</title>
+    <title>Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell. &#8212; Beta</title>
   
   
   
@@ -250,7 +250,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../analysts_3/analysts_3.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysts_4/analysts_4.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysts_5/analysts_5.html">.</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell.</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_3.html">.</a></li>
@@ -465,7 +466,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell.</h1>
+    <h1>Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -475,17 +476,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-windows-subsystem-for-linux-wsl">0. Install Windows Subsystem for Linux (WSL)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-environment">1. Create a virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book">2. Install Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-jupyter-book">3. Create a Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book-dependencies">4. Install Jupyter-book dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-jupyter-book">5. Build the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serve-the-jupyter-book">6. Serve the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-jupyter-book">7. Open the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-the-virtual-environment">8. Deactivate the virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-lets-explore-something-other-options">9. But lets explore something other options</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-windows-subsystem-for-linux-wsl">1. Install Windows Subsystem for Linux (WSL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-environment">1.1. Create a virtual environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book">1.2. Install Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-jupyter-book">1.3. Create a Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book-dependencies">1.4. Install Jupyter-book dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-jupyter-book">1.5. Build the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serve-the-jupyter-book">1.6. Serve the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-jupyter-book">1.7. Open the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-the-virtual-environment">1.8. Deactivate the virtual environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-leave-these-other-options-if-they-better-suit-you">1.9. Let’s leave these other options if they better suit you:</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-packages-for-creating-a-jupyter-book-on-a-mac">2. Install required packages for creating a Jupyter-book on a Mac.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-homebrew">0. Install Homebrew</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python">2.1. Install Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2 Install Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3. Create a Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4. Install Jupyter-book dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.5. Build the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.6. Serve the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.7. Open the Jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -496,10 +512,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="step-by-step-guide-to-install-all-the-required-packages-for-creating-a-jupyter-book-in-woindows-10-using-a-linux-shell">
-<h1>Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell.<a class="headerlink" href="#step-by-step-guide-to-install-all-the-required-packages-for-creating-a-jupyter-book-in-woindows-10-using-a-linux-shell" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="install-required-packages-for-creating-a-jupyter-book-in-windows-10-using-a-linux-shell">
+<h1>Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.<a class="headerlink" href="#install-required-packages-for-creating-a-jupyter-book-in-windows-10-using-a-linux-shell" title="Permalink to this heading">#</a></h1>
 <section id="install-windows-subsystem-for-linux-wsl">
-<h2>0. Install Windows Subsystem for Linux (WSL)<a class="headerlink" href="#install-windows-subsystem-for-linux-wsl" title="Permalink to this heading">#</a></h2>
+<h2>1. Install Windows Subsystem for Linux (WSL)<a class="headerlink" href="#install-windows-subsystem-for-linux-wsl" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Open the Microsoft Store</p></li>
 <li><p>Search for “Linux”</p></li>
@@ -543,7 +559,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-virtual-environment">
-<h2>1. Create a virtual environment<a class="headerlink" href="#create-a-virtual-environment" title="Permalink to this heading">#</a></h2>
+<h2>1.1. Create a virtual environment<a class="headerlink" href="#create-a-virtual-environment" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -558,7 +574,7 @@ document.write(`
 </div>
 </section>
 <section id="install-jupyter-book">
-<h2>2. Install Jupyter-book<a class="headerlink" href="#install-jupyter-book" title="Permalink to this heading">#</a></h2>
+<h2>1.2. Install Jupyter-book<a class="headerlink" href="#install-jupyter-book" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -567,7 +583,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-jupyter-book">
-<h2>3. Create a Jupyter-book<a class="headerlink" href="#create-a-jupyter-book" title="Permalink to this heading">#</a></h2>
+<h2>1.3. Create a Jupyter-book<a class="headerlink" href="#create-a-jupyter-book" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -576,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="install-jupyter-book-dependencies">
-<h2>4. Install Jupyter-book dependencies<a class="headerlink" href="#install-jupyter-book-dependencies" title="Permalink to this heading">#</a></h2>
+<h2>1.4. Install Jupyter-book dependencies<a class="headerlink" href="#install-jupyter-book-dependencies" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -591,7 +607,7 @@ document.write(`
 </div>
 </section>
 <section id="build-the-jupyter-book">
-<h2>5. Build the Jupyter-book<a class="headerlink" href="#build-the-jupyter-book" title="Permalink to this heading">#</a></h2>
+<h2>1.5. Build the Jupyter-book<a class="headerlink" href="#build-the-jupyter-book" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -600,7 +616,7 @@ document.write(`
 </div>
 </section>
 <section id="serve-the-jupyter-book">
-<h2>6. Serve the Jupyter-book<a class="headerlink" href="#serve-the-jupyter-book" title="Permalink to this heading">#</a></h2>
+<h2>1.6. Serve the Jupyter-book<a class="headerlink" href="#serve-the-jupyter-book" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -609,7 +625,7 @@ document.write(`
 </div>
 </section>
 <section id="open-the-jupyter-book">
-<h2>7. Open the Jupyter-book<a class="headerlink" href="#open-the-jupyter-book" title="Permalink to this heading">#</a></h2>
+<h2>1.7. Open the Jupyter-book<a class="headerlink" href="#open-the-jupyter-book" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Open a browser</p></li>
 <li><p>Type the following URL in the browser:</p></li>
@@ -619,7 +635,7 @@ document.write(`
 </div>
 </section>
 <section id="deactivate-the-virtual-environment">
-<h2>8. Deactivate the virtual environment<a class="headerlink" href="#deactivate-the-virtual-environment" title="Permalink to this heading">#</a></h2>
+<h2>1.8. Deactivate the virtual environment<a class="headerlink" href="#deactivate-the-virtual-environment" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Type the following command in the Ubuntu terminal:</p></li>
 </ul>
@@ -627,8 +643,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="but-lets-explore-something-other-options">
-<h2>9. But lets explore something other options<a class="headerlink" href="#but-lets-explore-something-other-options" title="Permalink to this heading">#</a></h2>
+<section id="let-s-leave-these-other-options-if-they-better-suit-you">
+<h2>1.9. Let’s leave these other options if they better suit you:<a class="headerlink" href="#let-s-leave-these-other-options-if-they-better-suit-you" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Cygwin</p></li>
 <li><p>Anaconda</p></li>
@@ -642,6 +658,89 @@ document.write(`
 <li><p>Pipenv</p></li>
 <li><p>Poetry</p></li>
 </ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="install-required-packages-for-creating-a-jupyter-book-on-a-mac">
+<h1>2. Install required packages for creating a Jupyter-book on a Mac.<a class="headerlink" href="#install-required-packages-for-creating-a-jupyter-book-on-a-mac" title="Permalink to this heading">#</a></h1>
+<section id="install-homebrew">
+<h2>0. Install Homebrew<a class="headerlink" href="#install-homebrew" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Open a terminal</p></li>
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="install-python">
+<h2>2.1. Install Python<a class="headerlink" href="#install-python" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>python
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>2.2 Install Jupyter-book<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>jupyter-book
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>2.3. Create a Jupyter-book<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>create<span class="w"> </span>mybook
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>2.4. Install Jupyter-book dependencies<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>mybook
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>2.5. Build the Jupyter-book<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>mybook
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>2.6. Serve the Jupyter-book<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type the following command in the terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>serve<span class="w"> </span>mybook
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>2.7. Open the Jupyter-book<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Open a browser</p></li>
+<li><p>Type the following URL in the browser:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost:4000/
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -712,17 +811,32 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-windows-subsystem-for-linux-wsl">0. Install Windows Subsystem for Linux (WSL)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-environment">1. Create a virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book">2. Install Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-jupyter-book">3. Create a Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book-dependencies">4. Install Jupyter-book dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-jupyter-book">5. Build the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serve-the-jupyter-book">6. Serve the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-jupyter-book">7. Open the Jupyter-book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-the-virtual-environment">8. Deactivate the virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-lets-explore-something-other-options">9. But lets explore something other options</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-windows-subsystem-for-linux-wsl">1. Install Windows Subsystem for Linux (WSL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-environment">1.1. Create a virtual environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book">1.2. Install Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-jupyter-book">1.3. Create a Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-book-dependencies">1.4. Install Jupyter-book dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-jupyter-book">1.5. Build the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serve-the-jupyter-book">1.6. Serve the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-jupyter-book">1.7. Open the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-the-virtual-environment">1.8. Deactivate the virtual environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-leave-these-other-options-if-they-better-suit-you">1.9. Let’s leave these other options if they better suit you:</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-packages-for-creating-a-jupyter-book-on-a-mac">2. Install required packages for creating a Jupyter-book on a Mac.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-homebrew">0. Install Homebrew</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python">2.1. Install Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2 Install Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3. Create a Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4. Install Jupyter-book dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.5. Build the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.6. Serve the Jupyter-book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.7. Open the Jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="analysts_8_2.html" />
-    <link rel="prev" title="Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell." href="analysts_8_0.html" />
+    <link rel="prev" title="Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell." href="analysts_8_0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -250,7 +250,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../analysts_3/analysts_3.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysts_4/analysts_4.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysts_5/analysts_5.html">.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysts_8_0.html">Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysts_8_0.html">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_3.html">.</a></li>
@@ -487,7 +488,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <ol class="arabic simple">
+<li><p>Getting setup with Python (for Jupyter notebooks):</p></li>
+</ol>
+<ul class="simple">
+<li><p>1.1. Installing Python</p>
+<ul>
+<li><p>1.1.1. Installing Python on Windows</p>
+<ul>
+<li><p>For a linux-like environment on Windows, I recommend <a class="reference external" href="https://www.cygwin.com/">Cygwin</a>.  You can install Python from the Cygwin installer.</p></li>
+<li><p>For a more native Windows experience, you can install <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a>.  Anaconda is a Python distribution that includes many of the packages we will use in this course.  It also includes the Jupyter notebook server, which we will use to run our notebooks.  Anaconda is a large download, but it is a good option if you are new to Python.</p></li>
+<li><p>If you are already familiar with Python, you can install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+</ul>
+</li>
+<li><p>1.1.2. Installing Python on Mac OS X</p>
+<ul>
+<li><p>For a linux-like environment on Mac OS X, I recommend <a class="reference external" href="http://brew.sh/">Homebrew</a>.  You can install Python from the Homebrew installer.</p></li>
+<li><p>For a more native Mac OS X experience, you can install <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a>.  Anaconda is a Python distribution that includes many of the packages we will use in this course.  It also includes the Jupyter notebook server, which we will use to run our notebooks.  Anaconda is a large download, but it is a good option if you are new to Python.</p></li>
+<li><p>If you are already familiar with Python, you can install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+<li><p>If you are already familiar with Python, you can install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+</ul>
+</li>
+<li><p>1.1.3. Installing Python on Linux</p>
+<ul>
+<li><p>For a linux-like environment on Linux, you can install Python using your package manager.  For example, on Ubuntu, you can install Python using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-pip</span> <span class="pre">python3-dev</span></code>.  You can then install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+<li><p>For a more native Linux experience, you can install <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a>.  Anaconda is a Python distribution that includes many of the packages we will use in this course.  It also includes the Jupyter notebook server, which we will use to run our notebooks.  Anaconda is a large download, but it is a good option if you are new to Python.</p></li>
+<li><p>If you are already familiar with Python, you can install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.2. Installing Jupyter notebook</p>
+<ul>
+<li><p>If you installed Anaconda, you already have Jupyter notebook installed.  If you installed Python using your package manager, you can install Jupyter notebook using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter</span></code>.</p></li>
+</ul>
+</li>
+<li><p>1.3. Installing packages</p>
+<ul>
+<li><p>If you installed Anaconda, you already have many of the packages we will use in this course.  If you installed Python using your package manager, you can install the packages we will use in this course using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>.  See the <span class="xref myst">requirements.txt</span> file for a list of packages we will use in this course.</p></li>
+</ul>
+</li>
+<li><p>1.4. Running Jupyter</p>
+<ul>
+<li><p>To run Jupyter, open a terminal and type <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>.  This will open a browser window with the Jupyter notebook server.  You can then open a notebook by clicking on the notebook file in the browser window.</p></li>
+</ul>
+</li>
+<li><p>1.5. Running Jupyter on a remote server</p>
+<ul>
+<li><p>If you are using a remote server, you will need to install Jupyter notebook on the remote server.  See the <a class="reference external" href="http://jupyter.readthedocs.io/en/latest/install.html">Jupyter documentation</a> for more information.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Getting setup with R (for Jupyter notebooks):</p></li>
+</ol>
+<ul class="simple">
+<li><p>2.1. Installing R</p>
+<ul>
+<li><p>If you installed Anaconda, you already have R installed.  If you installed Python using your package manager, you can install R using your package manager.</p></li>
+</ul>
+</li>
+<li><p>2.2. Installing R kernel for Jupyter notebook</p>
+<ul>
+<li><p>If you installed Anaconda, you already have the R kernel for Jupyter notebook installed.  If you installed Python using your package manager, you can install the R kernel for Jupyter notebook using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">r</span> <span class="pre">r-irkernel</span></code>.</p></li>
+</ul>
+</li>
+<li><p>2.3. Installing packages</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Getting setup with VS Code in Windows:</p></li>
+</ol>
+<ul class="simple">
+<li><p>3.1. Installing VS Code</p>
+<ul>
+<li><p>Download and install VS Code from <a class="reference external" href="https://code.visualstudio.com/">here</a>. You can also install VS Code using the Anaconda installer.</p></li>
+</ul>
+</li>
+</ul>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -525,7 +603,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Step-by-step guide to install all the required packages for creating a Jupyter-book in Woindows 10 using a Linux shell.</p>
+        <p class="prev-next-title">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</p>
       </div>
     </a>
     <a class="right-next"
