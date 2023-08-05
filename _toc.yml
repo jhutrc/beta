@@ -104,11 +104,15 @@ parts:
   - file: dramatis_personae/fellows/fellows_4.ipynb
   - file: dramatis_personae/fellows/fellows_5.ipynb
   - file: dramatis_personae/faculty/faculty.ipynb
-  - file: dramatis_personae/faculty/faculty_1.ipynb
-  - file: dramatis_personae/faculty/faculty_2.ipynb
-  - file: dramatis_personae/faculty/faculty_3.ipynb
-  - file: dramatis_personae/faculty/faculty_4.ipynb
-  - file: dramatis_personae/faculty/faculty_5.ipynb
+  - file: dramatis_personae/faculty/faculty_1/faculty_1.ipynb
+  - file: dramatis_personae/faculty/faculty_2/faculty_2.ipynb
+  - file: dramatis_personae/faculty/faculty_3/faculty_3.ipynb
+  - file: dramatis_personae/faculty/faculty_4/faculty_4.ipynb
+  - file: dramatis_personae/faculty/faculty_5/faculty_5.ipynb
+  - file: dramatis_personae/faculty/faculty_6/faculty_6.ipynb
+  - file: dramatis_personae/faculty/faculty_7/faculty_7.ipynb
+  - file: dramatis_personae/faculty/faculty_8/faculty_8.ipynb
+  - file: dramatis_personae/faculty/faculty_9/faculty_9.ipynb
   - file: dramatis_personae/analysts/analysts.ipynb
   - file: dramatis_personae/analysts/analysts_1.ipynb
   - file: dramatis_personae/analysts/analysts_2.ipynb
