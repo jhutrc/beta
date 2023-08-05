@@ -118,11 +118,18 @@ parts:
   - file: dramatis_personae/faculty/faculty_9/faculty_9.ipynb
   - file: dramatis_personae/faculty/faculty_9/faculty_9_1.ipynb
   - file: dramatis_personae/analysts/analysts.ipynb
-  - file: dramatis_personae/analysts/analysts_1.ipynb
-  - file: dramatis_personae/analysts/analysts_2.ipynb
-  - file: dramatis_personae/analysts/analysts_3.ipynb
-  - file: dramatis_personae/analysts/analysts_4.ipynb
-  - file: dramatis_personae/analysts/analysts_5.ipynb
+  - file: dramatis_personae/analysts/analysts_1/analysts_1.ipynb
+  - file: dramatis_personae/analysts/analysts_2/analysts_2.ipynb
+  - file: dramatis_personae/analysts/analysts_3/analysts_3.ipynb
+  - file: dramatis_personae/analysts/analysts_4/analysts_4.ipynb
+  - file: dramatis_personae/analysts/analysts_5/analysts_5.ipynb
+  - file: dramatis_personae/analysts/analysts_6/analysts_6.ipynb
+  - file: dramatis_personae/analysts/analysts_7/analysts_7.ipynb
+  - file: dramatis_personae/analysts/analysts_8/analysts_8.ipynb
+  - file: dramatis_personae/analysts/analysts_8/analysts_8_0.ipynb
+  - file: dramatis_personae/analysts/analysts_8/analysts_8_1.ipynb
+  - file: dramatis_personae/analysts/analysts_8/analysts_8_2.ipynb
+  - file: dramatis_personae/analysts/analysts_9/analysts_9.ipynb
   - file: dramatis_personae/staff/staff.ipynb
   - file: dramatis_personae/staff/staff_1.ipynb
   - file: dramatis_personae/staff/staff_2.ipynb
