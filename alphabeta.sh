@@ -3,7 +3,7 @@ jb build alpha
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "issues with faculty_9_0.ipynb link, _toc.yml is your go-to fix for links" 
+git commit -m "remove duplicate of हमारा और हमसे" 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
