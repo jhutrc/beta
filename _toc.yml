@@ -87,7 +87,9 @@ parts:
   - file: dramatis_personae/grad_students_4/grad_students_4.ipynb
   - file: dramatis_personae/grad_students_5/grad_students_5.ipynb
   - file: dramatis_personae/medical_students/medical_students.ipynb
-  - file: dramatis_personae/medical_students/medical_students_1.ipynb
+  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1.ipynb
+  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1_1.ipynb
+  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1_2.ipynb
   - file: dramatis_personae/medical_students/medical_students_2.ipynb
   - file: dramatis_personae/medical_students/medical_students_3.ipynb
   - file: dramatis_personae/medical_students/medical_students_4.ipynb
@@ -128,7 +130,9 @@ parts:
   - file: dramatis_personae/staff/staff_4.ipynb
   - file: dramatis_personae/staff/staff_5.ipynb
   - file: dramatis_personae/collaborators/collaborators.ipynb
-  - file: dramatis_personae/collaborators/collaborators_1.ipynb
+  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1.ipynb
+  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1_1.ipynb
+  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1_2.ipynb
   - file: dramatis_personae/collaborators/collaborators_2.ipynb
   - file: dramatis_personae/collaborators/collaborators_3.ipynb
   - file: dramatis_personae/collaborators/collaborators_4.ipynb
