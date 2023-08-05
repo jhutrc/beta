@@ -113,6 +113,7 @@ parts:
   - file: dramatis_personae/faculty/faculty_7/faculty_7.ipynb
   - file: dramatis_personae/faculty/faculty_8/faculty_8.ipynb
   - file: dramatis_personae/faculty/faculty_9/faculty_9.ipynb
+  - file: dramatis_personae/faculty/faculty_9/faculty_9_1.ipynb
   - file: dramatis_personae/analysts/analysts.ipynb
   - file: dramatis_personae/analysts/analysts_1.ipynb
   - file: dramatis_personae/analysts/analysts_2.ipynb
