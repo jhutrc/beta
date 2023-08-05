@@ -68,7 +68,8 @@ parts:
   - url: https://publichealth.jhu.edu/courses
     title: Stata Programming 
   - file: dramatis_personae/high_school_students/high_school_students.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_1.ipynb
+  - file: dramatis_personae/high_school_students/high_school_students_1/high_school_students_1.ipynb
+  - file: dramatis_personae/high_school_students/high_school_students_1/high_school_students_1_1.ipynb
   - file: dramatis_personae/high_school_students/high_school_students_2.ipynb
   - file: dramatis_personae/high_school_students/high_school_students_3.ipynb
   - file: dramatis_personae/high_school_students/high_school_students_4.ipynb

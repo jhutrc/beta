@@ -3,7 +3,7 @@ jb build alpha
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "faculty_9 link has gone live!" 
+git commit -m "high_school_students_1 link has gone live!" 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
