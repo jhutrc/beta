@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Beta</title>
+    <title>NHANES Data &#8212; Beta</title>
   
   
   
@@ -219,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../Epilogue/epi_8.html">.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://publichealth.jhu.edu/courses">Stata Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_2.html">.</a></li>
@@ -252,6 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../analysts_5/analysts_5.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysts_8_0.html">Install required packages for creating a Jupyter-book in Windows 10 using a Linux shell.</a></li>
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NHANES Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../staff/staff_3.html">.</a></li>
@@ -466,7 +467,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>NHANES Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -475,9 +476,10 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-off">Start off</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -488,7 +490,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="nhanes-data">
+<h1>NHANES Data<a class="headerlink" href="#nhanes-data" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Multiple survey cycles</p></li>
+<li><p>Unweighted data (we don’t do prevalence estimates in our work)</p></li>
+<li><p>Virtually any combination of variables</p>
+<ul>
+<li><p>Demographics</p></li>
+<li><p>Labs</p></li>
+<li><p>Examination data</p></li>
+<li><p>Questionnaire data</p></li>
+<li><p>Dietary data</p></li>
+<li><p>Restricted data</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Output in a SAS format that is easy to use for NCHS/CDC analysts
+  - .CSV file
+  - .XPT file
+  - .SAS7BDAT file (ideal but we don&#39;t have the SAS license &amp; will be using Stata)
+  - .DTA file (Not an option of interest)
+</pre></div>
+</div>
+</section>
+<section id="start-off">
+<h2>Start off<a class="headerlink" href="#start-off" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="xref myst">Abi’s code</span> is a nice place to start</p></li>
+<li><p>Modify it to fit RDC/NCHS/CDC needs</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -555,9 +591,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-off">Start off</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
