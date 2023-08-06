@@ -4,7 +4,7 @@ git clone https://github.com/jhutrc/beta
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "removing titles from supporting pages" 
+git commit -m "fena > analysts > vincent > python > anaconda" 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
