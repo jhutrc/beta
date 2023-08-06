@@ -1,5 +1,6 @@
 cd ~/dropbox/1f.ἡἔρις,κ/1.ontology
 jb build alpha
+rm -rf beta
 git clone https://github.com/jhutrc/beta 
 cp -r alpha/* beta
 cd beta
