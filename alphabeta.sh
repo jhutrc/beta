@@ -5,7 +5,7 @@ git clone https://github.com/jhutrc/beta
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "substantive update to epilogue!!!!!!!!!!!!!" 
+git commit -m "co-pilot suggested tip... use image url from github, not local filepth!" 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
