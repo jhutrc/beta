@@ -5,7 +5,7 @@ git clone https://github.com/jhutrc/beta
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "beyond git & spoke, and dropping -gas to make it monosyllabic fena" 
+git commit -m "idiomatic translation for we are in this together - yaffe ffena" 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
