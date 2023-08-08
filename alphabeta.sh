@@ -5,7 +5,7 @@ git clone https://github.com/jhutrc/beta
 cp -r alpha/* beta
 cd beta
 git add ./*
-git commit -m "victory!!! https://github.com/jhutrc/fena/commits/merge_seasons.docx/seasons.docx " 
+git commit -m "upgrade script to yafe/yafefena.sh standard!!! just copy & paste here! " 
 chmod 600 ~/.ssh/id_alphabeta
 ssh-add -D
 git remote set-url origin git@github.com:jhutrc/beta
