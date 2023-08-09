@@ -697,6 +697,158 @@ startlog, name(<span class="s">&quot;</span><span class="vg">$rootPath</span><sp
 <p>Here, I’ve used the mean baseline survival function <code class="docutils literal notranslate"><span class="pre">s0_a2z</span></code> for calculation. You can replace it with a specific baseline survival function value if needed.</p>
 <p>This code snippet is a lot more concise than using nested loops and temporary files, and it directly leverages the results of the Cox model fit. Make sure to modify the scenario vector according to the specific covariate values you are interested in. The above example assumes that the covariates are in the same order as in the <code class="docutils literal notranslate"><span class="pre">stcox</span></code> command, and you’ll need to ensure that this ordering is correct for your particular dataset and model.</p>
 <hr class="docutils" />
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>startlog, name(<span class="s">&quot;../../fsgsHIV/fsgsHIVoutput/fsgsHIVlogs/4.hispESRDmodelsmk&quot;</span>)
+
+<span class="c1">//na</span>
+<span class="k">use</span> <span class="s">&quot;../../fsgsHIV/fsgsHIVoutput/fsgsHIVanalysis/cleanHIVsmk+.dta&quot;</span>,clear
+<span class="k">set more</span> off
+
+<span class="k">mkspline</span> age1 <span class="m">50</span> age2=na_age
+<span class="k">mkspline</span> age1_sat <span class="m">40</span> age2_sat <span class="m">50</span> age3_sat <span class="m">65</span> age4_sat=na_age 
+<span class="k">mkspline</span> egfr45 <span class="m">45</span> egfr60 <span class="m">60</span> egfr90=na_egfr_baseline
+<span class="k">mkspline</span> egfr1_min <span class="m">60</span> egfr2_min <span class="m">90</span> egfr3_min=na_egfr_baseline
+<span class="k">mkspline</span> egfr1_mod <span class="m">90</span> egfr2_mod=na_egfr_baseline
+<span class="k">mkspline</span> egfr1 <span class="m">60</span> egfr2 <span class="m">90</span> egfr3 <span class="m">120</span> egfr4=na_egfr_baseline
+<span class="k">mkspline</span> egfr1_sat <span class="m">60</span> egfr2_sat <span class="m">90</span> egfr3_sat <span class="m">120</span> egfr4_sat=na_egfr_baseline
+<span class="k">mkspline</span> bmi_1 <span class="m">25</span> bmi_2 <span class="m">30</span> bmi_3 <span class="m">35</span> bmi_4=na_bmi
+<span class="k">mkspline</span> bmi25_1 <span class="m">25</span> bmi25_2=na_bmi
+<span class="k">mkspline</span> vl1 <span class="m">4</span> vl2 <span class="m">5</span> vl3=log10vl
+<span class="k">mkspline</span> vl1_sat <span class="m">3</span> vl2_sat <span class="m">4</span> vl3_sat <span class="m">5</span> vl4_sat=log10vl
+<span class="k">mkspline</span> vl1_min <span class="m">4</span> vl2_min=log10vl
+<span class="k">mkspline</span> vl1_detect <span class="m">3</span> vl2_detect=log10vl
+<span class="k">mkspline</span> cd4_1_sat <span class="m">200</span> cd4_2_sat <span class="m">350</span> cd4_3_sat <span class="m">500</span> cd4_4_sat=cd4baseline
+<span class="k">mkspline</span> cd4_1_min <span class="m">350</span> cd4_2_min=cd4baseline
+<span class="k">mkspline</span> cd4_1 <span class="m">500</span> cd4_2=cd4baseline
+<span class="k">mkspline</span> cd4_1_mod <span class="m">300</span> cd4_2_mod=cd4baseline
+<span class="k">mkspline</span> cd4_1_splines <span class="m">200</span> cd4_2_splines <span class="m">500</span> cd4_3_splines=cd4baseline
+<span class="k">gen</span>     vl400onRx=<span class="m">1</span><span class="k"> if</span> <span class="nf">inrange</span>(art_years,<span class="m">0</span>,<span class="m">25</span>)<span class="o">&amp;</span><span class="nf">inrange</span>(vlbaseline,<span class="m">0</span>,<span class="m">400</span>)
+<span class="k">replace</span> vl400onRx=<span class="m">2</span><span class="k"> if</span> <span class="nf">inrange</span>(art_years,<span class="m">0</span>,<span class="m">25</span>)<span class="o">&amp;</span><span class="nf">inrange</span>(vlbaseline,<span class="m">400.1</span>,<span class="m">300000</span>)
+<span class="k">replace</span> vl400onRx=<span class="m">3</span><span class="k"> if</span> vl400onRx<span class="o">==</span>.
+<span class="k">replace</span> art_years=<span class="m">0</span><span class="k"> if</span> vl400onRx<span class="o">==</span><span class="m">3</span>
+<span class="k">mkspline</span> art_y1 <span class="m">9</span> art_y2=art_years  
+<span class="k">mkspline</span> art_y1_max .<span class="m">1</span> art_y2_max <span class="m">9</span> art_y3_max=art_years
+<span class="k">mkspline</span> tdf_y1 <span class="m">6</span> tdf_y2=tdf_years
+
+<span class="k">stset</span> na_t,fail(na_fail<span class="o">==</span><span class="m">1</span>)
+
+<span class="k">stcox</span> age1 age2 i<span class="m">.</span>na_race female na_dm na_ht egfr1_mod egfr2_mod smoking hcv vl1_min vl2_min art_y1 art_y2 i<span class="m">.</span>art_timing tdf_years cd4baseline aids,basesurv(s0_a2z)
+
+<span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">4</span> {
+<span class="k"> forvalues</span> j=<span class="m">2</span><span class="o">/</span><span class="m">5</span> {
+<span class="k">gen s</span><span class="nv">`i&#39;</span>_<span class="nv">`j&#39;</span>=s0_a2z<span class="o">^</span><span class="nf">exp</span>( <span class="cs">///</span>
+  _b[age1]<span class="o">*</span><span class="m">40</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[age2]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">///</span>
+  _b[<span class="m">3.</span>na_race]<span class="o">+</span> <span class="cs">///</span>
+  _b[female]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">///</span>
+  _b[na_dm]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[na_ht]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[egfr1_mod]<span class="o">*</span><span class="m">90</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[egfr2_mod]<span class="o">*</span><span class="m">10</span><span class="o">+</span> <span class="cs">///</span>
+  _b[smoking]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">///</span>
+  _b[hcv]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[<span class="m">1.</span>art_timing]<span class="o">+</span> <span class="cs">///</span>
+  _b[art_y1]<span class="o">*</span><span class="m">1</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[art_y2]<span class="o">*</span><span class="m">0</span><span class="o">+</span> <span class="cs">///</span>
+  _b[tdf_years]<span class="o">*</span><span class="m">1</span><span class="o">+</span> <span class="cs">/// </span>
+  _b[vl1_min]<span class="o">*</span><span class="nf">min</span>(<span class="nv">`j&#39;</span>,<span class="m">4</span>)<span class="o">+</span> <span class="cs">///  </span>
+  _b[vl2_min]<span class="o">*</span><span class="nf">max</span>(<span class="nv">`j&#39;</span><span class="o">-</span><span class="m">4</span>,<span class="m">0</span>)<span class="o">+</span> <span class="cs">/// </span>
+  _b[cd4baseline]<span class="o">*</span>(<span class="m">200</span><span class="o">+</span>(<span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>)<span class="o">*</span><span class="m">150</span>)<span class="o">+</span> <span class="cs">///  </span>
+  _b[aids]<span class="o">*</span><span class="m">0</span> <span class="cs">///</span>
+)
+<span class="k">replace s</span><span class="nv">`i&#39;</span>_<span class="nv">`j&#39;</span>=(<span class="m">1</span><span class="o">-</span>s<span class="nv">`i&#39;</span>_<span class="nv">`j&#39;</span>)<span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">4</span>
+
+<span class="k">preserve</span>
+<span class="k">replace</span> _t=<span class="nf">round</span>(_t)
+<span class="k">keep if</span> _t<span class="o">==</span><span class="m">9</span>
+<span class="k">collapse</span> (mean)<span class="k"> s</span><span class="nv">`i&#39;</span>_<span class="nv">`j&#39;</span>,<span class="k"> by</span>(_t) 
+<span class="k">list</span>
+<span class="k">tempfile s</span><span class="nv">`i&#39;</span>_<span class="nv">`j&#39;</span>
+<span class="k">save</span> <span class="nv">`s`i&#39;_`j&#39;&#39;</span>
+<span class="k">restore</span>
+   }
+} 
+
+<span class="k">use</span> <span class="nv">`s1_2&#39;</span>,clear
+<span class="k">gen</span> surv=<span class="m">1</span>
+<span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">4</span> {  
+<span class="k">   forvalues</span> j=<span class="m">2</span><span class="o">/</span><span class="m">5</span> {
+<span class="k">	  append</span> using <span class="nv">`s`i&#39;_`j&#39;&#39;</span>
+   }
+}
+
+<span class="k">drop if</span> surv<span class="o">==</span><span class="m">1</span>
+<span class="k">drop</span> _t surv
+<span class="k">gen</span> surv=<span class="nf">min</span>(s1_2, s1_3,s1_4,s1_5,s2_2,s2_3,s2_4,s2_5,s3_2,s3_3,s3_4,s3_5,s4_2,s4_3,s4_4,s4_5)
+<span class="k">gen</span> id=_n
+
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(surv)
+
+<span class="k">gen</span> cd4=<span class="m">1</span><span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">4</span>
+<span class="k">replace</span> cd4=<span class="m">2</span><span class="k"> in</span> <span class="m">5</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> cd4=<span class="m">3</span><span class="k"> in</span> <span class="m">9</span><span class="o">/</span><span class="m">12</span>
+<span class="k">replace</span> cd4=<span class="m">4</span><span class="k"> in</span> <span class="m">13</span><span class="o">/</span><span class="m">16</span>
+<span class="k">gen</span> vl=<span class="m">2</span><span class="k"> in</span> <span class="m">1</span>
+<span class="k">replace</span> vl=<span class="m">3</span><span class="k"> in</span> <span class="m">2</span>
+<span class="k">replace</span> vl=<span class="m">4</span><span class="k"> in</span> <span class="m">3</span>
+<span class="k">replace</span> vl=<span class="m">5</span><span class="k"> in</span> <span class="m">4</span>
+
+<span class="k">replace</span> vl=<span class="m">2</span><span class="k"> in</span> <span class="m">5</span>
+<span class="k">replace</span> vl=<span class="m">3</span><span class="k"> in</span> <span class="m">6</span>
+<span class="k">replace</span> vl=<span class="m">4</span><span class="k"> in</span> <span class="m">7</span>
+<span class="k">replace</span> vl=<span class="m">5</span><span class="k"> in</span> <span class="m">8</span>
+
+<span class="k">replace</span> vl=<span class="m">2</span><span class="k"> in</span> <span class="m">9</span>
+<span class="k">replace</span> vl=<span class="m">3</span><span class="k"> in</span> <span class="m">10</span>
+<span class="k">replace</span> vl=<span class="m">4</span><span class="k"> in</span> <span class="m">11</span>
+<span class="k">replace</span> vl=<span class="m">5</span><span class="k"> in</span> <span class="m">12</span>
+
+<span class="k">replace</span> vl=<span class="m">2</span><span class="k"> in</span> <span class="m">13</span>
+<span class="k">replace</span> vl=<span class="m">3</span><span class="k"> in</span> <span class="m">14</span>
+<span class="k">replace</span> vl=<span class="m">4</span><span class="k"> in</span> <span class="m">15</span>
+<span class="k">replace</span> vl=<span class="m">5</span><span class="k"> in</span> <span class="m">16</span>
+
+<span class="k">order</span> id surv vl cd4
+
+<span class="k">label</span> define Vl <span class="m">2</span> <span class="s">&quot;Suppressed&quot;</span> <span class="m">3</span> <span class="s">&quot;1,000&quot;</span> <span class="m">4</span> <span class="s">&quot;10,000&quot;</span> <span class="m">5</span> <span class="s">&quot;100,000&quot;</span>
+<span class="k">label</span> values vl Vl
+<span class="k">label</span> define Cd4 <span class="m">1</span> <span class="s">&quot;200&quot;</span> <span class="m">2</span> <span class="s">&quot;350&quot;</span> <span class="m">3</span> <span class="s">&quot;500&quot;</span> <span class="m">4</span> <span class="s">&quot;650&quot;</span>
+<span class="k">label</span> values cd4 Cd4
+
+<span class="k">drop</span> <span class="o">*</span>_<span class="o">*</span>
+
+<span class="k">twoway</span> (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">1</span>, ms(T) mc(maroon))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">1</span>, lp(solid) lc(maroon)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">2</span>, ms(T) mc(ltblue))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">2</span>, lp(solid) lc(ltblue)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">3</span>, ms(O) mc(orange))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">3</span>, lp(solid) lc(orange)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">4</span>, ms(O) mc(purple))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">4</span>, lp(solid) lc(purple) <span class="cs">///</span>
+		 xlab(<span class="m">2</span> <span class="s">&quot;Suppressed&quot;</span> <span class="m">3</span> <span class="s">&quot;1,000&quot;</span> <span class="m">4</span> <span class="s">&quot;10,000&quot;</span> <span class="m">5</span> <span class="s">&quot;100,000&quot;</span>) <span class="cs">///</span>
+		 scheme(s1color) <span class="cs">///</span>
+		 legend(off ti(<span class="s">&quot;CD4+ count&quot;</span>, size(<span class="m">3.5</span>)) col(<span class="m">1</span>) pos(<span class="m">10</span>)<span class="k"> order</span>(<span class="m">1</span> <span class="s">&quot;200 cells/mm{superscript:3}&quot;</span> <span class="m">3</span> <span class="s">&quot;350 cells/mm{superscript:3}&quot;</span> <span class="m">5</span> <span class="s">&quot;500 cells/mm{superscript:3}&quot;</span> <span class="m">7</span> <span class="s">&quot;650 cells/mm{superscript:3}&quot;</span>) ring(<span class="m">0</span>) size(medsmall)) <span class="cs">///</span>
+		  ti(<span class="s">&quot;Hispanic&quot;</span>,pos(<span class="m">11</span>)) <span class="cs">///</span>
+		  yti(<span class="s">&quot; &quot;</span>) <span class="cs">///</span>
+		  xti(<span class="s">&quot; &quot;</span>) <span class="cs">///</span>
+		  ymtick(<span class="m">0</span>(<span class="m">30</span>)<span class="m">120</span>,grid gstyle(dot)) <span class="cs">///</span>
+		  ylab(<span class="m">0</span>(<span class="m">30</span>)<span class="m">120</span>, angle(<span class="m">360</span>)<span class="k"> format</span>(<span class="s">&quot;%2.0f&quot;</span>) grid gstyle(dot)) <span class="cs">///</span>
+		  xlab(,angle(<span class="m">30</span>)) <span class="cs">///</span>
+              ) ,  
+<span class="k">graph save</span> <span class="s">&quot;../../fsgsHIV/fsgsHIVoutput/fsgsHIVfigures/hisp_vl_cd4smk.gph&quot;</span>,replace
+
+<span class="k">twoway</span> (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">1</span>, ms(T) mc(gs3))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">1</span>, lp(solid) lc(gs3)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">2</span>, ms(T) mc(gs14))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">2</span>, lp(solid) lc(gs14)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">3</span>, ms(O) mc(gs5))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">3</span>, lp(solid) lc(gs5)) <span class="cs">///</span>
+       (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">4</span>, ms(O) mc(gs11))(line surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">4</span>, lp(solid) lc(gs11) <span class="cs">///</span>
+		 xlab(<span class="m">2</span> <span class="s">&quot;Suppressed&quot;</span> <span class="m">3</span> <span class="s">&quot;1,000&quot;</span> <span class="m">4</span> <span class="s">&quot;10,000&quot;</span> <span class="m">5</span> <span class="s">&quot;100,000&quot;</span>) <span class="cs">///</span>
+		 scheme(s1color) <span class="cs">///</span>
+		 legend(off ti(<span class="s">&quot;CD4+ count&quot;</span>, size(<span class="m">3.5</span>)) col(<span class="m">1</span>) pos(<span class="m">10</span>)<span class="k"> order</span>(<span class="m">1</span> <span class="s">&quot;200 cells/mm{superscript:3}&quot;</span> <span class="m">3</span> <span class="s">&quot;350 cells/mm{superscript:3}&quot;</span> <span class="m">5</span> <span class="s">&quot;500 cells/mm{superscript:3}&quot;</span> <span class="m">7</span> <span class="s">&quot;650 cells/mm{superscript:3}&quot;</span>) ring(<span class="m">0</span>) size(medsmall)) <span class="cs">///</span>
+		  ti(<span class="s">&quot;Hispanic&quot;</span>,pos(<span class="m">11</span>)) <span class="cs">///</span>
+		  yti(<span class="s">&quot; &quot;</span>) <span class="cs">///</span>
+		  xti(<span class="s">&quot; &quot;</span>) <span class="cs">///</span>
+		  ymtick(<span class="m">0</span>(<span class="m">30</span>)<span class="m">120</span>,grid gstyle(dot)) <span class="cs">///</span>
+		  ylab(<span class="m">0</span>(<span class="m">30</span>)<span class="m">120</span>, angle(<span class="m">360</span>)<span class="k"> format</span>(<span class="s">&quot;%2.0f&quot;</span>) grid gstyle(dot)) <span class="cs">///</span>
+		  xlab(,angle(<span class="m">30</span>)) <span class="cs">///</span>
+              ) ,  
+<span class="k">graph save</span> <span class="s">&quot;../../fsgsHIV/fsgsHIVoutput/fsgsHIVfigures/hisp_vl_cd4smk_gray.gph&quot;</span>,replace
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
