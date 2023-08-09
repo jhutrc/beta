@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dramatis_personae/faculty/faculty_9/faculty_9_6';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -538,7 +540,7 @@ cls
 </pre></div>
 </div>
 <p>Step 4: Matrices Definition</p>
-<p>We define three matrices ( m ), ( b ), and ( V ), to store the table of results, coefficients, and variance-covariance matrix, respectively.</p>
+<p>We define three matrices <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(V\)</span>, to store the table of results, coefficients, and variance-covariance matrix, respectively.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
 <span class="k">matrix</span> b =<span class="k"> e</span>(b)
 <span class="k">matrix</span> V =<span class="k"> e</span>(V)
@@ -551,7 +553,7 @@ cls
 </pre></div>
 </div>
 <p>Step 6: Calculating the Risk Score</p>
-<p>The risk score ( \rho ) is calculated by multiplying the scenario vector with the transpose of the coefficients:</p>
+<p>The risk score (<span class="math notranslate nohighlight">\(\rho\)</span>) is calculated by multiplying the scenario vector with the transpose of the coefficients:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
 </pre></div>
 </div>
@@ -568,7 +570,7 @@ cls
 </pre></div>
 </div>
 <p>Step 9: Variance and Standard Error of Prediction</p>
-<p>Here, we calculate the variance (( \sigma^2 )) and standard error (SE) of the prediction for the scenario.</p>
+<p>Here, we calculate the variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>) and standard error (SE) of the prediction for the scenario.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
 <span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
 </pre></div>
