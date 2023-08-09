@@ -120,6 +120,9 @@ parts:
   - file: dramatis_personae/faculty/faculty_9/faculty_9_1.ipynb
   - file: dramatis_personae/faculty/faculty_9/faculty_9_2.ipynb
   - file: dramatis_personae/faculty/faculty_9/faculty_9_3.ipynb
+  - file: dramatis_personae/faculty/faculty_9/faculty_9_4.ipynb
+  - file: dramatis_personae/faculty/faculty_9/faculty_9_5.ipynb
+  - file: dramatis_personae/faculty/faculty_9/faculty_9_6.ipynb
   - file: dramatis_personae/analysts/analysts.ipynb
   - file: dramatis_personae/analysts/analysts_1/analysts_1.ipynb
   - file: dramatis_personae/analysts/analysts_2/analysts_2.ipynb
