@@ -487,30 +487,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>The Cox proportional hazards model assumes that the hazard functions of two different groups are proportional to each other:
-$<span class="math notranslate nohighlight">\(
-h_1(t) = h_0(t) \exp(\beta)
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>h_1(t)<span class="math notranslate nohighlight">\( and \)</span>h_0(t)<span class="math notranslate nohighlight">\( are the hazard functions for the two groups, and \)</span>\beta$ is the coefficient representing the effect of a covariate (such as treatment).</p>
-<p>Now, the survival function is related to the hazard function through:
-$<span class="math notranslate nohighlight">\(
-S(t) = \exp\left(-\int_{0}^{t} h(u) \,du\right)
-\)</span>$</p>
+  <p>The Cox proportional hazards model assumes that the hazard functions of two different groups are proportional to each other:</p>
+<p><span class="math notranslate nohighlight">\(h_1(t) = h_0(t) \exp(\beta)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(h_1(t)\)</span> and <span class="math notranslate nohighlight">\(h_0(t)\)</span> are the hazard functions for the two groups, and <span class="math notranslate nohighlight">\(\beta\)</span> is the coefficient representing the effect of a covariate (such as treatment).</p>
+<p>Now, the survival function is related to the hazard function through:</p>
+<p><span class="math notranslate nohighlight">\(S(t) = \exp\left(-\int_{0}^{t} h(u) \,du\right)\)</span></p>
 <p>Applying this relationship to both groups:</p>
-<ul class="simple">
-<li><p>For the baseline group:
-$<span class="math notranslate nohighlight">\(
-S_0(t) = \exp\left(-\int_{0}^{t} h_0(u) \,du\right)
-\)</span>$</p></li>
-<li><p>For the other group:
-$<span class="math notranslate nohighlight">\(
-S_1(t) = \exp\left(-\int_{0}^{t} h_1(u) \,du\right) = \exp\left(-\int_{0}^{t} h_0(u)\exp(\beta) \,du\right)
-\)</span>$</p></li>
+<ul>
+<li><p>For the baseline group:</p>
+<p><span class="math notranslate nohighlight">\(S_0(t) = \exp\left(-\int_{0}^{t} h_0(u) \,du\right)\)</span></p>
+</li>
+<li><p>For the other group:</p>
+<p><span class="math notranslate nohighlight">\(S_1(t) = \exp\left(-\int_{0}^{t} h_1(u) \,du\right) = \exp\left(-\int_{0}^{t} h_0(u)\exp(\beta) \,du\right)\)</span></p>
+</li>
 </ul>
-<p>Now, you can rewrite the expression for <span class="math notranslate nohighlight">\(S_1(t)\)</span> using the expression for <span class="math notranslate nohighlight">\(S_0(t)\)</span>:
-$<span class="math notranslate nohighlight">\(
-S_1(t) = \exp\left(\exp(\beta)\int_{0}^{t} h_0(u) \,du\right) = \exp\left(\exp(\beta) \cdot \left(-\log S_0(t)\right)\right) = S_0(t)^{\exp(\beta)}
-\)</span>$</p>
+<p>Now, you can rewrite the expression for <span class="math notranslate nohighlight">\(S_1(t)\)</span> using the expression for <span class="math notranslate nohighlight">\(S_0(t)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(S_1(t) = \exp\left(\exp(\beta)\int_{0}^{t} h_0(u) \,du\right) = \exp\left(\exp(\beta) \cdot \left(-\log S_0(t)\right)\right) = S_0(t)^{\exp(\beta)}\)</span></p>
 <p>This shows the relationship between the survival functions under the assumption of proportional hazards. It encapsulates the idea that the effect of the covariate (as captured by <span class="math notranslate nohighlight">\(\beta\)</span> has a multiplicative effect on the hazard, which leads to an exponential effect on the survival function.</p>
 
     <script type="text/x-thebe-config">
