@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="faculty_9_7.html" />
-    <link rel="prev" title="1. Logging and Data Preparation:" href="faculty_9_5.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="faculty_9_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -244,12 +244,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../faculty_6/faculty_6.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_8/faculty_8.html">.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faculty_9_5.html">1. Logging and Data Preparation:</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -491,7 +485,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="s">&quot;https://github.com/muzaale/ikesa/raw/main/nhanes.dta&quot;</span>,<span class="k"> clear</span>
+<span class="k">di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">global</span> subgroup ridreth3
+<span class="k">global</span> subgroupvar:<span class="k"> var lab</span> ridreth3
+cls
+<span class="k">gen</span> years = permth_exm <span class="o">/</span> <span class="m">12</span>
+<span class="k">stset</span> years, fail(mortstat)
+
+#delimit ;
+<span class="k">sts graph if</span> <span class="nf">inlist</span>(<span class="vg">$subgroup</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>),
+<span class="k">    by</span>(<span class="vg">$subgroup</span>)
+    fail
+    ti(<span class="s">&quot;Mortality in NHANES III&quot;</span>,pos(<span class="m">11</span>))
+    subti(<span class="s">&quot;by self report: </span><span class="vg">${subgroupvar}</span><span class="s">&quot;</span>,pos(<span class="m">11</span>))
+    yti(<span class="s">&quot;%&quot;</span>,orientation(horizontal))
+    xti(<span class="s">&quot;Years&quot;</span>)
+    per(<span class="m">100</span>)
+    ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>,
+<span class="k">        format</span>(<span class="nx">%3.0f</span>)
+        angle(<span class="m">360</span>)
+    )
+    legend(on
+<span class="k">        lab</span>(<span class="m">1</span> <span class="s">&quot;Mexican&quot;</span>)
+<span class="k">        lab</span>(<span class="m">2</span> <span class="s">&quot;Hispanic&quot;</span>)
+<span class="k">        lab</span>(<span class="m">3</span> <span class="s">&quot;White&quot;</span>)
+<span class="k">        lab</span>(<span class="m">4</span> <span class="s">&quot;Black&quot;</span>)
+<span class="k">        lab</span>(<span class="m">5</span> <span class="s">&quot;Asian&quot;</span>)
+<span class="k">        lab</span>(<span class="m">6</span> <span class="s">&quot;Other&quot;</span>)
+        ring(<span class="m">0</span>)
+        pos(<span class="m">11</span>)
+        col(<span class="m">1</span>)
+<span class="k">        order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span>  <span class="m">5</span>)
+    )
+<span class="k">    note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
+;
+#delimit cr
+<span class="k">cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology/alpha&quot;</span>
+<span class="k">global</span> confounders ridageyr diq010 bmxbmi smq020 lbdscrsi lbxgh
+<span class="k">stcox</span> i.<span class="vg">$subgroup</span> <span class="vg">$confounders</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">6</span>, <span class="m">7</span>), basesurv(s0) <span class="c1">//best when centered</span>
+<span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
+<span class="k">matrix</span> b =<span class="k"> e</span>(b)
+<span class="k">matrix</span> V =<span class="k"> e</span>(V)
+<span class="k">desc</span> <span class="vg">$subgroup</span> <span class="vg">$confounders</span>
+<span class="k">matrix list m</span>
+<span class="c1">//SV: black, 40yo, diabetic, BMI=36, h/o smoking, SCr=1.8, HbA1c=7.1</span>
+<span class="k">matrix</span> SV = (<span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">60</span>, <span class="m">1</span>, <span class="m">36</span>, <span class="m">1</span>, <span class="m">1.5</span>, <span class="m">7.1</span>)
+<span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+<span class="c1">//log HR for scenario vector above</span>
+<span class="k">matrix list</span> risk_score 
+<span class="c1">//HR for scenario described compared with &quot;base-case&quot; (would make sense if there was centering. but without centering the base-case is for Mexican, 0yo, non-diabetic, BMI=0, etc.)</span>
+<span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
+<span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
+<span class="c1">//10-year mortality for scenario </span>
+<span class="k">gen</span> f0 = (<span class="m">1</span> <span class="o">-</span> s0) <span class="o">*</span> <span class="m">100</span>
+<span class="k">gen</span> f1 = f0 <span class="o">*</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">drop if</span> _t <span class="o">&gt;</span> <span class="m">10</span>
+<span class="k">line</span> f1 _t,<span class="k"> sort</span> connect(step step) ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) xlab(<span class="m">0</span>(<span class="m">2</span>)<span class="m">10</span>)
+<span class="k">graph</span> export nhanes_scenario<span class="m">.</span>png,<span class="k"> replace</span>  
+</pre></div>
+</div>
+<p>Let’s delve into the specific portion of the code that deals with the <code class="docutils literal notranslate"><span class="pre">risk</span> <span class="pre">score</span> <span class="pre">calculation</span></code> and the scenario vector (SV). I’ll explain each part of this code snippet and highlight the specific example provided:</p>
+<ol class="arabic">
+<li><p><strong>Defining Matrices and Risk Score:</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
+<span class="k">matrix</span> b =<span class="k"> e</span>(b)
+<span class="k">matrix</span> V =<span class="k"> e</span>(V)
+</pre></div>
+</div>
+<p>These lines define matrices based on the results of the previously fit Cox model. <code class="docutils literal notranslate"><span class="pre">m</span></code> stores the table of results, <code class="docutils literal notranslate"><span class="pre">b</span></code> stores the coefficients, and <code class="docutils literal notranslate"><span class="pre">V</span></code> stores the variance-covariance matrix.</p>
+</li>
+<li><p><strong>Scenario Vector (SV):</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//SV: black, 40yo, diabetic, BMI=36, h/o smoking, SCr=1.8, HbA1c=7.1</span>
+<span class="k">matrix</span> SV = (<span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">60</span>, <span class="m">1</span>, <span class="m">36</span>, <span class="m">1</span>, <span class="m">1.5</span>, <span class="m">7.1</span>)
+</pre></div>
+</div>
+<p>Here, the SV is defined with specific values for an individual scenario. In this example, the scenario represents a 40-year-old black individual who is diabetic, has a BMI of 36, a history of smoking, a serum creatinine (SCr) level of 1.8, and a Hemoglobin A1c (HbA1c) of 7.1.</p>
+</li>
+<li><p><strong>Calculating the Risk Score:</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+</pre></div>
+</div>
+<p>This line multiplies the scenario vector with the transpose of the coefficients to calculate the risk score.</p>
+</li>
+<li><p><strong>Log Hazard Ratio:</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//log HR for scenario vector above</span>
+<span class="k">matrix list</span> risk_score 
+</pre></div>
+</div>
+<p>This displays the log hazard ratio for the specified scenario.</p>
+</li>
+<li><p><strong>Hazard Ratio for Scenario:</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//HR for scenario described compared with &quot;base-case&quot;</span>
+<span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+</pre></div>
+</div>
+<p>This calculates the hazard ratio by taking the exponential of the log hazard ratio.</p>
+</li>
+<li><p><strong>Variance and Standard Error of Prediction:</strong></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
+<span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
+</pre></div>
+</div>
+<p>These lines calculate the variance and standard error of the prediction for the scenario.</p>
+</li>
+<li><p><strong>Comment About Base-Case:</strong>
+The comment explains that the interpretation would be more intuitive if centering were used. Without centering, the base-case is for a specific reference group (e.g., Mexican, 0 years old, non-diabetic, BMI=0, etc.)</p></li>
+</ol>
+<p>To adapt this portion of the code for another project or scenario, the analyst would need to redefine the scenario vector (<code class="docutils literal notranslate"><span class="pre">SV</span></code>) with the appropriate values for the new context. They would also need to ensure that the model’s coefficients and variance-covariance matrix are correctly extracted, and that the calculations are aligned with the new scenario’s specifications.</p>
+<p><img alt="" src="https://github.com/jhutrc/beta/blob/main/nhanes_scenario.png?raw=true" /></p>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -529,7 +633,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">1. Logging and Data Preparation:</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
     </a>
     <a class="right-next"
