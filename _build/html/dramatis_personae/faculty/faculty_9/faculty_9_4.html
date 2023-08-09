@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Beta</title>
+    <title>1. Logging and Data Preparation: &#8212; Beta</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'dramatis_personae/faculty/faculty_9/faculty_9_4';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="faculty_9_5.html" />
+    <link rel="next" title="1. Logging and Data Preparation:" href="faculty_9_5.html" />
     <link rel="prev" title="&lt;no title&gt;" href="faculty_9_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -218,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../Epilogue/epi_8.html">.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://publichealth.jhu.edu/courses">Stata Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_2.html">.</a></li>
@@ -244,6 +244,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../faculty_6/faculty_6.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_8/faculty_8.html">.</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Logging and Data Preparation:</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="faculty_9_5.html">1. Logging and Data Preparation:</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -463,7 +475,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>1. Logging and Data Preparation:</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -472,7 +484,13 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Logging and Data Preparation:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">2. Feature Engineering:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-model">3. Survival Model:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-of-survival-probabilities">4. Prediction of Survival Probabilities:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-and-plotting">5. Aggregation and Plotting:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code-improvement-and-notes">Code Improvement and Notes:</a></li>
 </ul>
 
             </nav>
@@ -485,7 +503,205 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>NHANES - 30 year mortality</p>
+  <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">noi</span> {
+<span class="k">	if</span> <span class="m">0</span> {
+		<span class="m">1</span>. individualized risk prediction from<span class="k"> regress</span>
+		<span class="m">2</span>.<span class="k"> matrix</span> define<span class="k"> e</span>(b), coefficient <span class="o">&amp;</span><span class="k"> e</span>(V), variance<span class="o">-</span>covariance
+		<span class="m">3</span>. lets come up with the <span class="s">&quot;scenario vectors&quot;</span> and associated risk<span class="o">-</span>score 
+		<span class="m">4</span>. reference<span class="k"> for</span> code: https:<span class="o">//</span>jhustata<span class="m">.</span>github<span class="m">.</span>io<span class="o">/</span>book<span class="o">/</span>chapter2<span class="m">.</span>html
+	}
+<span class="k">	if</span> <span class="m">1</span> {
+<span class="k">		global</span> data https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>ikesa<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span>nhanes<span class="m">.</span>dta
+<span class="k">		global</span> subgroup ridreth3
+<span class="k">		global</span> subgroupvar:<span class="k"> var lab</span> ridreth3
+	}
+	cls
+<span class="k">	use</span> <span class="vg">$data</span>,<span class="k"> clear</span>
+<span class="k">	noi di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">	g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+<span class="k">	stset</span> years, fail(mortstat)
+	
+        		#delimit ;
+<span class="k">        		sts graph if</span> <span class="nf">inlist</span>(<span class="vg">$subgroup</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>),
+<span class="k">        		   by</span>(<span class="vg">$subgroup</span>)
+        		   fail
+        		   ti(<span class="s">&quot;Mortality in NHANES III&quot;</span>,pos(<span class="m">11</span>))
+        		   subti(<span class="s">&quot;by self report: </span><span class="vg">${subgroupvar}</span><span class="s">&quot;</span>,pos(<span class="m">11</span>))
+        		   yti(<span class="s">&quot;%&quot;</span>,orientation(horizontal))
+        		   xti(<span class="s">&quot;Years&quot;</span>)
+        		   per(<span class="m">100</span>)
+        		   ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>,
+<span class="k">        		       format</span>(<span class="nx">%3.0f</span>)
+        		       angle(<span class="m">360</span>)
+        		   )
+        		   legend(on
+<span class="k">        		       lab</span>(<span class="m">1</span> <span class="s">&quot;Mexican&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">2</span> <span class="s">&quot;Hispanic&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">3</span> <span class="s">&quot;White&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">4</span> <span class="s">&quot;Black&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">5</span> <span class="s">&quot;Asian&quot;</span>)
+<span class="k">					   lab</span>(<span class="m">6</span> <span class="s">&quot;Other&quot;</span>)
+        		       ring(<span class="m">0</span>)
+        		       pos(<span class="m">11</span>)
+        		       col(<span class="m">1</span>)
+<span class="k">        		       order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span>  <span class="m">5</span>)
+        		   )
+<span class="k">        		   note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
+        		;
+        		#delimit cr
+<span class="k">      </span>
+<span class="k">	  graph</span> export nhanes<span class="m">.</span>png,<span class="k"> replace</span> 
+
+<span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>), basesurv(S0)
+<span class="k">matrix</span> b =<span class="k"> e</span>(b)
+<span class="k">matrix</span> V =<span class="k"> e</span>(V)
+<span class="k">matrix</span> SV = (<span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>)
+<span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+<span class="k">matrix list</span> risk_score
+<span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
+<span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">matrix list</span> se_prediction
+<span class="k">di</span> <span class="nf">exp</span>(se_prediction[<span class="m">1</span>,<span class="m">1</span>])
+
+
+<span class="c1">// Calculate the baseline survival function at 10 years</span>
+<span class="k">sts generate</span> S0 =<span class="k"> s</span>(<span class="m">10</span>)
+
+
+<span class="c1">// Calculate the log hazard ratio for the scenario</span>
+<span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+
+<span class="c1">// Calculate the hazard ratio for the scenario</span>
+<span class="k">scalar</span> HR = <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+
+<span class="c1">// Calculate the 10-year survival probability for the scenario</span>
+<span class="k">gen</span> S_scenario = S0<span class="o">^</span>HR
+
+<span class="c1">// Calculate the 10-year mortality risk for the scenario</span>
+<span class="k">gen</span> risk_10year = <span class="m">1</span> <span class="o">-</span> S_scenario
+
+<span class="c1">// Display the result</span>
+<span class="k">summarize</span> risk_10year
+
+				
+}
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><img alt="" src="dramatis_personae/faculty/faculty_9/nhanes.png" /></p>
+<hr class="docutils" />
+<p>Certainly! The code you provided is an extensive Stata script that seems to involve several steps related to modeling and analysis of survival data. The code begins by preprocessing some variables, fits a Cox proportional hazards model, then calculates predicted survival probabilities for different scenarios and plots them. Here is an overview of each part:</p>
+<section id="logging-and-data-preparation">
+<h1>1. Logging and Data Preparation:<a class="headerlink" href="#logging-and-data-preparation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Logging:</strong> The <code class="docutils literal notranslate"><span class="pre">startlog</span></code> command is used to start recording all commands and output in a log file.</p></li>
+<li><p><strong>Data Preparation:</strong> The dataset <code class="docutils literal notranslate"><span class="pre">cleanHIVsmk+.dta</span></code> is loaded and several spline variables are created using the <code class="docutils literal notranslate"><span class="pre">mkspline</span></code> command.</p></li>
+</ul>
+</section>
+<section id="feature-engineering">
+<h1>2. Feature Engineering:<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Variables related to treatment, CD4 count, viral load, and others are transformed and categorized.</p></li>
+</ul>
+</section>
+<section id="survival-model">
+<h1>3. Survival Model:<a class="headerlink" href="#survival-model" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The survival data is set up using the <code class="docutils literal notranslate"><span class="pre">stset</span></code> command, and a Cox proportional hazards model is fit with <code class="docutils literal notranslate"><span class="pre">stcox</span></code>. This includes many covariates, and the baseline survival function is saved as <code class="docutils literal notranslate"><span class="pre">s0_a2z</span></code>.</p></li>
+</ul>
+</section>
+<section id="prediction-of-survival-probabilities">
+<h1>4. Prediction of Survival Probabilities:<a class="headerlink" href="#prediction-of-survival-probabilities" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Nested loops are used to generate predicted survival probabilities for different scenarios. These predictions are based on specific values of covariates, and the results are saved in temporary files.</p></li>
+</ul>
+</section>
+<section id="aggregation-and-plotting">
+<h1>5. Aggregation and Plotting:<a class="headerlink" href="#aggregation-and-plotting" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The predicted survival probabilities are aggregated and plotted in two different graphs. The graphs are saved in specific locations.</p></li>
+</ul>
+</section>
+<section id="code-improvement-and-notes">
+<h1>Code Improvement and Notes:<a class="headerlink" href="#code-improvement-and-notes" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Use of Comments:</strong> It’s always beneficial to add comments throughout the code to explain what each section or line of code does.</p></li>
+<li><p><strong>Functions:</strong> Break down your code into functions to handle repetitive tasks. This makes your code more readable and maintainable.</p></li>
+<li><p><strong>Error Handling:</strong> Include some error handling, especially around file paths and assumptions about the data.</p></li>
+<li><p><strong>Consistency in Filenames and Paths:</strong> Define a root path variable at the beginning of your code. That way, if you need to change the directory later, you only have to change it in one place.</p></li>
+<li><p><strong>Final Plotting Commands:</strong> I noticed a mismatch in parentheses in the final plotting commands. Please make sure the parentheses are balanced.</p></li>
+</ul>
+<p>Here’s a slightly revised snippet of your code with some of the improvements:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Define root path</span>
+<span class="k">global</span> rootPath <span class="s">&quot;../../fsgsHIV/fsgsHIVoutput&quot;</span>
+
+<span class="c1">* Start logging</span>
+startlog, name(<span class="s">&quot;</span><span class="vg">$rootPath</span><span class="s">/fsgsHIVlogs/4.hispESRDmodelsmk&quot;</span>)
+
+<span class="c1">* Load dataset</span>
+<span class="k">use</span> <span class="s">&quot;</span><span class="vg">$rootPath</span><span class="s">/fsgsHIVanalysis/cleanHIVsmk+.dta&quot;</span>,<span class="k"> clear</span>
+<span class="k">set more</span> off
+
+<span class="c1">* Prepare spline variables</span>
+<span class="k">mkspline</span> age1 <span class="m">50</span> age2=na_age
+...
+
+<span class="c1">* Fit Cox model</span>
+<span class="k">stset</span> na_t,fail(na_fail<span class="o">==</span><span class="m">1</span>)
+<span class="k">stcox</span> age1 age2 ...
+...
+
+<span class="c1">* Loop to generate predictions</span>
+<span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">4</span> {
+   ...
+}
+
+<span class="c1">* Final plot</span>
+<span class="k">twoway</span> (scatter surv vl<span class="k"> if</span> cd4<span class="o">==</span><span class="m">1</span>, ms(T) mc(maroon)) ...
+<span class="k">graph save</span> <span class="s">&quot;</span><span class="vg">$rootPath</span><span class="s">/fsgsHIVfigures/hisp_vl_cd4smk.gph&quot;</span>,<span class="k"> replace</span>
+</pre></div>
+</div>
+<p>Please be sure to test the code on your specific data, as without the dataset and a complete understanding of the research design, there may be additional refinements needed.</p>
+<hr class="docutils" />
+<p>Certainly! By using built-in features of Stata to extract coefficient estimates and variance-covariance matrices, we can significantly streamline the prediction process.</p>
+<p>In the revised code snippet below, I’ll simplify the prediction part by selecting one random scenario. I’ll demonstrate how to use the <code class="docutils literal notranslate"><span class="pre">e(b)</span></code> and <code class="docutils literal notranslate"><span class="pre">e(V)</span></code> to retrieve coefficients and their variances, and then construct a specific “scenario vector” for prediction.</p>
+<p>We’ll assume the scenario you’re interested in involves the following values for some covariates:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age1</span></code> = 40</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_race</span></code> = 3 (for black individuals)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">egfr1_mod</span></code> = 90</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tdf_years</span></code> = 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vl1_min</span></code> = 4</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd4baseline</span></code> = 200</p></li>
+</ul>
+<p>The rest of the covariates are assumed to be zero in this scenario.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Fit the Cox model</span>
+<span class="k">stcox</span> age1 age2 i<span class="m">.</span>na_race female na_dm na_ht egfr1_mod egfr2_mod smoking hcv vl1_min vl2_min art_y1 art_y2 i<span class="m">.</span>art_timing tdf_years cd4baseline aids, basesurv(s0_a2z)
+
+<span class="c1">* Retrieve coefficients</span>
+<span class="k">matrix</span> b =<span class="k"> e</span>(b)
+
+<span class="c1">* Define the scenario vector</span>
+<span class="k">matrix</span> scenario = (<span class="m">40</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">90</span>, <span class="m">10</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">4</span>, <span class="m">0</span>, <span class="m">200</span>, <span class="m">0</span>)
+
+<span class="c1">* Calculate the linear predictor for the scenario</span>
+<span class="k">scalar</span> linpred = scenario <span class="o">*</span> b&#39;
+
+<span class="c1">* Extract the baseline survival function</span>
+<span class="k">scalar</span> s0 = s0_a2z at(mean)
+
+<span class="c1">* Calculate the survival probability for the scenario</span>
+<span class="k">scalar</span> surv_prob = s0<span class="o">^</span><span class="nf">exp</span>(linpred)
+
+<span class="c1">* Display the result</span>
+<span class="k">di</span> <span class="s">&quot;10-year survival probability for the selected scenario: &quot;</span> surv_prob
+</pre></div>
+</div>
+<p>Here, I’ve used the mean baseline survival function <code class="docutils literal notranslate"><span class="pre">s0_a2z</span></code> for calculation. You can replace it with a specific baseline survival function value if needed.</p>
+<p>This code snippet is a lot more concise than using nested loops and temporary files, and it directly leverages the results of the Cox model fit. Make sure to modify the scenario vector according to the specific covariate values you are interested in. The above example assumes that the covariates are in the same order as in the <code class="docutils literal notranslate"><span class="pre">stcox</span></code> command, and you’ll need to ensure that this ordering is correct for your particular dataset and model.</p>
+<hr class="docutils" />
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -532,7 +748,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">1. Logging and Data Preparation:</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -553,7 +769,13 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Logging and Data Preparation:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">2. Feature Engineering:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-model">3. Survival Model:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-of-survival-probabilities">4. Prediction of Survival Probabilities:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-and-plotting">5. Aggregation and Plotting:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code-improvement-and-notes">Code Improvement and Notes:</a></li>
 </ul>
 
   </nav></div>
