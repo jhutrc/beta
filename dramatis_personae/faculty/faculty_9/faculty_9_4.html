@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'dramatis_personae/faculty/faculty_9/faculty_9_4';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1. Logging and Data Preparation:" href="faculty_9_5.html" />
+    <link rel="next" title="&lt;no title&gt;" href="faculty_9_5.html" />
     <link rel="prev" title="&lt;no title&gt;" href="faculty_9_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -246,12 +246,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../faculty_6/faculty_6.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_8/faculty_8.html">.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faculty_9_5.html">1. Logging and Data Preparation:</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -514,7 +508,7 @@ document.write(`
 <li><p><strong>Graphs</strong>:</p>
 <ul class="simple">
 <li><p>The first graph illustrates the survival rates for different subgroups.</p></li>
-<li><p>The second graph depicts survival rates for a specific scenario defined in the matrix <code class="docutils literal notranslate"><span class="pre">SV</span></code>.</p></li>
+<li><p>The second graph depicts survival rates for a specific scenario defined in the matrix <code class="docutils literal notranslate"><span class="pre">SV</span></code>. For the mathematical details, look <a class="reference internal" href="faculty_9_5.html"><span class="doc std std-doc">here</span></a>.</p></li>
 </ul>
 </li>
 </ol>
@@ -523,7 +517,6 @@ document.write(`
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> data https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>ikesa<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span>nhanes<span class="m">.</span>dta
 <span class="k">global</span> subgroup ridreth3
 <span class="k">global</span> subgroupvar:<span class="k"> var lab</span> ridreth3
-
 cls
 <span class="k">use</span> <span class="vg">$data</span>,<span class="k"> clear</span>
 <span class="k">di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
@@ -558,11 +551,10 @@ cls
 <span class="k">    note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
 ;
 #delimit cr
-
+<span class="k">cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology/alpha&quot;</span>
 <span class="k">graph</span> export nhanes<span class="m">.</span>png,<span class="k"> replace</span>
 
-<span class="k">gen</span> years = permth_exm <span class="o">/</span> <span class="m">12</span>
-<span class="k">stset</span> years, fail(mortstat)
+
 <span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">6</span>, <span class="m">7</span>), basesurv(s0)
 <span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
 <span class="k">matrix</span> b =<span class="k"> e</span>(b)
@@ -576,7 +568,7 @@ cls
 <span class="k">gen</span> f1 = f0 <span class="o">*</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
 <span class="k">drop if</span> _t <span class="o">&gt;</span> <span class="m">10</span>
 <span class="k">line</span> f1 _t,<span class="k"> sort</span> connect(step step) ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) xlab(<span class="m">0</span>(<span class="m">2</span>)<span class="m">10</span>)
-<span class="k">graph</span> export nhanes_5<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">graph</span> export nhanes_5<span class="m">.</span>png,<span class="k"> replace</span>  
 </pre></div>
 </div>
 <p>Note: The code has been structured for readability, and unnecessary annotations have been removed. Rich documentation is provided before the figure.</p>
@@ -630,7 +622,7 @@ cls
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1. Logging and Data Preparation:</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
