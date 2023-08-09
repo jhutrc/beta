@@ -520,71 +520,67 @@ document.write(`
 <span class="k">	noi di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
 <span class="k">	g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
 <span class="k">	stset</span> years, fail(mortstat)
-	
-        		#delimit ;
-<span class="k">        		sts graph if</span> <span class="nf">inlist</span>(<span class="vg">$subgroup</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>),
-<span class="k">        		   by</span>(<span class="vg">$subgroup</span>)
-        		   fail
-        		   ti(<span class="s">&quot;Mortality in NHANES III&quot;</span>,pos(<span class="m">11</span>))
-        		   subti(<span class="s">&quot;by self report: </span><span class="vg">${subgroupvar}</span><span class="s">&quot;</span>,pos(<span class="m">11</span>))
-        		   yti(<span class="s">&quot;%&quot;</span>,orientation(horizontal))
-        		   xti(<span class="s">&quot;Years&quot;</span>)
-        		   per(<span class="m">100</span>)
-        		   ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>,
-<span class="k">        		       format</span>(<span class="nx">%3.0f</span>)
-        		       angle(<span class="m">360</span>)
-        		   )
-        		   legend(on
-<span class="k">        		       lab</span>(<span class="m">1</span> <span class="s">&quot;Mexican&quot;</span>)
-<span class="k">        		       lab</span>(<span class="m">2</span> <span class="s">&quot;Hispanic&quot;</span>)
-<span class="k">        		       lab</span>(<span class="m">3</span> <span class="s">&quot;White&quot;</span>)
-<span class="k">        		       lab</span>(<span class="m">4</span> <span class="s">&quot;Black&quot;</span>)
-<span class="k">        		       lab</span>(<span class="m">5</span> <span class="s">&quot;Asian&quot;</span>)
-<span class="k">					   lab</span>(<span class="m">6</span> <span class="s">&quot;Other&quot;</span>)
-        		       ring(<span class="m">0</span>)
-        		       pos(<span class="m">11</span>)
-        		       col(<span class="m">1</span>)
-<span class="k">        		       order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span>  <span class="m">5</span>)
-        		   )
-<span class="k">        		   note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
-        		;
-        		#delimit cr
-<span class="k">      </span>
-<span class="k">	  graph</span> export nhanes<span class="m">.</span>png,<span class="k"> replace</span> 
 
-<span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>), basesurv(S0)
-<span class="k">matrix</span> b =<span class="k"> e</span>(b)
-<span class="k">matrix</span> V =<span class="k"> e</span>(V)
-<span class="k">matrix</span> SV = (<span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>)
-<span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
-<span class="k">matrix list</span> risk_score
-<span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
-<span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
-<span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
-<span class="k">matrix list</span> se_prediction
-<span class="k">di</span> <span class="nf">exp</span>(se_prediction[<span class="m">1</span>,<span class="m">1</span>])
+	#delimit ;
+<span class="k">	sts graph if</span> <span class="nf">inlist</span>(<span class="vg">$subgroup</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>),
+<span class="k">		by</span>(<span class="vg">$subgroup</span>)
+		fail
+		ti(<span class="s">&quot;Mortality in NHANES III&quot;</span>,pos(<span class="m">11</span>))
+		subti(<span class="s">&quot;by self report: </span><span class="vg">${subgroupvar}</span><span class="s">&quot;</span>,pos(<span class="m">11</span>))
+		yti(<span class="s">&quot;%&quot;</span>,orientation(horizontal))
+		xti(<span class="s">&quot;Years&quot;</span>)
+		per(<span class="m">100</span>)
+		ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>,
+<span class="k">			format</span>(<span class="nx">%3.0f</span>)
+			angle(<span class="m">360</span>)
+		)
+		legend(on
+<span class="k">			lab</span>(<span class="m">1</span> <span class="s">&quot;Mexican&quot;</span>)
+<span class="k">			lab</span>(<span class="m">2</span> <span class="s">&quot;Hispanic&quot;</span>)
+<span class="k">			lab</span>(<span class="m">3</span> <span class="s">&quot;White&quot;</span>)
+<span class="k">			lab</span>(<span class="m">4</span> <span class="s">&quot;Black&quot;</span>)
+<span class="k">			lab</span>(<span class="m">5</span> <span class="s">&quot;Asian&quot;</span>)
+<span class="k">			lab</span>(<span class="m">6</span> <span class="s">&quot;Other&quot;</span>)
+			ring(<span class="m">0</span>)
+			pos(<span class="m">11</span>)
+			col(<span class="m">1</span>)
+<span class="k">			order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span>  <span class="m">5</span>)
+		)
+<span class="k">		note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
+	;
+	#delimit cr
 
+<span class="k">	graph</span> export nhanes<span class="m">.</span>png,<span class="k"> replace</span> 
 
-<span class="c1">// Calculate the baseline survival function at 10 years</span>
-<span class="k">sts generate</span> S0 =<span class="k"> s</span>(<span class="m">10</span>)
+<span class="k">	stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>), basesurv(S0)
+<span class="k">	matrix</span> b =<span class="k"> e</span>(b)
+<span class="k">	matrix</span> V =<span class="k"> e</span>(V)
+<span class="k">	matrix</span> SV = (<span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>)
+<span class="k">	matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+<span class="k">	matrix list</span> risk_score
+<span class="k">	di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">	matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
+<span class="k">	matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">	matrix list</span> se_prediction
+<span class="k">	di</span> <span class="nf">exp</span>(se_prediction[<span class="m">1</span>,<span class="m">1</span>])
 
+	<span class="c1">// Calculate the baseline survival function at 10 years</span>
+<span class="k">	sts generate</span> S0 =<span class="k"> s</span>(<span class="m">10</span>)
 
-<span class="c1">// Calculate the log hazard ratio for the scenario</span>
-<span class="k">matrix</span> risk_score = SV <span class="o">*</span> b&#39;
+	<span class="c1">// Calculate the log hazard ratio for the scenario</span>
+<span class="k">	matrix</span> risk_score = SV <span class="o">*</span> b&#39;
 
-<span class="c1">// Calculate the hazard ratio for the scenario</span>
-<span class="k">scalar</span> HR = <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+	<span class="c1">// Calculate the hazard ratio for the scenario</span>
+<span class="k">	scalar</span> HR = <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
 
-<span class="c1">// Calculate the 10-year survival probability for the scenario</span>
-<span class="k">gen</span> S_scenario = S0<span class="o">^</span>HR
+	<span class="c1">// Calculate the 10-year survival probability for the scenario</span>
+<span class="k">	gen</span> S_scenario = S0<span class="o">^</span>HR
 
-<span class="c1">// Calculate the 10-year mortality risk for the scenario</span>
-<span class="k">gen</span> risk_10year = <span class="m">1</span> <span class="o">-</span> S_scenario
+	<span class="c1">// Calculate the 10-year mortality risk for the scenario</span>
+<span class="k">	gen</span> risk_10year = <span class="m">1</span> <span class="o">-</span> S_scenario
 
-<span class="c1">// Display the result</span>
-<span class="k">summarize</span> risk_10year
-
-				
+	<span class="c1">// Display the result</span>
+<span class="k">	summarize</span> risk_10year
 }
 </pre></div>
 </div>
