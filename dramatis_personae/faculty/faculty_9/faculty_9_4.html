@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Beta</title>
+    <title> &#8212; Beta</title>
   
   
   
@@ -220,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../Epilogue/epi_8.html">.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://publichealth.jhu.edu/courses">Stata Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_2.html">.</a></li>
@@ -246,6 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../faculty_6/faculty_6.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_8/faculty_8.html">.</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -452,9 +453,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -465,19 +464,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -512,8 +503,12 @@ document.write(`
 </ul>
 </li>
 </ol>
-<p>Tidy Code</p>
-<p>Here’s a cleaner version of the code:</p>
+<hr class="docutils" />
+<p>Let’s say that one more time for emphasis:</p>
+<ol class="arabic simple">
+<li><p>Preparing the Environment and Loading the Data</p></li>
+</ol>
+<p>The first part of the code defines global macros and loads the necessary data for analysis.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> data https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>muzaale<span class="o">/</span>ikesa<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span>nhanes<span class="m">.</span>dta
 <span class="k">global</span> subgroup ridreth3
 <span class="k">global</span> subgroupvar:<span class="k"> var lab</span> ridreth3
@@ -522,8 +517,21 @@ cls
 <span class="k">di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
 <span class="k">gen</span> years = permth_exm <span class="o">/</span> <span class="m">12</span>
 <span class="k">stset</span> years, fail(mortstat)
-
-#delimit ;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Line 1-3</strong>: Definition of global variables for data URL, subgroup identifier (ridreth3), and subgroup variable label.</p></li>
+<li><p><strong>Line 4</strong>: Clears the screen (<code class="docutils literal notranslate"><span class="pre">cls</span></code>).</p></li>
+<li><p><strong>Line 5</strong>: Loads the dataset (<code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">$data,</span> <span class="pre">clear</span></code>).</p></li>
+<li><p><strong>Line 6</strong>: Displays the number of observations and variables in the dataset.</p></li>
+<li><p><strong>Line 7</strong>: Generates a variable for years by dividing a given variable by 12.</p></li>
+<li><p><strong>Line 8</strong>: Sets the data as survival-time data with <code class="docutils literal notranslate"><span class="pre">years</span></code> as the time variable and <code class="docutils literal notranslate"><span class="pre">mortstat</span></code> as the failure indicator.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Plotting the Survival Graph by Subgroup</p></li>
+</ol>
+<p>This section visualizes the survival rates for different subgroups by plotting the Kaplan-Meier survival estimates.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
 <span class="k">sts graph if</span> <span class="nf">inlist</span>(<span class="vg">$subgroup</span>,<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>,<span class="m">4</span>,<span class="m">6</span>,<span class="m">7</span>),
 <span class="k">    by</span>(<span class="vg">$subgroup</span>)
     fail
@@ -546,16 +554,25 @@ cls
         ring(<span class="m">0</span>)
         pos(<span class="m">11</span>)
         col(<span class="m">1</span>)
-<span class="k">        order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span>  <span class="m">5</span>)
+<span class="k">        order</span>(<span class="m">3</span> <span class="m">4</span> <span class="m">1</span> <span class="m">2</span> <span class="m">5</span>)
     )
 <span class="k">    note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
 ;
 #delimit cr
 <span class="k">cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology/alpha&quot;</span>
 <span class="k">graph</span> export nhanes<span class="m">.</span>png,<span class="k"> replace</span>
-
-
-<span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">6</span>, <span class="m">7</span>), basesurv(s0)
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>nonparametric mortality risk:</p>
+<section id="id1">
+<h1><img alt="" src="https://github.com/jhutrc/beta/blob/main/nhanes.png?raw=true" /><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Here, a mortality graph (i.e., 1 - survival-time graph; <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph,</span> <span class="pre">failure</span></code>) is drawn for specific subgroups and the legend ordered so that the highest-risk group (3 - white) appears first, the second highest-risk (4 - black) appears second, etc. Various formatting options are applied to enhance readability, and the graph is exported as an image.</p>
+<ol class="arabic simple" start="3">
+<li><p>Fitting the Cox Proportional Hazards Model</p></li>
+</ol>
+<p>This part fits the Cox proportional hazards model to the data for the selected subgroups and extracts important matrices such as coefficients and the variance-covariance matrix.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">6</span>, <span class="m">7</span>), basesurv(s0)
 <span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
 <span class="k">matrix</span> b =<span class="k"> e</span>(b)
 <span class="k">matrix</span> V =<span class="k"> e</span>(V)
@@ -564,18 +581,40 @@ cls
 <span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
 <span class="k">matrix</span> var_prediction = SV <span class="o">*</span> V <span class="o">*</span> SV&#39;
 <span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
-<span class="k">gen</span> f0 = (<span class="m">1</span> <span class="o">-</span> s0) <span class="o">*</span> <span class="m">100</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stcox</span></code>: Fitting the Cox model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span></code>: Defining matrices for coefficients (<code class="docutils literal notranslate"><span class="pre">b</span></code>), variance-covariance (<code class="docutils literal notranslate"><span class="pre">V</span></code>), and others.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">exp(risk_score[1,1])</span></code>: Displays the exponential of the risk score for interpretation.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Calculating and Plotting Specific Scenario</p></li>
+</ol>
+<p>This section calculates the risk for a specific scenario defined in the matrix <code class="docutils literal notranslate"><span class="pre">SV</span></code>, and plots the survival rates.</p>
+<hr class="docutils" />
+<p>semiparametric mortality risk:</p>
+<p><img alt="" src="https://github.com/jhutrc/beta/blob/main/nhanes_5.png?raw=true" /></p>
+<hr class="docutils" />
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> f0 = (<span class="m">1</span> <span class="o">-</span> s0) <span class="o">*</span> <span class="m">100</span>
 <span class="k">gen</span> f1 = f0 <span class="o">*</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
 <span class="k">drop if</span> _t <span class="o">&gt;</span> <span class="m">10</span>
 <span class="k">line</span> f1 _t,<span class="k"> sort</span> connect(step step) ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) xlab(<span class="m">0</span>(<span class="m">2</span>)<span class="m">10</span>)
-<span class="k">graph</span> export nhanes_5<span class="m">.</span>png,<span class="k"> replace</span>  
+<span class="k">graph</span> export nhanes_5<span class="m">.</span>png,<span class="k"> replace</span>
 </pre></div>
 </div>
-<p>Note: The code has been structured for readability, and unnecessary annotations have been removed. Rich documentation is provided before the figure.</p>
-<p>nonparametric mortality risk:</p>
-<p><img alt="" src="https://github.com/jhutrc/beta/blob/main/nhanes.png?raw=true" /></p>
-<p>semiparametric mortality risk:</p>
-<p><img alt="" src="https://github.com/jhutrc/beta/blob/main/nhanes_5.png?raw=true" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gen</span></code>: Generates new variables for the survival function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s0</span></code>: Baseline survival function (the base-case scenario in which all covariates are 0). Ideally this scenario should be of the typical of “average” person in the population and is achieved by centering the covariates at their means (binary variables take the value greater than 0.5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop</span> <span class="pre">if</span> <span class="pre">_t</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>: Excludes observations where time exceeds 10 since the race variable was only collected in the last 12 years.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code>: Plots the survival rates. The <code class="docutils literal notranslate"><span class="pre">sort</span></code> option sorts the data by time, and the <code class="docutils literal notranslate"><span class="pre">connect</span></code> option connects the data points with a step function (Kaplan-Meier function).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">export</span></code>: Exports the plotted graph seen above as an image.</p></li>
+</ul>
+<p>Final Remarks</p>
+<p>The entire code process takes a semi-parametric approach to calculate and visualize individualized risk predictions using survival analysis. Subgroup analysis is also performed based on the variable ridreth3, considering different ethnicities. Two different graphs illustrate the survival rates both generally and for a specific scenario.</p>
+<p>Images depicting nonparametric and semiparametric mortality risk are also included in the documentation.</p>
+<p>By following the steps detailed above, the code achieves the goal of analyzing 10-year risk with potential adaptability to assess 30-year risk in the future.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -635,20 +674,6 @@ cls
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
