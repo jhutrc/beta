@@ -571,7 +571,11 @@ cls
 <ol class="arabic simple" start="3">
 <li><p>Fitting the Cox Proportional Hazards Model</p></li>
 </ol>
-<p>This part fits the Cox proportional hazards model to the data for the selected subgroups and extracts important matrices such as coefficients and the variance-covariance matrix.</p>
+<p>This part fits the Cox proportional hazards model to the data for the selected subgroups (which one?) and extracts important matrices such as coefficients and the variance-covariance matrix.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Hint</p>
+<p><strong>Subgroups Considered</strong>: The survival analysis is performed for specific subgroups, identified by the variable <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DEMO_G.htm#RIDRETH3">ridreth3</a>. These include Mexican, Hispanic, White, Black, Asian, and Other.</p>
+</aside>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stcox</span> i.<span class="vg">$subgroup</span><span class="k"> if</span> <span class="nf">inlist</span>(<span class="vg">${subgroup}</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">6</span>, <span class="m">7</span>), basesurv(s0)
 <span class="k">matrix</span> define<span class="k"> m</span> = <span class="nf">r</span>(table)
 <span class="k">matrix</span> b =<span class="k"> e</span>(b)
