@@ -245,11 +245,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../faculty/faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faculty/faculty_8/faculty_8.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faculty/faculty_9/faculty_9_4.html"></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../faculty/faculty_9/faculty_9_9.html">1.2 Get some documentation</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -492,14 +487,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <ol class="arabic simple">
-<li><p>Calvin has replicated Table 1 from our healthy nondonor study:</p>
+<li><p>Replicated Table 1 from our healthy nondonor study:</p>
 <ul class="simple">
 <li><p>N = 70,000</p></li>
 <li><p>60% of the population is healthy</p></li>
 <li><p>And 30% is obese</p></li>
 </ul>
 </li>
-<li><p>Thus far he has only included variables from the following datasets</p>
+<li><p>Only included variables from the following datasets</p>
 <ul class="simple">
 <li><p>Demo</p></li>
 <li><p>Diet</p></li>
@@ -509,7 +504,110 @@ document.write(`
 <li><p>Restricted Data</p></li>
 </ul>
 </li>
+<li><p>How this has been done and next steps</p></li>
 </ol>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tableone&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tableone</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;NHANES&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">NHANES</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;nhanesA&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">nhanesA</span><span class="p">)</span>
+
+<span class="c1"># Creating Dataset With All Years</span>
+<span class="n">demo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bind_rows</span><span class="p">(</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO&quot;</span><span class="p">),</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO_B&quot;</span><span class="p">,</span><span class="s">&quot;DEMO_C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_E&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_G&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_H&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_I&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_J&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_P&quot;</span><span class="p">))</span>
+<span class="c1"># Categorical Data</span>
+<span class="n">demo</span><span class="p">[</span><span class="s">&quot;RIAGENDR&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">RIAGENDR</span><span class="p">)</span>
+<span class="n">catVars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;DMDEDUC2&quot;</span><span class="p">,</span><span class="s">&quot;RIAGENDR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RIDRETH1&quot;</span><span class="p">)</span>
+<span class="n">demo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">demo</span><span class="p">,</span><span class="w"> </span><span class="n">RIDAGEYR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">17</span><span class="p">)</span>
+<span class="n">tab</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">CreateTableOne</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">demo</span><span class="p">,</span><span class="w"> </span><span class="n">factorVars</span><span class="o">=</span><span class="n">catVars</span><span class="p">)</span>
+
+<span class="c1"># Sorted Categorical and Continuous Outputs</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">tab</span><span class="o">$</span><span class="n">CatTable</span><span class="p">,</span><span class="w"> </span><span class="n">showAllLevels</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">tab</span><span class="o">$</span><span class="n">ContTable</span><span class="p">,</span><span class="w"> </span><span class="n">nonnormal</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">summary_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">all_years_data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span>
+<span class="n">MedianAge</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianSBP</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BPSysAve</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianDBP</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BPDiaAve</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianCreatinine</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">LBDSCRSI</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianBMI</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BMI</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianHbA1c</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">HbA1c</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianuACR</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">uACR</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianGlucose</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">Pulse</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">FemalePercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Female&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">HypertensionPercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">Hypertension</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Yes&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">SmokePercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">SmokingStatus</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Current&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">RaceEthnicityPercentage</span><span class="o">=</span><span class="nf">table</span><span class="p">(</span><span class="n">RaceEthnicity</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">RaceEthnicity</span><span class="p">),</span>
+<span class="n">EducationPercentage</span><span class="o">=</span><span class="nf">table</span><span class="p">(</span><span class="n">Education</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">summary_table</span><span class="p">)</span>
+
+<span class="c1"># Cohort Percentage One-by-One</span>
+<span class="n">nhanes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO_P&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">RIDAGEYR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">17</span><span class="p">)</span>
+<span class="n">divisor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">nhanes</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<ol class="arabic simple" start="4">
+<li><p>Before the next steps:</p></li>
+</ol>
+<p>We are working on an extensive project involving data analysis with R, and that collaboration and openness are key principles in our work. Here’s a roadmap for the next steps in the analysis, taking into account the principles of the “fena” philosophy:</p>
+<ul class="simple">
+<li><p><strong>Data Integrity and Cleaning</strong>:</p>
+<ul>
+<li><p>Check for missing data, outliers, and inconsistencies in the data.</p></li>
+<li><p>Utilize exploratory data analysis to identify underlying patterns and potential biases.</p></li>
+<li><p>Validate the data by cross-referencing with known values or an external data source if available.</p></li>
+</ul>
+</li>
+<li><p><strong>Integration with Other Relevant Datasets</strong>:</p>
+<ul>
+<li><p>Include additional variables and datasets if they align with the objectives of your research.</p></li>
+<li><p>Perform the necessary merging and data transformations to align various datasets for analysis.</p></li>
+</ul>
+</li>
+<li><p><strong>Analysis Targeting Specific Objectives</strong>:</p>
+<ul>
+<li><p>Conduct detailed statistical analysis to understand the distribution and relationship between healthy and obese populations.</p></li>
+<li><p>Utilize multivariate analysis, modeling (e.g., regression models), and machine learning techniques if necessary to predict or uncover deeper insights.</p></li>
+</ul>
+</li>
+<li><p><strong>Visualization</strong>:</p>
+<ul>
+<li><p>Create compelling visualizations to represent findings.</p></li>
+<li><p>Utilize graphs, charts, and maps as needed to convey complex information in an accessible way.</p></li>
+</ul>
+</li>
+<li><p><strong>Community Collaboration and Peer Review</strong>:</p>
+<ul>
+<li><p>Engage with other collaborators and the wider community for input and feedback.</p></li>
+<li><p>Embrace peer review internally and externally to validate findings.</p></li>
+</ul>
+</li>
+<li><p><strong>Dissemination and Knowledge Sharing</strong>:</p>
+<ul>
+<li><p>Document the process and findings in a comprehensive report or scientific paper.</p></li>
+<li><p>Share findings and insights through appropriate channels, including publication, conferences, and the Fena platform.</p></li>
+<li><p>Develop web apps or tools to enable others to access and utilize the findings.</p></li>
+</ul>
+</li>
+<li><p><strong>Ethics and Compliance</strong>:</p>
+<ul>
+<li><p>Ensure all data handling, analysis, and sharing comply with ethical guidelines, legal regulations, and best practices in the field of medical research.</p></li>
+</ul>
+</li>
+</ul>
+<p>-. <strong>Ongoing Learning and Development</strong>:</p>
+<ul class="simple">
+<li><p>Encourage and provide opportunities for team members to continue learning new tools and methodologies.</p></li>
+<li><p>Reflect on what went well and what could be improved for future research endeavors.</p></li>
+</ul>
+<blockquote>
+<div><p>By continuing to foster the sense of collective engagement and shared responsibility that Fena represents, we’ll be well-positioned to navigate the complexities of this research. The focus on collaboration, transparency, and open access to knowledge is aligned with modern scientific values, and the use of tools like R, Python, and AI will enhance the quality and reach of our work. Let’s keep steering in the same direction, and we’ll undoubtedly contribute valuable insights to our living donor project.</p>
+</div></blockquote>
 
     <script type="text/x-thebe-config">
     {

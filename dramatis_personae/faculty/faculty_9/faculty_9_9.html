@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.2 Get some documentation &#8212; Beta</title>
+    <title>&lt;no title&gt; &#8212; Beta</title>
   
   
   
@@ -218,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../../Epilogue/epi_8.html">.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://publichealth.jhu.edu/courses">Stata Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../under_grads/under_grads_2.html">.</a></li>
@@ -245,11 +245,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../faculty_7/faculty_7.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faculty_8/faculty_8.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faculty_9_4.html"></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.2 Get some documentation</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_1/analysts_1.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_2/analysts_2.html">.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysts/analysts_3/analysts_3.html">.</a></li>
@@ -469,7 +464,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1.2 Get some documentation</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -478,12 +473,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.2 Get some documentation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#study-the-syntax">1.3 Study the syntax</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-value-of-dx-pre">1.4 What is the value of dx_pre?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#as-such-the-syntax-is">1.5 As such, the syntax is:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calvin-matthew-s-code-snippet-for-nhanes-table-1">2.0 Calvin Matthew’s code-snippet for NHANES Table 1</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -496,48 +486,91 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>---
-title: &#39;Guide to Using the cat_trauma Function and NHANES Table 1&#39;
-<span class="gu">output: pdf_document</span>
-<span class="gu">---</span>
+  <p>1.0 Matt/Abi code-snippet to guide one using ‘cat_trauma’ function</p>
+<p>1.1 Install the relevant packages</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressWarnings</span><span class="p">({</span>
+<span class="w">  </span><span class="nf">invisible</span><span class="p">({</span>
+<span class="w">    </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
 
-<span class="gh"># 1.0 Matt/Abi code-snippet to guide one using &#39;cat_trauma&#39; function</span>
+<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;icdpicr&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;dplyr&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;readr&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">)</span>
 
-<span class="gu">## 1.1 Install the relevant packages</span>
-
-```{r}
-suppressWarnings({
-  invisible({
-    rm(list = ls())
-
-    if (!require(icdpicr, quietly = TRUE, warn.conflicts = FALSE)) install.packages(&#39;icdpicr&#39;)
-    if (!require(dplyr, quietly = TRUE, warn.conflicts = FALSE)) install.packages(&#39;dplyr&#39;)
-    if (!require(readr, quietly = TRUE, warn.conflicts = FALSE)) install.packages(&#39;readr&#39;)
-    if (!require(tidyr, quietly = TRUE, warn.conflicts = FALSE)) install.packages(&#39;tidyr&#39;)
-
-    library(icdpicr, quietly = TRUE, warn.conflicts = FALSE)
-    library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
-    library(readr, quietly = TRUE, warn.conflicts = FALSE)
-    library(tidyr, quietly = TRUE, warn.conflicts = FALSE)
-  })
-})
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">})</span>
 </pre></div>
 </div>
-<section id="get-some-documentation">
-<h1>1.2 Get some documentation<a class="headerlink" href="#get-some-documentation" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="study-the-syntax">
-<h1>1.3 Study the syntax<a class="headerlink" href="#study-the-syntax" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="what-is-the-value-of-dx-pre">
-<h1>1.4 What is the value of dx_pre?<a class="headerlink" href="#what-is-the-value-of-dx-pre" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="as-such-the-syntax-is">
-<h1>1.5 As such, the syntax is:<a class="headerlink" href="#as-such-the-syntax-is" title="Permalink to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="calvin-matthew-s-code-snippet-for-nhanes-table-1">
-<h1>2.0 Calvin Matthew’s code-snippet for NHANES Table 1<a class="headerlink" href="#calvin-matthew-s-code-snippet-for-nhanes-table-1" title="Permalink to this heading">#</a></h1>
-</section>
+<p>1.2 Get some documentation</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="s">&quot;package:icdpicr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>1.3 Study the syntax</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">cat_trauma</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>1.4 What is the value of dx_pre?</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">injury</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>1.5 As such, the syntax is:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># use subset of injury given its size</span>
+<span class="n">inj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injury</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">inj</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="c1"># visualize the output</span>
+<span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>2.0 Calvin Matthew’s code-snippet for NHANES Table 1</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tableone&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tableone</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;NHANES&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">NHANES</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;nhanesA&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">nhanesA</span><span class="p">)</span>
+
+<span class="c1"># Creating Dataset With All Years</span>
+<span class="n">demo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bind_rows</span><span class="p">(</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO&quot;</span><span class="p">),</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO_B&quot;</span><span class="p">,</span><span class="s">&quot;DEMO_C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_E&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_G&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_H&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_I&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_J&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEMO_P&quot;</span><span class="p">))</span>
+<span class="c1"># Categorical Data</span>
+<span class="n">demo</span><span class="p">[</span><span class="s">&quot;RIAGENDR&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">RIAGENDR</span><span class="p">)</span>
+<span class="n">catVars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;DMDEDUC2&quot;</span><span class="p">,</span><span class="s">&quot;RIAGENDR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RIDRETH1&quot;</span><span class="p">)</span>
+<span class="n">demo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">demo</span><span class="p">,</span><span class="w"> </span><span class="n">RIDAGEYR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">17</span><span class="p">)</span>
+<span class="n">tab</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">CreateTableOne</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">demo</span><span class="p">,</span><span class="w"> </span><span class="n">factorVars</span><span class="o">=</span><span class="n">catVars</span><span class="p">)</span>
+
+<span class="c1"># Sorted Categorical and Continuous Outputs</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">tab</span><span class="o">$</span><span class="n">CatTable</span><span class="p">,</span><span class="w"> </span><span class="n">showAllLevels</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">tab</span><span class="o">$</span><span class="n">ContTable</span><span class="p">,</span><span class="w"> </span><span class="n">nonnormal</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">summary_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">all_years_data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span>
+<span class="n">MedianAge</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianSBP</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BPSysAve</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianDBP</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BPDiaAve</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianCreatinine</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">LBDSCRSI</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianBMI</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">BMI</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianHbA1c</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">HbA1c</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianuACR</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">uACR</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">MedianGlucose</span><span class="o">=</span><span class="nf">median</span><span class="p">(</span><span class="n">Pulse</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">FemalePercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Female&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">HypertensionPercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">Hypertension</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Yes&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">SmokePercentage</span><span class="o">=</span><span class="nf">mean</span><span class="p">(</span><span class="n">SmokingStatus</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Current&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span>
+<span class="n">RaceEthnicityPercentage</span><span class="o">=</span><span class="nf">table</span><span class="p">(</span><span class="n">RaceEthnicity</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">RaceEthnicity</span><span class="p">),</span>
+<span class="n">EducationPercentage</span><span class="o">=</span><span class="nf">table</span><span class="p">(</span><span class="n">Education</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">summary_table</span><span class="p">)</span>
+
+<span class="c1"># Cohort Percentage One-by-One</span>
+<span class="n">nhanes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="nf">nhanes</span><span class="p">(</span><span class="s">&quot;DEMO_P&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">RIDAGEYR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">17</span><span class="p">)</span>
+<span class="n">divisor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">nhanes</span><span class="p">)</span>
+</pre></div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -605,12 +638,7 @@ suppressWarnings({
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.2 Get some documentation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#study-the-syntax">1.3 Study the syntax</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-value-of-dx-pre">1.4 What is the value of dx_pre?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#as-such-the-syntax-is">1.5 As such, the syntax is:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calvin-matthew-s-code-snippet-for-nhanes-table-1">2.0 Calvin Matthew’s code-snippet for NHANES Table 1</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
 
   </nav></div>
