@@ -57,11 +57,11 @@ parts:
   - file: Epilogue/epi_7.ipynb
   - file: Epilogue/epi_8.ipynb
 
-- caption: "Gas & Spoke"
+- caption: Git & Spoke
   chapters:
-  - file: "Gas & Spoke/gas_1.ipynb"
-  - file: "Gas & Spoke/gas_2.ipynb"
-  - file: "Gas & Spoke/gas_3.ipynb"
+  - file: Git & Spoke/gas_1.ipynb
+  - file: Git & Spoke/gas_2.ipynb
+  - file: Git & Spoke/gas_3.ipynb
 
 - caption: Courses
   chapters: 
