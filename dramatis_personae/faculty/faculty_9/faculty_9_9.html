@@ -875,7 +875,7 @@ document.write(`
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>Asian Americans account for <a class="reference external" href="https://minorityhealth.hhs.gov/omh/browse.aspx?lvl=3&amp;lvlid=63">5.7%}</a> of the nation’s population but only <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">round(as.numeric(table(df$race)[1])*100/sum(table(df$race)),1)</span></code>% of
+<p>Asian Americans account for <a class="reference external" href="https://minorityhealth.hhs.gov/omh/browse.aspx?lvl=3&amp;lvlid=63">5.7%</a> of the nation’s population but only <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">round(as.numeric(table(df$race)[1])*100/sum(table(df$race)),1)</span></code>% of
 the live kidney donor population.</p>
 <p>The analysis is run three times: overall, younger than 50, and older than 50</p>
 </section>
@@ -2204,7 +2204,12 @@ the live kidney donor population.</p>
 </section>
 <section id="var-cov-matrix">
 <h2>3.22 var-cov matrix<a class="headerlink" href="#var-cov-matrix" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
@@ -2251,6 +2256,7 @@ the live kidney donor population.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        ethBlack      ethAsian  ethHispanic  famParent  \
 ethBlack                0.190895  2.355584e-02     0.023965   0.023907   
@@ -2473,12 +2479,18 @@ ethHispanic:famOther                1.557420
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
