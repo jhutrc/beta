@@ -1,7 +1,7 @@
 format: jb-book
 root: intro.ipynb
 title: Play
-parts:
+part: 
   - caption: Challenges
     chapters:
       - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1.ipynb
