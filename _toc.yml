@@ -1,7 +1,8 @@
 format: jb-book
 root: intro.ipynb
 title: Play
-parts:
+
+part:
   - caption: "1. CHALLENGES"
     chapters:
       - title: Truth
