@@ -21,9 +21,13 @@ parts:
     - file: act_1/act_1_1/act_1_1_1/act_1_1_1_3.ipynb
     - file: act_1/act_1_2/act_1_2_0/act_1_2_0_1.ipynb
     - file: act_1/act_1_2/act_1_2_0/act_1_2_0_2.ipynb
-    - file: act_1/act_1_2/act_1_2_0/act_1_2_0_3.ipynb
-    - file: act_1/act_1_2/act_1_2_1/act_1_2_1_1.ipynb
-    - file: act_1/act_1_2/act_1_2_1/act_1_2_1_2.ipynb
+
+- caption: Tools
+  chapters:
+  - file: act_1/act_1_2/act_1_2_0/act_1_2_0_3.ipynb
+  - file: act_1/act_1_2/act_1_2_1/act_1_2_1_1.ipynb
+  - file: act_1/act_1_2/act_1_2_1/act_1_2_1_2.ipynb
+    sections:
     - file: act_1/act_1_2/act_1_2_1/act_1_2_1_3.ipynb
     - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1.ipynb
     - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2.ipynb
