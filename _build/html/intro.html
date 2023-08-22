@@ -393,8 +393,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dramatis-personae">Dramatis Personae</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prologue">Prologue</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schpiel">Schpiel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prologue">Prologue</a><ul class="visible nav section-nav flex-column">
 </ul>
 </li>
 </ul>
@@ -493,16 +492,80 @@ Through self-publication, web apps with individualized risk scores for patients,
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="prologue">
 <h1>Prologue<a class="headerlink" href="#prologue" title="Permalink to this heading">#</a></h1>
-<p>We, at Fenagas, are excited to introduce <code class="docutils literal notranslate"><span class="pre">Fena</span></code>, a revolutionary platform tailor-made to empower the diverse world of medical research and knowledge sharing. Fena is designed with the needs of clinical trainees, graduate students in public health, basic science enthusiasts, epidemiologists, statisticians, and even high school students in mind, creating an inclusive space for all to participate in transforming the way medical discoveries are presented and explored.</p>
-<p>Fena is much more than a mere site generator; it is a catalyst for scientific collaboration and innovation, redefining the way we communicate our research findings. Imagine a platform where you can effortlessly create interactive and visually captivating websites to showcase your medical research, protocols, and insights to captivate your audience.</p>
-<p>The power of Fena lies in its ability to break down barriers to effective communication. By seamlessly converting your work into pre-rendered HTML, CSS, and JavaScript files, Fena ensures that your websites perform with exceptional speed and accessibility, facilitating engagement with your research.</p>
-<p>We understand the significance of open science and open access to knowledge. With Fena, we foster a global community of collaborators where you have the autonomy to invite and restrict access to your website, ensuring secure sharing with fellow researchers, mentors, and trainees.</p>
-<p>No matter your background or experience level, Fena opens its doors to all contributors. Whether you’re an experienced faculty member, a passionate graduate student, or an ambitious high school enthusiast, we welcome you to join us in this journey of scientific discovery.</p>
-<p>Fena symbolizes unity, where “Fena” embodies all of us—collaborators committed to advancing medical knowledge and patient care. The foundation of our platform lies in the powerful version control system, “git,” ensuring seamless collaboration among team members, mitigating conflicting edits, and preserving data integrity.</p>
-<p>Furthermore, “spoke” represents the vibrant community that comes together to share ideas, knowledge, and insights. Every contributor plays a crucial role, just like the spokes of a wheel, propelling the project forward and elevating your research and medical advancements to new heights.</p>
-<p>Together, let’s shape the future of medical progress, driving innovations in healthcare, and making a real impact on patient care. Your contributions are invaluable, and with Fena, your voice will be heard and your work celebrated.</p>
-<p>Join us, the researchers behind Fenagas, and become a part of this exciting endeavor. Let’s empower each other and unleash the potential of medical research through Fena. Our platform invites enthusiasts, trainees, clinical professionals, graduate students in public health, basic science researchers, epidemiologists, and statisticians to unite in this transformative movement.</p>
-<p>With Fena, we unite as a diverse, inclusive, and collaborative community of medical minds, breaking down barriers to access, promoting transparency, and fostering a global network of researchers dedicated to advancing healthcare.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create data for the skill and challenge levels</span>
+<span class="n">skill_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">challenge_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Define the flow channel boundaries</span>
+<span class="n">flow_channel</span> <span class="o">=</span> <span class="n">skill_levels</span>
+
+<span class="c1"># Adjust the phase and amplitude of the sinusoid wave</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">16</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">sinusoid</span> <span class="o">=</span> <span class="n">flow_channel</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">skill_levels</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span> <span class="o">*</span> <span class="n">amplitude</span>
+
+<span class="c1"># Define the yellow zone boundaries, making it wider</span>
+<span class="n">yellow_zone_low</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">-</span> <span class="mf">1.5</span>  <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+<span class="n">yellow_zone_high</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot the anxiety and boredom areas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Place/Identification&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time/Revelation&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Agent/Evolution&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot the sinusoid function with the diagonal as its axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">sinusoid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add arrowhead to the sinusoid line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Set plot labels and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;skill-level&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;challenge-level&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set plot limits and grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set tick labels</span>
+<span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+
+<span class="c1"># Add text annotations to label the areas without shaded background</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;anxious&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bored&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/99961681d41310a529d7888ed7f0022299da302f2127e10023060db1568d867c.png" src="_images/99961681d41310a529d7888ed7f0022299da302f2127e10023060db1568d867c.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Fena</span></code>, the platform in focus, serves as a groundbreaking static site generator that fosters collaboration and knowledge sharing within the medical research arena. It embodies the “we are all in the same boat” philosophy, engaging a wide spectrum of individuals from high school students to seasoned professionals in faculty, staff, and collaboration roles.</p>
+<p>The platform’s key objective is to facilitate “flow,” a state of optimal performance where challenges are perfectly balanced with skills. Through Fena, participants are equipped to navigate the intricate landscapes of numeracy and literacy, embracing various tools such as Python, AI tools (ChatGPT and GitHub Copilot), R, Stata, and more. The goal is to attain a seamless workflow that synchronizes skill development, challenging tasks, and innovative projects.</p>
+<p>The accompanying visualization symbolizes this journey towards flow. It portrays the balance of challenge and skill levels, capturing areas of anxiety, flow (the optimal zone), and boredom. This diagram serves as a metaphorical map, guiding the community in their collective pursuit of clinical research excellence.</p>
+<p>In a nutshell, Fena is not merely a tool but a beacon for collaborative medical research. It prioritizes the pursuit of “flow,” empowering its diverse community with adaptable problem-solving skills, and facilitating a streamlined workflow that promises to redefine accessibility and accelerate the pace of medical innovation.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -514,20 +577,20 @@ Through self-publication, web apps with individualized risk scores for patients,
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Set seed for layout</span>
-<span class="n">seed</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1"># Directory structure</span>
 <span class="n">structure</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;Fena&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Epilogue&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Skills&quot;</span><span class="p">,</span> <span class="s2">&quot;Dramatis Personae&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Numbers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Variance&quot;</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="s2">&quot;K24&quot;</span><span class="p">,</span> <span class="s2">&quot;U01&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Epilogue&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Open-Science&quot;</span><span class="p">,</span> <span class="s2">&quot;Self-Publish&quot;</span><span class="p">,</span> <span class="s2">&quot;Peer-Reviewed&quot;</span><span class="p">,</span> <span class="s2">&quot;Grants&quot;</span><span class="p">,</span> <span class="s2">&quot;Proposals&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Skills&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;Stata&quot;</span><span class="p">,</span> <span class="s2">&quot;Numbers&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Skills&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Estimate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Interval&quot;</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="s2">&quot;K24&quot;</span><span class="p">,</span> <span class="s2">&quot;U01&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Literacy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Open-Science&quot;</span><span class="p">,</span> <span class="s2">&quot;Self-Publish&quot;</span><span class="p">,</span> <span class="s2">&quot;Peer-Reviewed&quot;</span><span class="p">,</span> <span class="s2">&quot;Grants&quot;</span><span class="p">,</span> <span class="s2">&quot;Proposals&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Numeracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;Stata&quot;</span><span class="p">,</span> <span class="s2">&quot;Estimate&quot;</span><span class="p">],</span>
     <span class="s2">&quot;AI&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ChatGPT&quot;</span><span class="p">,</span> <span class="s2">&quot;Co-Pilot&quot;</span><span class="p">],</span>
     <span class="s2">&quot;Project&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Manuscript&quot;</span><span class="p">,</span> <span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Git&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Estimates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Nonparametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Semiparametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Parametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Simulation&quot;</span><span class="p">,</span> <span class="s2">&quot;Uses/Abuses&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Numbers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Estimates&quot;</span><span class="p">,</span> <span class="s2">&quot;Variance&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Variance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Oneway&quot;</span><span class="p">,</span> <span class="s2">&quot;Twoway&quot;</span><span class="p">,</span> <span class="s2">&quot;Multivariable&quot;</span><span class="p">,</span> <span class="s2">&quot;Hierarchical&quot;</span><span class="p">,</span> <span class="s2">&quot;Clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;Public&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Dramatis Personae&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;High School Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Undergraduates&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduate Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Residents&quot;</span><span class="p">,</span> <span class="s2">&quot;Fellows&quot;</span><span class="p">,</span> <span class="s2">&quot;Faculty&quot;</span><span class="p">,</span> <span class="s2">&quot;Analysts&quot;</span><span class="p">,</span> <span class="s2">&quot;Staff&quot;</span><span class="p">,</span> <span class="s2">&quot;Collaborators&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduates&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Point&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Nonparametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Semiparametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Parametric&quot;</span><span class="p">,</span> <span class="s2">&quot;Simulation&quot;</span><span class="p">,</span> <span class="s2">&quot;Uses/Abuses&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Estimate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;Interval&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Interval&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Oneway&quot;</span><span class="p">,</span> <span class="s2">&quot;Twoway&quot;</span><span class="p">,</span> <span class="s2">&quot;Multivariable&quot;</span><span class="p">,</span> <span class="s2">&quot;Hierarchical&quot;</span><span class="p">,</span> <span class="s2">&quot;Clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;Public&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;You&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;High School Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Undergraduates&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduate Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical Students&quot;</span><span class="p">,</span> <span class="s2">&quot;Residents&quot;</span><span class="p">,</span> <span class="s2">&quot;Fellows&quot;</span><span class="p">,</span> <span class="s2">&quot;Faculty&quot;</span><span class="p">,</span> <span class="s2">&quot;Analysts&quot;</span><span class="p">,</span> <span class="s2">&quot;Staff&quot;</span><span class="p">,</span> <span class="s2">&quot;Collaborators&quot;</span><span class="p">,</span> <span class="s2">&quot;Graduates&quot;</span><span class="p">],</span>
     <span class="s2">&quot;Challenges&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Truth&quot;</span><span class="p">,</span> <span class="s2">&quot;Rigor&quot;</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Sloppiness&quot;</span><span class="p">,</span> <span class="s2">&quot;Fraud&quot;</span><span class="p">,</span> <span class="s2">&quot;Learning&quot;</span><span class="p">],</span>
 <span class="p">}</span>
 
@@ -539,7 +602,7 @@ Through self-publication, web apps with individualized risk scores for patients,
 <span class="c1"># &#39;lightsteelblue&#39;, &#39;lightgray&#39;, &#39;mintcream&#39;,&#39;mintcream&#39;, &#39;azure&#39;, &#39;linen&#39;, &#39;aliceblue&#39;, &#39;lemonchiffon&#39;, &#39;mistyrose&#39;</span>
 
 <span class="c1"># List of nodes to color light blue</span>
-<span class="n">light_blue_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Epilogue&quot;</span><span class="p">,</span> <span class="s2">&quot;Skills&quot;</span><span class="p">,</span> <span class="s2">&quot;Dramatis Personae&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">]</span>
+<span class="n">light_blue_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">]</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="n">node_colors</span> <span class="o">=</span> <span class="p">{}</span>
@@ -554,8 +617,8 @@ Through self-publication, web apps with individualized risk scores for patients,
     <span class="n">parent_name</span> <span class="o">=</span> <span class="n">capitalize_name</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">parent_name</span><span class="p">)</span>
     
-    <span class="c1"># Set the color for Fena</span>
-    <span class="k">if</span> <span class="n">parent_name</span> <span class="o">==</span> <span class="s2">&quot;Fena&quot;</span><span class="p">:</span>
+    <span class="c1"># Set the color for Skills</span>
+    <span class="k">if</span> <span class="n">parent_name</span> <span class="o">==</span> <span class="s2">&quot;Skills&quot;</span><span class="p">:</span>
         <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightgray&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>
@@ -585,72 +648,17 @@ Through self-publication, web apps with individualized risk scores for patients,
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/185f4dfc8fee4cd6d6e20986bbaaf1fe8f70197fc303d67a79b30aa7a1578933.png" src="_images/185f4dfc8fee4cd6d6e20986bbaaf1fe8f70197fc303d67a79b30aa7a1578933.png" />
+<img alt="_images/b6ce3a14511e42e19f25bc56c3e4d51d6311ee9419147004b102ea5bd51fddb3.png" src="_images/b6ce3a14511e42e19f25bc56c3e4d51d6311ee9419147004b102ea5bd51fddb3.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="schpiel">
-<h1>Schpiel<a class="headerlink" href="#schpiel" title="Permalink to this heading">#</a></h1>
-<p>Act I: <code class="docutils literal notranslate"><span class="pre">Hypothesis</span></code> - The Birth of Inquiry in Fena’s World</p>
-<p>In Act I, we set forth on an expedition into the unknown within Fena’s universe, where ideas blossom into hypotheses and concepts. This realm is the heart of our intellectual genesis, where we conceive and craft research questions, and then transform them into tangible, testable propositions. Within Fena’s manifold domains such as Epilogue, Project, and Git, we refine our thoughts into manuscripts and code, sowing the seeds for profound exploration.</p>
-<ul class="simple">
-<li><p><strong>Episode 1:</strong> Crafting Questions</p></li>
-<li><p><strong>Episode 2:</strong> Building Propositions</p></li>
-<li><p><strong>Episode 3:</strong> Manuscripts and Coding</p></li>
-<li><p><strong>Episode 4:</strong> The Art of Organization</p></li>
-</ul>
-<p>Act II: <code class="docutils literal notranslate"><span class="pre">Data</span></code> - Unlocking Fena’s Treasure Troves</p>
-<p>Act II draws us into the numeric chambers of Fena’s universe, where raw data metamorphoses into wisdom’s gold. Through the corridors of Python, AI, R, and Stata, we unravel the complexities of data collection, transformation, and analysis. From the realms of Skills and Numbers, Act II propels us to tame data’s wild potential, bridging the chasm between mere hypotheses and palpable reality.</p>
-<ul class="simple">
-<li><p><strong>Episode 1:</strong> Gathering Data</p></li>
-<li><p><strong>Episode 2:</strong> Processing Information</p></li>
-<li><p><strong>Episode 3:</strong> Analyzing Patterns</p></li>
-<li><p><strong>Episode 4:</strong> The Bridge to Evidence</p></li>
-</ul>
-<p>Act III: <code class="docutils literal notranslate"><span class="pre">Estimates</span></code> - Truth’s Labyrinth within Fena</p>
-<p>In Act III, we plunge into Fena’s maze of estimates, guided by the lanterns of Nonparametric, Semiparametric, Parametric, and Simulation techniques. This part of our quest leads us to infer truths from the shadows, shaping data into valuable insights and making decisions rooted in understanding.</p>
-<ul class="simple">
-<li><p><strong>Episode 1:</strong> The Quest for Truth</p></li>
-<li><p><strong>Episode 2:</strong> Tools of Inference</p></li>
-<li><p><strong>Episode 3:</strong> Decision Making</p></li>
-<li><p><strong>Episode 4:</strong> Transformation of Insight</p></li>
-</ul>
-<p>Act IV: <code class="docutils literal notranslate"><span class="pre">Variance</span></code> - Fena’s Dance with Uncertainty</p>
-<p>Act IV escorts us to the stormy seas of variance within Fena’s territory, where unpredictability reigns. In navigating challenges such as truth, rigor, error, and fraud, we learn to weather uncertainty, recognize variation, and evade the traps of sloppiness.</p>
-<ul class="simple">
-<li><p><strong>Episode 1:</strong> The Face of Uncertainty</p></li>
-<li><p><strong>Episode 2:</strong> Recognizing Variation</p></li>
-<li><p><strong>Episode 3:</strong> Rigor and Reliability</p></li>
-<li><p><strong>Episode 4:</strong> Guarding Against Deception</p></li>
-</ul>
-<p>Act V: <code class="docutils literal notranslate"><span class="pre">Explanation</span></code> - Unveiling Fena’s Mysteries</p>
-<p>Act V, the apex of our saga, draws us into Fena’s world of explanations, where the “What” gives way to the “Why.” Various perspectives unite in our exploration of causality, connections, and complex interpretations, illuminating the tapestry of Fena’s universe.</p>
-<ul class="simple">
-<li><p><strong>Episode 1:</strong> Causal Relationships</p></li>
-<li><p><strong>Episode 2:</strong> Uncovering Connections</p></li>
-<li><p><strong>Episode 3:</strong> Interpreting Findings</p></li>
-<li><p><strong>Episode 4:</strong> Communicating Discoveries</p></li>
-</ul>
-<p>Epilogue: Embracing the <code class="docutils literal notranslate"><span class="pre">Journey</span></code> of Knowledge in Fena</p>
-<p>As our journey through Fena concludes, we gather at the summit of wisdom, reflecting on our adventure’s riches. The world of Open Science, Self-publishing, Git &amp; Spoke, and more stands testament to our relentless pursuit of enlightenment. Fena’s epilogue is a beacon, guiding us to endless horizons of learning, where our discoveries ripple through the oceans of knowledge.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>We shall not cease from exploration
-And the end of all our exploring
-Will be to arrive where we started
-And know the place for the first time.
-Through the unknown, remembered gate
-When the last of earth left to discover
-Is that which was the beginning;
-At the source of the longest river
-The voice of the hidden waterfall
-And the children in the apple-tree
-Not known, because not looked for
-But heard, half-heard, in the stillness
-Between two waves of the sea.
-
-—T.S. Eliot, from “Little Gidding,” Four Quartets, 1943
-
-</pre></div>
-</div>
+<p>Life is an unending series of challenges. Each day, we are met with tasks that test our skills, our intellect, our mettle. Since the dawn of time, humanity has sought tools and techniques to gain the upper hand, to transform daunting challenges into opportunities for growth and triumph.</p>
+<p>In the modern era, where the pace of change is relentless, where the demands of clinical research and the pursuit of medical excellence never wane, the need for such tools is more pressing than ever.</p>
+<p>Welcome to Fena.</p>
+<p>Fena isn’t just another tool; it’s a symbol of our shared ambition. It’s a vessel that carries us in unison across the complex seas of numeracy, literacy, and innovation. With its robust framework and adaptable problem-solving techniques, Fena equips high school students, undergraduates, faculty, analysts, and collaborators with the skills necessary to navigate the intricate terrains of clinical research.</p>
+<p>Our graph, gently colored and thoughtfully structured, represents the interconnectedness of our community and the multifaceted nature of our work. It’s a visual testament to our collective strength, our unified pursuit of truth, rigor, and medical progress.</p>
+<p>With Fena, we sail in the same boat across various projects involving git, code, manuscripts, and the utilization of skills like Python, AI tools, R, and Stata. It’s more than a platform; it’s our commitment to each other, our promise to strive, to explore, to innovate, to overcome.</p>
+<p>We are all steering in the same direction, and with Fena, we are always in the zone, always in flow. Together, we will revolutionize the way we share research, break down barriers, and accelerate the pace of medical advancements.</p>
+<p>Join us, and be a part of the journey. Be a part of Fena.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -725,8 +733,7 @@ Between two waves of the sea.
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dramatis-personae">Dramatis Personae</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prologue">Prologue</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#schpiel">Schpiel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prologue">Prologue</a><ul class="visible nav section-nav flex-column">
 </ul>
 </li>
 </ul>
