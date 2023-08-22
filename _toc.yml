@@ -1,164 +1,84 @@
 format: jb-book
 root: intro.ipynb
-title: Fena
-
+title: Play
 parts:
-- caption: 
-  chapters:
-  - file: prologue.ipynb
-
-- caption: Act I
-  chapters:
-  - file: Act I/act1_1.ipynb
-  - file: Act I/act1_2.ipynb
-  - file: Act I/act1_3.ipynb
-
-- caption: Act II
-  chapters:
-  - file: Act II/act2_1.ipynb
-  - file: Act II/act2_2.ipynb
-  - file: Act II/act2_3.ipynb
-  - file: Act II/act2_4.ipynb
-
-- caption: Act III
-  chapters:
-  - file: Act III/act3_1.ipynb
-  - file: Act III/act3_2.ipynb
-  - file: Act III/act3_3.ipynb
-  - file: Act III/act3_4.ipynb
-  - file: Act III/act3_5.ipynb
-
-- caption: Act IV
-  chapters:
-  - file: Act IV/act4_1.ipynb
-  - file: Act IV/act4_2.ipynb
-  - file: Act IV/act4_3.ipynb
-  - file: Act IV/act4_4.ipynb
-  - file: Act IV/act4_5.ipynb
-  - file: Act IV/act4_6.ipynb
-
-- caption: Act V
-  chapters:
-  - file: Act V/act5_1.ipynb
-  - file: Act V/act5_2.ipynb
-  - file: Act V/act5_3.ipynb
-  - file: Act V/act5_4.ipynb
-  - file: Act V/act5_5.ipynb
-  - file: Act V/act5_6.ipynb
-
-- caption: Epilogue
-  chapters:
-  - file: Epilogue/epi_1.ipynb
-  - file: Epilogue/epi_2.ipynb
-  - file: Epilogue/epi_3.ipynb
-  - file: Epilogue/epi_4.ipynb
-  - file: Epilogue/epi_5.ipynb
-  - file: Epilogue/epi_6.ipynb
-  - file: Epilogue/epi_7.ipynb
-  - file: Epilogue/epi_8.ipynb
-
-- caption: Git & Spoke
-  chapters:
-  - file: Git & Spoke/gas_1.ipynb
-  - file: Git & Spoke/gas_2.ipynb
-  - file: Git & Spoke/gas_3.ipynb
-
-- caption: Courses
-  chapters: 
-  - url: https://publichealth.jhu.edu/courses
-    title: Stata Programming 
-  - file: dramatis_personae/high_school_students/high_school_students.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_1/high_school_students_1.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_1/high_school_students_1_1.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_2.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_3.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_4.ipynb
-  - file: dramatis_personae/high_school_students/high_school_students_5.ipynb
-  - file: dramatis_personae/under_grads/under_grads.ipynb
-  - file: dramatis_personae/under_grads/under_grads_1.ipynb
-  - file: dramatis_personae/under_grads/under_grads_2.ipynb
-  - file: dramatis_personae/under_grads/under_grads_3.ipynb
-  - file: dramatis_personae/under_grads/under_grads_4.ipynb
-  - file: dramatis_personae/under_grads/under_grads_5.ipynb
-  - file: dramatis_personae/grad_students/grad_students.ipynb
-  - file: dramatis_personae/grad_students_1/grad_students_1.ipynb
-  - file: dramatis_personae/grad_students_2/grad_students_2.ipynb
-  - file: dramatis_personae/grad_students_3/grad_students_3.ipynb
-  - file: dramatis_personae/grad_students_4/grad_students_4.ipynb
-  - file: dramatis_personae/grad_students_5/grad_students_5.ipynb
-  - file: dramatis_personae/medical_students/medical_students.ipynb
-  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1.ipynb
-  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1_1.ipynb
-  - file: dramatis_personae/medical_students/medical_students_1/medical_students_1_2.ipynb
-  - file: dramatis_personae/medical_students/medical_students_2.ipynb
-  - file: dramatis_personae/medical_students/medical_students_3.ipynb
-  - file: dramatis_personae/medical_students/medical_students_4.ipynb
-  - file: dramatis_personae/medical_students/medical_students_5.ipynb
-  - file: dramatis_personae/residents/residents.ipynb
-  - file: dramatis_personae/residents/residents_1.ipynb
-  - file: dramatis_personae/residents/residents_2.ipynb
-  - file: dramatis_personae/residents/residents_3.ipynb
-  - file: dramatis_personae/residents/residents_4.ipynb
-  - file: dramatis_personae/residents/residents_5.ipynb
-  - file: dramatis_personae/fellows/fellows.ipynb
-  - file: dramatis_personae/fellows/fellows_1.ipynb
-  - file: dramatis_personae/fellows/fellows_2.ipynb
-  - file: dramatis_personae/fellows/fellows_3.ipynb
-  - file: dramatis_personae/fellows/fellows_4.ipynb
-  - file: dramatis_personae/fellows/fellows_5.ipynb
-  - file: dramatis_personae/faculty/faculty.ipynb
-  - file: dramatis_personae/faculty/faculty_1/faculty_1.ipynb
-  - file: dramatis_personae/faculty/faculty_2/faculty_2.ipynb
-  - file: dramatis_personae/faculty/faculty_3/faculty_3.ipynb
-  - file: dramatis_personae/faculty/faculty_4/faculty_4.ipynb
-  - file: dramatis_personae/faculty/faculty_5/faculty_5.ipynb
-  - file: dramatis_personae/faculty/faculty_6/faculty_6.ipynb
-  - file: dramatis_personae/faculty/faculty_7/faculty_7.ipynb
-  - file: dramatis_personae/faculty/faculty_8/faculty_8.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_0.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_1.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_2.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_3.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_4.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_5.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_6.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_7.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_8.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_9.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_10.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_11.ipynb
-  - file: dramatis_personae/faculty/faculty_9/faculty_9_12.ipynb
-  - file: dramatis_personae/analysts/analysts.ipynb
-  - file: dramatis_personae/analysts/analysts_1/analysts_1.ipynb
-  - file: dramatis_personae/analysts/analysts_2/analysts_2.ipynb
-  - file: dramatis_personae/analysts/analysts_3/analysts_3.ipynb
-  - file: dramatis_personae/analysts/analysts_4/analysts_4.ipynb
-  - file: dramatis_personae/analysts/analysts_5/analysts_5.ipynb
-  - file: dramatis_personae/analysts/analysts_6/analysts_6.ipynb
-  - file: dramatis_personae/analysts/analysts_7/analysts_7.ipynb
-  - file: dramatis_personae/analysts/analysts_8/analysts_8.ipynb
-  - file: dramatis_personae/analysts/analysts_8/analysts_8_0.ipynb
-  - file: dramatis_personae/analysts/analysts_8/analysts_8_1.ipynb
-  - file: dramatis_personae/analysts/analysts_8/analysts_8_2.ipynb
-  - file: dramatis_personae/analysts/analysts_9/analysts_9.ipynb
-  - file: dramatis_personae/staff/staff.ipynb
-  - file: dramatis_personae/staff/staff_1.ipynb
-  - file: dramatis_personae/staff/staff_2.ipynb
-  - file: dramatis_personae/staff/staff_3.ipynb
-  - file: dramatis_personae/staff/staff_4.ipynb
-  - file: dramatis_personae/staff/staff_5.ipynb
-  - file: dramatis_personae/collaborators/collaborators.ipynb
-  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1.ipynb
-  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1_1.ipynb
-  - file: dramatis_personae/collaborators/collaborators_1/collaborators_1_2.ipynb
-  - file: dramatis_personae/collaborators/collaborators_2.ipynb
-  - file: dramatis_personae/collaborators/collaborators_3.ipynb
-  - file: dramatis_personae/collaborators/collaborators_4.ipynb
-  - file: dramatis_personae/collaborators/collaborators_5.ipynb
-  - file: dramatis_personae/graduates/graduates.ipynb
-  - file: dramatis_personae/graduates/graduates_1.ipynb
-  - file: dramatis_personae/graduates/graduates_2.ipynb
-  - file: dramatis_personae/graduates/graduates_3.ipynb
-  - file: dramatis_personae/graduates/graduates_4.ipynb
-  - file: dramatis_personae/graduates/graduates_5.ipynb
+  - caption: Part 0
+    chapters:
+      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_1.ipynb
+      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_2.ipynb
+      - file: act_0/act_0_0/act_0_0_0/act_0_0_0_3.ipynb
+      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_1.ipynb
+      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_2.ipynb
+      - file: act_0/act_0_0/act_0_0_1/act_0_0_1_3.ipynb
+      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_1.ipynb
+      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_2.ipynb
+      - file: act_0/act_0_1/act_0_1_0/act_0_1_0_3.ipynb
+      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_1.ipynb
+      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_2.ipynb
+      - file: act_0/act_0_1/act_0_1_1/act_0_1_1_3.ipynb
+      - file: act_0/act_0_2/act_0_2_0/act_0_2_0_1.ipynb
+      - file: act_0/act_0_2/act_0_2_0/act_0_2_0_2.ipynb
+      - file: act_0/act_0_2/act_0_2_0/act_0_2_0_3.ipynb
+      - file: act_0/act_0_2/act_0_2_1/act_0_2_1_1.ipynb
+      - file: act_0/act_0_2/act_0_2_1/act_0_2_1_2.ipynb
+      - file: act_0/act_0_2/act_0_2_1/act_0_2_1_3.ipynb
+  - caption: Part 1
+    chapters:
+      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1.ipynb
+      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_2.ipynb
+      - file: act_1/act_1_0/act_1_0_0/act_1_0_0_3.ipynb
+      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_1.ipynb
+      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_2.ipynb
+      - file: act_1/act_1_0/act_1_0_1/act_1_0_1_3.ipynb
+      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_1.ipynb
+      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_2.ipynb
+      - file: act_1/act_1_1/act_1_1_0/act_1_1_0_3.ipynb
+      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_1.ipynb
+      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_2.ipynb
+      - file: act_1/act_1_1/act_1_1_1/act_1_1_1_3.ipynb
+      - file: act_1/act_1_2/act_1_2_0/act_1_2_0_1.ipynb
+      - file: act_1/act_1_2/act_1_2_0/act_1_2_0_2.ipynb
+      - file: act_1/act_1_2/act_1_2_0/act_1_2_0_3.ipynb
+      - file: act_1/act_1_2/act_1_2_1/act_1_2_1_1.ipynb
+      - file: act_1/act_1_2/act_1_2_1/act_1_2_1_2.ipynb
+      - file: act_1/act_1_2/act_1_2_1/act_1_2_1_3.ipynb
+  - caption: Part 2
+    chapters:
+      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1.ipynb
+      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2.ipynb
+      - file: act_2/act_2_0/act_2_0_0/act_2_0_0_3.ipynb
+      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_1.ipynb
+      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_2.ipynb
+      - file: act_2/act_2_0/act_2_0_1/act_2_0_1_3.ipynb
+      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_1.ipynb
+      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_2.ipynb
+      - file: act_2/act_2_1/act_2_1_0/act_2_1_0_3.ipynb
+      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_1.ipynb
+      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_2.ipynb
+      - file: act_2/act_2_1/act_2_1_1/act_2_1_1_3.ipynb
+      - file: act_2/act_2_2/act_2_2_0/act_2_2_0_1.ipynb
+      - file: act_2/act_2_2/act_2_2_0/act_2_2_0_2.ipynb
+      - file: act_2/act_2_2/act_2_2_0/act_2_2_0_3.ipynb
+      - file: act_2/act_2_2/act_2_2_1/act_2_2_1_1.ipynb
+      - file: act_2/act_2_2/act_2_2_1/act_2_2_1_2.ipynb
+      - file: act_2/act_2_2/act_2_2_1/act_2_2_1_3.ipynb
+  - caption: Part 3
+    chapters:
+      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_1.ipynb
+      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_2.ipynb
+      - file: act_3/act_3_0/act_3_0_0/act_3_0_0_3.ipynb
+      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_1.ipynb
+      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_2.ipynb
+      - file: act_3/act_3_0/act_3_0_1/act_3_0_1_3.ipynb
+      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_1.ipynb
+      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_2.ipynb
+      - file: act_3/act_3_1/act_3_1_0/act_3_1_0_3.ipynb
+      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_1.ipynb
+      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_2.ipynb
+      - file: act_3/act_3_1/act_3_1_1/act_3_1_1_3.ipynb
+      - file: act_3/act_3_2/act_3_2_0/act_3_2_0_1.ipynb
+      - file: act_3/act_3_2/act_3_2_0/act_3_2_0_2.ipynb
+      - file: act_3/act_3_2/act_3_2_0/act_3_2_0_3.ipynb
+      - file: act_3/act_3_2/act_3_2_1/act_3_2_1_1.ipynb
+      - file: act_3/act_3_2/act_3_2_1/act_3_2_1_2.ipynb
+      - file: act_3/act_3_2/act_3_2_1/act_3_2_1_3.ipynb
