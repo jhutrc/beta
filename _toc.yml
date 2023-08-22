@@ -2,11 +2,11 @@ format: jb-book
 root: intro
 parts:
 - caption: Challenges
-  chapters:
+    sections:
   - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1
   - file: act_1/act_1_0/act_1_0_0/act_1_0_0_2
-- caption: LAB MATERIALS
-  chapters:
+- caption: Tools
+    sections:
   - file: act_1/act_1_1/act_1_1_1/act_1_1_1_1
   - file: act_1/act_1_1/act_1_1_1/act_1_1_1_2
     sections:
