@@ -2,7 +2,7 @@ format: jb-book
 root: intro.ipynb
 title: Play
 parts:
-  - caption: Challenges
+  - caption: 1. Challenges
     chapters:
       - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1.ipynb
       - file: act_1/act_1_0/act_1_0_0/act_1_0_0_2.ipynb
@@ -22,7 +22,7 @@ parts:
       - file: act_1/act_1_2/act_1_2_1/act_1_2_1_1.ipynb
       - file: act_1/act_1_2/act_1_2_1/act_1_2_1_2.ipynb
       - file: act_1/act_1_2/act_1_2_1/act_1_2_1_3.ipynb
-  - caption: Skills
+  - caption: 2. Skills
     chapters:
       - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1.ipynb
       - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2.ipynb
@@ -42,7 +42,7 @@ parts:
       - file: act_2/act_2_2/act_2_2_1/act_2_2_1_1.ipynb
       - file: act_2/act_2_2/act_2_2_1/act_2_2_1_2.ipynb
       - file: act_2/act_2_2/act_2_2_1/act_2_2_1_3.ipynb
-  - caption: Workflow
+  - caption: 3. Workflow
     chapters:
       - file: act_3/act_3_0/act_3_0_0/act_3_0_0_1.ipynb
       - file: act_3/act_3_0/act_3_0_0/act_3_0_0_2.ipynb
