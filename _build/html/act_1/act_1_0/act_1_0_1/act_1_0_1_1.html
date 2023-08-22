@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Python &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act_1/act_1_0/act_1_0_1/act_1_0_1_1';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="R" href="act_1_0_1_2.html" />
+    <link rel="prev" title="Sloppiness" href="../act_1_0_0/act_1_0_0_3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://raw.githubusercontent.com/jhutrc/jhutrc.github.io/main/hub_and_spoke.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://raw.githubusercontent.com/jhutrc/jhutrc.github.io/main/hub_and_spoke.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Fena
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 0</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_0/act_0_0_1/act_0_0_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_0/act_0_0_1/act_0_0_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_1/act_0_1_0/act_0_1_0_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_1/act_0_1_0/act_0_1_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_1/act_0_1_1/act_0_1_1_1.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_1/act_0_1_1/act_0_1_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_1/act_0_1_1/act_0_1_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_0/act_0_2_0_1.html">Fena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_0/act_0_2_0_2.html">Prologue</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_0/act_0_2_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_1/act_0_2_1_1.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_1/act_0_2_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_0/act_0_2/act_0_2_1/act_0_2_1_3.html">.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../act_1_0_0/act_1_0_0_1.html">Rigor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../act_1_0_0/act_1_0_0_2.html">Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../act_1_0_0/act_1_0_0_3.html">Sloppiness</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_1_0_1_2.html">R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_1_0_1_3.html">Stata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_0/act_1_1_0_1.html">AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_0/act_1_1_0_2.html">Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_0/act_1_1_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_1/act_1_1_1_1.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_1/act_1_1_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_1/act_1_1_1/act_1_1_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_0/act_1_2_0_1.html">Numeracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_0/act_1_2_0_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_0/act_1_2_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_1/act_1_2_1_1.html">Literacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_1/act_1_2_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act_1_2/act_1_2_1/act_1_2_1_3.html">.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_0/act_2_0_0_1.html">Point estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_0/act_2_0_0_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_0/act_2_0_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_1/act_2_0_1_1.html">Interval estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_1/act_2_0_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_0/act_2_0_1/act_2_0_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_0/act_2_1_0_1.html">Inferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_0/act_2_1_0_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_0/act_2_1_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_1/act_2_1_1_1.html">Frequentist vs. Bayesian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_1/act_2_1_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_1/act_2_1_1/act_2_1_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_0/act_2_2_0_1.html">Oneway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_0/act_2_2_0_2.html">Twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_0/act_2_2_0_3.html">Multivariable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_1/act_2_2_1_1.html">Hierarchical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_1/act_2_2_1_2.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_2/act_2_2/act_2_2_1/act_2_2_1_3.html">Public</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_0/act_3_0_0_1.html">Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_0/act_3_0_0_2.html">Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_0/act_3_0_0_3.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_1/act_3_0_1_1.html">Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_1/act_3_0_1_2.html">Self publish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_0/act_3_0_1/act_3_0_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_0/act_3_1_0_1.html">Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_0/act_3_1_0_2.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_0/act_3_1_0_3.html">Unix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_1/act_3_1_1_1.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_1/act_3_1_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_1/act_3_1_1/act_3_1_1_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_0/act_3_2_0_1.html">Stata programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_0/act_3_2_0_2.html">Data science for public health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_0/act_3_2_0_3.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_1/act_3_2_1_1.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_1/act_3_2_1_2.html">.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../act_3/act_3_2/act_3_2_1/act_3_2_1_3.html">.</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/act_1/act_1_0/act_1_0_1/act_1_0_1_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-of-python-free-and-easily-accessible">2.1.1 The Power of Python: Free and Easily Accessible</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-research-versatile-and-empowering">2.1.2 Python and Research: Versatile and Empowering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-user-friendly-introduction-google-colab">2.1.3 A User-Friendly Introduction: Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippets-and-interactive-learning-chatgpt-and-google-colab">2.1.4 Code Snippets and Interactive Learning: ChatGPT and Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-tasks-and-feedback">2.1.5 Weekly Tasks and Feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-in-the-broader-context">2.1.6 Python in the Broader Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours-and-support">2.1.7 Office Hours and Support</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python">
+<span id="content-georeferencing"></span><h1>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h1>
+<p>Welcome to the second section of this book! In this chapter, we will delve into the world of Python and its significance in the research landscape. Python’s accessibility and widespread availability make it an excellent choice for researchers of all backgrounds. Furthermore, the integration of ChatGPT, an AI language model, can transform the learning experience, even for those who have never programmed before.</p>
+<section id="the-power-of-python-free-and-easily-accessible">
+<h2>2.1.1 The Power of Python: Free and Easily Accessible<a class="headerlink" href="#the-power-of-python-free-and-easily-accessible" title="Permalink to this heading">#</a></h2>
+<p>Python is a free and open-source programming language, which means it is available to everyone at no cost. Whether you are a student, researcher, or professional, you can easily download and install Python on your computer. Additionally, Python runs on various operating systems, such as Windows, macOS, and Linux, making it inclusive and readily accessible to a wide audience.</p>
+<p>Furthermore, Python’s popularity has resulted in a thriving community of developers and contributors. A plethora of online resources, tutorials, forums, and libraries are available, making it easier for learners to access support, seek guidance, and collaborate on projects. This wealth of resources ensures that Python remains one of the most beginner-friendly programming languages in the research community.</p>
+</section>
+<section id="python-and-research-versatile-and-empowering">
+<h2>2.1.2 Python and Research: Versatile and Empowering<a class="headerlink" href="#python-and-research-versatile-and-empowering" title="Permalink to this heading">#</a></h2>
+<p>Python’s versatility and extensive library support have revolutionized the research landscape. It has become an indispensable tool for data analysis, visualization, statistical modeling, and machine learning applications. Researchers from diverse domains can harness Python’s capabilities to solve complex research problems and gain valuable insights from their data.</p>
+<p>Moreover, Python’s integration with other languages and tools facilitates seamless collaboration. It enables researchers to work together effectively, even when using different statistical computing languages, making it a unifying force in the research community.</p>
+</section>
+<section id="a-user-friendly-introduction-google-colab">
+<h2>2.1.3 A User-Friendly Introduction: Google Colab<a class="headerlink" href="#a-user-friendly-introduction-google-colab" title="Permalink to this heading">#</a></h2>
+<p>Google Colab is an innovative online platform that has significantly contributed to making Python more accessible to beginners. Colab offers a cloud-based Python development environment, running entirely in your browser, without any setup required. This allows users to write and execute Python code from anywhere, at any time.</p>
+<p>Integrated with Google Drive, Colab provides a seamless collaboration experience. Its compatibility with popular libraries and tools like TensorFlow, PyTorch, and pandas means you can start working on complex projects with ease.</p>
+<p>Furthermore, Google Colab can be seamlessly connected with GitHub. This connection enables users to save their Colab notebooks directly to their GitHub repositories, fostering a smooth transition to more advanced development environments like Virtual Studio and ultimately, VS Code on a local machine.</p>
+</section>
+<section id="code-snippets-and-interactive-learning-chatgpt-and-google-colab">
+<h2>2.1.4 Code Snippets and Interactive Learning: ChatGPT and Google Colab<a class="headerlink" href="#code-snippets-and-interactive-learning-chatgpt-and-google-colab" title="Permalink to this heading">#</a></h2>
+<p>Google Colab also offers a plethora of code snippets that make starting a project more manageable. With these snippets, users can quickly learn different functionalities and experiment with examples.</p>
+<p>Similarly, ChatGPT’s code generation and interaction capabilities add another layer to the learning experience. It can provide code examples, step-by-step explanations, and even code completion, just like GitHub’s Copilot. This synergy between Google Colab and ChatGPT further enhances the learning process, making it interactive, engaging, and tailored to individual needs.</p>
+</section>
+<section id="weekly-tasks-and-feedback">
+<h2>2.1.5 Weekly Tasks and Feedback<a class="headerlink" href="#weekly-tasks-and-feedback" title="Permalink to this heading">#</a></h2>
+<p>To further enhance your learning experience, we encourage you to actively participate in weekly tasks. By interacting with Python concepts and receiving valuable feedback, you will reinforce your understanding and gain practical experience.</p>
+</section>
+<section id="python-in-the-broader-context">
+<h2>2.1.6 Python in the Broader Context<a class="headerlink" href="#python-in-the-broader-context" title="Permalink to this heading">#</a></h2>
+<p>While we will focus on Python in the context of Stata programming, remember that Python’s applications extend far beyond that. Your newfound Python skills will be valuable across various statistical computing languages and research domains, empowering you to excel in your research endeavors.</p>
+</section>
+<section id="office-hours-and-support">
+<h2>2.1.7 Office Hours and Support<a class="headerlink" href="#office-hours-and-support" title="Permalink to this heading">#</a></h2>
+<p>As you embark on this journey, we will be here to provide additional support through regular office hours, ensuring that you have the human touch and assistance you need.</p>
+<p>Let’s embrace the power of Python, leverage Google Colab’s user-friendly environment, and explore the transformative capabilities of ChatGPT. With these tools at your fingertips, you can conquer new frontiers in your research and academic pursuits, regardless of your previous programming experience.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./act_1/act_1_0/act_1_0_1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../act_1_0_0/act_1_0_0_3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sloppiness</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="act_1_0_1_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">R</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-of-python-free-and-easily-accessible">2.1.1 The Power of Python: Free and Easily Accessible</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-research-versatile-and-empowering">2.1.2 Python and Research: Versatile and Empowering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-user-friendly-introduction-google-colab">2.1.3 A User-Friendly Introduction: Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippets-and-interactive-learning-chatgpt-and-google-colab">2.1.4 Code Snippets and Interactive Learning: ChatGPT and Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-tasks-and-feedback">2.1.5 Weekly Tasks and Feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-in-the-broader-context">2.1.6 Python in the Broader Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours-and-support">2.1.7 Office Hours and Support</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright Mwaka.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
