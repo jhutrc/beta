@@ -1,7 +1,7 @@
 format: jb-book
 root: intro
 parts:
-- caption: COURSE INFORMATION
+- caption: Challenges
   chapters:
   - file: act_1/act_1_0/act_1_0_0/act_1_0_0_1
   - file: act_1/act_1_0/act_1_0_0/act_1_0_0_2
@@ -13,4 +13,5 @@ parts:
     - file: act_2/act_2_0/act_2_0_0/act_2_0_0_1
     - file: act_2/act_2_0/act_2_0_0/act_2_0_0_2
     - file: act_2/act_2_0/act_2_0_0/act_2_0_0_3
-  
+
+    
