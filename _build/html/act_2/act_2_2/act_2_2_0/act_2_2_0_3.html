@@ -370,7 +370,7 @@ document.write(`
 <li><p><strong>Install a Stata Extension for VS Code</strong>:</p>
 <ul class="simple">
 <li><p>Open VS Code.</p></li>
-<li><p>Go to Extensions (you can use the shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+Command</span></code> on Mac).</p></li>
+<li><p>Go to Extensions (you can use the shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">Command+Shift+X</span></code> on Mac).</p></li>
 <li><p>Search for <code class="docutils literal notranslate"><span class="pre">Stata</span></code>.</p></li>
 <li><p>You should see a few extensions that provide Stata language support. One popular choice is “Stata Enhanced”. Install it (or another that you prefer).</p></li>
 </ul>
@@ -415,7 +415,9 @@ Note
 Some themes may not color all parts of the syntax.</p>
 <p>Installation
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.</p>
-<p>ext install stata-enhanced</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ext<span class="w"> </span>install<span class="w"> </span>stata-enhanced
+</pre></div>
+</div>
 <p>Running Code
 This package doesn’t have the capabilities to run your code in Stata. If you’re using Linux, you can use my scripts with the Autokey automation utility to quickly run selections of your files in a graphical session of Stata.</p>
 <p>You might also be interested in trying to port Atom’s stata-exec package.</p>
@@ -428,9 +430,13 @@ This package doesn’t have the capabilities to run your code in Stata. If you�
 <p>Examples
 An example of the PDF output of using dyntext and Pandoc is in the examples folder: dyntext.pdf.</p>
 <p>That file was created by running</p>
-<p>dyntext dyntext.domd, saving(<a class="reference external" href="http://dyntext.md">dyntext.md</a>) replace</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>dyntext dyntext<span class="m">.</span>domd, saving(dyntext<span class="m">.</span>md)<span class="k"> replace</span>
+</pre></div>
+</div>
 <p>from inside Stata 15, and then with</p>
-<p>pandoc <a class="reference external" href="http://dyntext.md">dyntext.md</a> -o dyntext.pdf</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pandoc<span class="w"> </span>dyntext.md<span class="w"> </span>-o<span class="w"> </span>dyntext.pdf
+</pre></div>
+</div>
 <p>on the command line using Pandoc.</p>
 <p>The file dyntext.dotex is a proof-of-concept and should compile with LaTeX but the output is not shown here.</p>
 </Details>
@@ -439,12 +445,14 @@ An example of the PDF output of using dyntext and Pandoc is in the examples fold
 <strong>stataRun</strong> allow you to run stata codes (.do .ado) and commands from within Visual Studio Code editor. Thus you can take advantage of an editor for syntax highlighting. You may want to install Stata-Enhanced and Stata-Language for syntax highlighting and other features</p>
 <p>Features
 The following command and keyboard shortcut are implemented (crtl to be replace by cmd on MacOS)</p>
-<p>shift+ctrl+a: Run All Lines ==&gt; This will run the entire file
-shift+ctrl+s: Run Selection ==&gt; To run a given slection. If no selection is made it default to Run All
-shift+ctrl+c: Run Current Line ==&gt; This will run the current line code
-shift+ctrl+d: Run Downward Lines==&gt; from current line to downward
-shift+ctrl+f: Run Frontward Lines ==&gt; from first line till current line
-Settings derived from stata-exec, which provide the same features for Atom. run-command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shift+ctrl+a:<span class="w"> </span>Run<span class="w"> </span>All<span class="w"> </span><span class="nv">Lines</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>entire<span class="w"> </span>file
+shift+ctrl+s:<span class="w"> </span>Run<span class="w"> </span><span class="nv">Selection</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>To<span class="w"> </span>run<span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>slection.<span class="w"> </span>If<span class="w"> </span>no<span class="w"> </span>selection<span class="w"> </span>is<span class="w"> </span>made<span class="w"> </span>it<span class="w"> </span>default<span class="w"> </span>to<span class="w"> </span>Run<span class="w"> </span>All
+shift+ctrl+c:<span class="w"> </span>Run<span class="w"> </span>Current<span class="w"> </span><span class="nv">Line</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>line<span class="w"> </span>code
+shift+ctrl+d:<span class="w"> </span>Run<span class="w"> </span>Downward<span class="w"> </span><span class="nv">Lines</span><span class="o">==</span>&gt;<span class="w"> </span>from<span class="w"> </span>current<span class="w"> </span>line<span class="w"> </span>to<span class="w"> </span>downward
+shift+ctrl+f:<span class="w"> </span>Run<span class="w"> </span>Frontward<span class="w"> </span><span class="nv">Lines</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w"> </span>from<span class="w"> </span>first<span class="w"> </span>line<span class="w"> </span>till<span class="w"> </span>current<span class="w"> </span>line
+</pre></div>
+</div>
+<p>Settings derived from stata-exec, which provide the same features for Atom. run-command</p>
 <p>Requirements
 Linux
 Requirements for Linux are xdotool and xclip as in the Atom version</p>
@@ -453,17 +461,23 @@ Installation instructions for Windows basically follows the original Atom stata-
 <p>Install the runStata package. I also recommend the Stata Enhanced package for code highlighting.</p>
 <p>Install Node. The original instructions indicated to install this specific version of Node with default settings. I followed the instructions and haven’t tried it with other versions.</p>
 <p>The stataRun extension needs a module called wimax to be compiled into a binary file. To do this Node needs windows-build-tools with Python2.7 and Visual Studio compiler packages. The installation takes some time (over 20 min. in my case) and couple of GB of disk space. To install it open up an administrator PowerShell (you can right click on the Windows icon at the bottom left and select “Windows PowerShell (Admin)”) and type in:</p>
-<p>npm install –global –production windows-build-tools</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>--global<span class="w"> </span>--production<span class="w"> </span>windows-build-tools
+</pre></div>
+</div>
 <p>In my case the original command ended with an error, so I used this one with success:</p>
 <p>npm install –global –production windows-build-tools&#64;2.2.1</p>
 <p>Open up Command Prompt (type cmd in the search bar in the dock, and it will be the first result) and type in:</p>
-<p>cd %USERPROFILE%.vscode\extensions\yeaoh.statarun-1.1.8
-npm install winax –python=%USERPROFILE%.windows-build-tools\python27\python.exe</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>%USERPROFILE%<span class="se">\.</span>vscode<span class="se">\e</span>xtensions<span class="se">\y</span>eaoh.statarun-1.1.8
+npm<span class="w"> </span>install<span class="w"> </span>winax<span class="w"> </span>--python<span class="o">=</span>%USERPROFILE%<span class="se">\.</span>windows-build-tools<span class="se">\p</span>ython27<span class="se">\p</span>ython.exe
+</pre></div>
+</div>
 <p>In VSCode go into Help -&gt; About. From there save the Electron version. In the next command replace ELECTRON_VERSION with the version from the About dialogue.</p>
-<p>npm rebuild winax –runtime=electron –target=ELECTRON_VERSION  –build-from-source</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>rebuild<span class="w"> </span>winax<span class="w"> </span>--runtime<span class="o">=</span>electron<span class="w"> </span>--target<span class="o">=</span>ELECTRON_VERSION<span class="w">  </span>--build-from-source
+</pre></div>
+</div>
 <p>Link the Stata Automation library. The following steps worked for me on Windows 10. The Stata executable is most likely in the folder C:\Program Files (x86)\Stata15.</p>
 <p>In the installation directory, right-click on the Stata executable, for example, StataSE.exe. Choose “Create Shortcut”.
-Right-click on the newly created “Shortcut to StataSE.exe”, choose “Property”, and change the Target from “C:\Program Files\Stata13\StataSE.exe” to “C:\Program Files\Stata13\StataSE.exe” /Register. Click “OK”.
+Right-click on the newly created “Shortcut to StataSE.exe”, choose “Property”, and change the Target from <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> /Register. Click “OK”.
 Right-click on the updated “Shortcut to StataSE.exe”; choose “Run as administrator”
 While you’re doing that, add the path of the Stata executable to the “Stata Path” option in the settings.</p>
 <p>Restart code and enjoy executing Stata code from code! (I hope…).</p>
