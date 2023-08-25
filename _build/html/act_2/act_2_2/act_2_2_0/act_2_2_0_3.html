@@ -354,7 +354,7 @@ document.write(`
 <li><p><strong>Community:</strong> Popular in social sciences, economics, epidemiology, and other fields that require robust statistical analysis</p></li>
 </ul>
 <p><strong>Discover the Versatility of Stata!</strong></p>
-<p>Stata is your trusted companion for data analysis, offering a powerful and user-friendly environment to explore, manipulate, and visualize data. Its versatility makes it suitable for a wide range of research domains, from social sciences to economics, epidemiology, and beyond! 🌐🔍</p>
+<p><a class="reference external" href="https://www.stata.com/features/overview/jupyter-notebooks/#">Stata</a> is your trusted companion for data analysis, offering a powerful and user-friendly environment to explore, manipulate, and visualize data. Its versatility makes it suitable for a wide range of research domains, from social sciences to economics, epidemiology, and beyond! 🌐🔍</p>
 <p><strong>Stata at Hopkins: Education and Beyond!</strong></p>
 <p>As an academic medical institution, Hopkins recognizes the importance of data analysis skills. That’s why we offer two <a class="reference external" href="https://publichealth.jhu.edu/courses?keyword=stata+programming&amp;yearId=2023&amp;termId=All&amp;instructor=&amp;department=All&amp;locationId=All">Stata classes</a> every spring, welcoming around 150 students each year, and another class in the summer with around 20 students. These classes provide a friendly entry point for beginners and equip researchers with the tools they need to tackle complex research questions with confidence! 🎓🌱</p>
 <p><strong>Empowering Data Analysis</strong></p>
@@ -390,8 +390,8 @@ document.write(`
 </ol>
 <p>After doing the above, your Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> file should now have proper syntax highlighting in VS Code. Remember, the effectiveness of the syntax highlighting depends on the quality of the Stata extension you’ve chosen. Some extensions may provide more detailed and accurate highlighting than others.</p>
 <Details>
-Stata syntax highlighting in Visual Studio Code, built from the ground up.
-Also available for Atom.
+<p>Stata syntax highlighting in Visual Studio Code, built from the ground up.
+Also available for Atom.</p>
 <p>stata Code snippet from Gtools, a faster implementation of Stata’s collapse and egen using C plugins. Shown with the Material theme.</p>
 <p>Features
 This package highlights:</p>
@@ -475,7 +475,7 @@ npm<span class="w"> </span>install<span class="w"> </span>winax<span class="w"> 
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>rebuild<span class="w"> </span>winax<span class="w"> </span>--runtime<span class="o">=</span>electron<span class="w"> </span>--target<span class="o">=</span>ELECTRON_VERSION<span class="w">  </span>--build-from-source
 </pre></div>
 </div>
-<p>Link the Stata Automation library. The following steps worked for me on Windows 10. The Stata executable is most likely in the folder C:\Program Files (x86)\Stata15.</p>
+<p>Link the Stata Automation library. The following steps worked for me on Windows 10. The Stata executable is most likely in the folder <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Stata15</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">/applications/stata/Stata18</span></code> on Mac.</p>
 <p>In the installation directory, right-click on the Stata executable, for example, StataSE.exe. Choose “Create Shortcut”.
 Right-click on the newly created “Shortcut to StataSE.exe”, choose “Property”, and change the Target from <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Stata13\StataSE.exe</span></code> /Register. Click “OK”.
 Right-click on the updated “Shortcut to StataSE.exe”; choose “Run as administrator”
@@ -489,7 +489,91 @@ Install as a normal vscode extension by searcing for stataRun in the vscode exte
 2.0.3</p>
 <p>Improvement for working on Windows and Linux</p>
 </Details>
-</Details></section>
+</Details>
+<p>Some hands on .ipynb and .dta integration:</p>
+<Details><p><strong>Python Path Handling:</strong> If you’re dealing with paths in a Python script or Jupyter notebook, you should make use of the os and os.path modules which handle paths more gracefully:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">base_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/d/Dropbox (Personal)/1f.ἡἔρις,κ/1.ontology&quot;</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;myenv&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Check Stata Installation Path:</strong>
+First, ensure that Stata is indeed installed in the /Applications directory. You can check this by navigating to the Applications folder or by using the terminal:</p></li>
+</ol>
+<p>ls /Applications | grep Stata:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>/Applications<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Stata
+
+Stata
+Stata18.dmg
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>This command lists all the items in the Applications directory and then filters the results to only show items containing the word “Stata”. This will give you an idea of the correct path to use.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Configuration:<br />
+Once you have the correct path, you can set it up:</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install stata_setup</span>
+<span class="kn">import</span> <span class="nn">stata_setup</span>
+<span class="n">stata_setup</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;/Applications/stata/&quot;</span><span class="p">,</span> <span class="s2">&quot;se&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># !pip install stata_setup</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">stata_setup</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">stata_setup</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;/Applications/stata/&quot;</span><span class="p">,</span> <span class="s2">&quot;se&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;stata_setup&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Replace “Stata” in the path with whatever the actual name of the Stata application directory is, based on your check from the first step.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Launching a Native Stata Window:</strong>
+If your goal is to open Stata itself from within the Jupyter notebook, you might be misinterpreting the function of stata_setup.config. This function typically sets up the integration for using Stata commands within Python or a Jupyter notebook, but it might not open a native Stata window by itself.
+To open Stata from the command line or a script on a Mac, you’d typically use the open command:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>open<span class="w"> </span>/Applications/stata/StataSE.app
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure to adjust /Applications/Stata.app to the actual path and name of the Stata application on your machine.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Further Integration:</strong>
+If you’re trying to execute Stata commands within Jupyter directly, consider using the <code class="docutils literal notranslate"><span class="pre">ipystata</span></code> package, which provides a bridge between Python and Stata in Jupyter notebooks. Once set up, you can use %%stata in a Jupyter cell to execute Stata commands.</p></li>
+</ol>
+<p>Lastly, ensure that the version of Stata you’re using supports the integration you’re trying to achieve. Some features might be limited to specific versions of Stata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">stata</span>
+sysuse auto, clear
+summarize mpg
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Cell magic `%%stata` not found.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
