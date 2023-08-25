@@ -409,6 +409,78 @@ document.write(`
 <p><strong>Office Hours and Support</strong></p>
 <p>As you embark on this journey, we will be here to provide additional support through regular office hours in person and via zoom, ensuring that you have the human touch and assistance you need.</p>
 <p>Let’s embrace the power of Python, leverage Google Colab’s user-friendly environment, and explore the transformative capabilities of ChatGPT. With these tools at your fingertips, you can conquer new frontiers in your research and academic pursuits, regardless of your previous programming experience.</p>
+<p>Quizzes:</p>
+<Details>
+<p>Python Libraries:</p>
+<p><strong>Question:</strong> Which Python library is renowned for plotting and graphing?</p>
+<ul class="simple">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">Statsmodels</span></code></p></li>
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code></p></li>
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">PyMC3</span></code></p></li>
+<li><p>D) <code class="docutils literal notranslate"><span class="pre">Requests</span></code></p></li>
+</ul>
+<p><strong>Answer:</strong> B) <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code></p>
+<p>Hands-on Exercises:</p>
+<ol class="arabic simple">
+<li><p>Simple Python Exercise with ChatGPT:</p></li>
+</ol>
+<p><strong>Objective:</strong> Use ChatGPT to help you write a Python program to compute the sum of numbers from 1 to 100.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Open Google Colab.</p></li>
+<li><p>Start a new Python notebook.</p></li>
+<li><p>In a code cell, type out your question for ChatGPT, for example: “Help me write a Python program to compute the sum of numbers from 1 to 100.”</p></li>
+<li><p>Use the response to execute the Python code.</p></li>
+</ol>
+<p><strong>Expected Code Block</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sum_numbers</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GitHub Copilot Exercise:</p>
+<p><strong>Objective:</strong> Use GitHub Copilot to help you write a Python function to reverse a string.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Open Google Colab.</p></li>
+<li><p>Start a new Python notebook.</p></li>
+<li><p>Begin typing a function definition like: <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">reverse_string(s):</span></code></p></li>
+<li><p>Let GitHub Copilot suggest the completion.</p></li>
+<li><p>Execute the function with a test string to see the reversed result.</p></li>
+</ol>
+<p><strong>Expected Code Block</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">reverse_string</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Data Visualization Exercise with Google Colab:</p></li>
+</ol>
+<p><strong>Objective:</strong> Create a bar chart showing the popularity of Python libraries.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Open Google Colab.</p></li>
+<li><p>Start a new Python notebook.</p></li>
+<li><p>Copy the following code block and execute.</p></li>
+</ol>
+<p><strong>Code Block</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">libraries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;Matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;Seaborn&#39;</span><span class="p">,</span> <span class="s1">&#39;Scikit-learn&#39;</span><span class="p">,</span> <span class="s1">&#39;Statsmodels&#39;</span><span class="p">,</span> <span class="s1">&#39;PyMC3&#39;</span><span class="p">,</span> <span class="s1">&#39;TensorFlow&#39;</span><span class="p">,</span> <span class="s1">&#39;NLTK&#39;</span><span class="p">]</span>
+<span class="n">popularity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">libraries</span><span class="p">,</span> <span class="n">popularity</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Python Libraries&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Popularity Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Popularity of Python Libraries&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>These are just basic exercises to get the audience familiarized with the platforms and tools. Depending on their complexity level, more advanced exercises can be created. Remember to always provide a solution or explanation following each quiz or exercise, as it aids in the learning process.</p>
+</Details>
 </section>
 
     <script type="text/x-thebe-config">

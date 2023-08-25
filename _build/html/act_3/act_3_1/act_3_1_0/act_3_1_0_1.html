@@ -390,12 +390,140 @@ document.write(`
 <li><p>Achieve scalability.</p></li>
 </ul>
 <p><strong>Efficiency Through Command Line</strong></p>
-<p>Bash, the Bourne Again SHell, is a cornerstone of computing mastery. Beyond command execution, Bash exemplifies streamlined operations and a profound understanding. It offers <strong>controlled automation</strong>. While GUIs provide a superficial interaction, Bash delves deeper, facilitating a richer conversation with the system.</p>
+<p>Bash, the Bourne Again SHell, is a cornerstone of computing mastery. Beyond command execution, Bash exemplifies streamlined operations and a profound understanding. It offers <strong>controlled automation</strong>. While GUIs provide a superficial interaction, Bash delves deeper, facilitating a richer conversation with the system. Locate the terminal on your computer (search for ‘Terminal’ in MacOS or ‘Command Prompt’ in Windows). Then, type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> to list the files in your current directory. You’ve just executed your first Bash command.</p>
+<Details>
+<p>Bash Basics:
+Question: Which of the following commands lists the files in a directory in Linux?</p>
+<p>A) dir
+B) ls
+C) show
+D) open</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># view from my terminal</span>
+
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-l
+total<span class="w"> </span><span class="m">1376</span>
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">3993</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">01</span>:21<span class="w"> </span>README.md
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">02</span>:49<span class="w"> </span>alpha
+drwxr-xr-x@<span class="w">  </span><span class="m">35</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1120</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">14</span>:52<span class="w"> </span>bloc
+drwxr-xr-x@<span class="w">   </span><span class="m">9</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">288</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">12</span>:45<span class="w"> </span>cst
+drwxr-xr-x@<span class="w">  </span><span class="m">16</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">512</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:47<span class="w"> </span>git
+drwxr-xr-x@<span class="w">  </span><span class="m">17</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">544</span><span class="w"> </span>Aug<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">22</span>:35<span class="w"> </span>git-filter-repo
+drwxr-xr-x@<span class="w">   </span><span class="m">7</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">224</span><span class="w"> </span>Aug<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">07</span>:33<span class="w"> </span>myenv
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">18</span>:53<span class="w"> </span>nh_projectbeta
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">   </span><span class="m">77753</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:44<span class="w"> </span>particle_animation.gif
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">463</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:43<span class="w"> </span>populate_be.ipynb
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">  </span><span class="m">562412</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">06</span>:37<span class="w"> </span>python.ipynb
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">   </span><span class="m">34173</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:47<span class="w"> </span>r.ipynb
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">02</span>:12<span class="w"> </span>seasons_projectalpha
+drwxr-xr-x@<span class="w">  </span><span class="m">13</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">416</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">14</span>:05<span class="w"> </span>sibs
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">231</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:08<span class="w"> </span>stata.do
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1196</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">18</span>:43<span class="w"> </span>stata.dta
+-rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">1892</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:03<span class="w"> </span>stata.log
+-rwxr-xr-x@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">      </span><span class="m">90</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">17</span>:08<span class="w"> </span>stata.sh
+drwxr-xr-x@<span class="w"> </span><span class="m">139</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">    </span><span class="m">4448</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">08</span>:29<span class="w"> </span>summer
+drwxr-xr-x@<span class="w">  </span><span class="m">25</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">     </span><span class="m">800</span><span class="w"> </span>Jul<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:21<span class="w"> </span>verano
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>To see the contents of a simple bash script, type <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">cat</span></code> command concatenates the contents of a file and prints them to the terminal. The <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> file contains the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>This tells us that the <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> script adds the Stata executable to the path and then executes the <code class="docutils literal notranslate"><span class="pre">stata.do</span></code> file. To run the script, type <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">bash</span></code> command executes the script. You can also execute the script by typing <code class="docutils literal notranslate"><span class="pre">./stata.sh</span></code>. The <code class="docutils literal notranslate"><span class="pre">./</span></code> tells the terminal to execute the script in the current directory. The <code class="docutils literal notranslate"><span class="pre">stata.sh</span></code> script is a simple example of how Bash can automate tasks. It’s a simple script, but it can be used to automate the execution of Stata code.</p>
+<p>But before we run that lets see the contents of the <a class="reference external" href="http://stata.do">stata.do</a> file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.do
+<span class="k">if</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
+
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/applications/stata
+<span class="w">    </span>ls<span class="w"> </span>-kla
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+<span class="w">    </span>stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+
+<span class="o">}</span>
+
+webuse<span class="w"> </span>auto,<span class="w"> </span>clear<span class="w"> </span>
+l<span class="w"> </span>make<span class="w"> </span>price<span class="w"> </span>mpg<span class="w"> </span>foreign<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span>/9
+di<span class="w"> </span><span class="s2">&quot;`c(N)&#39; obs &amp; `c(k)&#39; vars&quot;</span>%<span class="w">  </span>
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>Now let’s run the script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>./stata.sh
+
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>cat<span class="w"> </span>stata.log
+
+<span class="w">  </span>___<span class="w">  </span>____<span class="w">  </span>____<span class="w">  </span>____<span class="w">  </span>____<span class="w"> </span>®
+<span class="w"> </span>/__<span class="w">    </span>/<span class="w">   </span>____/<span class="w">   </span>/<span class="w">   </span>____/<span class="w">      </span><span class="m">18</span>.0
+___/<span class="w">   </span>/<span class="w">   </span>/___/<span class="w">   </span>/<span class="w">   </span>/___/<span class="w">       </span>SE—Standard<span class="w"> </span>Edition
+
+<span class="w"> </span>Statistics<span class="w"> </span>and<span class="w"> </span>Data<span class="w"> </span>Science<span class="w">       </span>Copyright<span class="w"> </span><span class="m">1985</span>-2023<span class="w"> </span>StataCorp<span class="w"> </span>LLC
+<span class="w">                                   </span>StataCorp
+<span class="w">                                   </span><span class="m">4905</span><span class="w"> </span>Lakeway<span class="w"> </span>Drive
+<span class="w">                                   </span>College<span class="w"> </span>Station,<span class="w"> </span>Texas<span class="w"> </span><span class="m">77845</span><span class="w"> </span>USA
+<span class="w">                                   </span><span class="m">800</span>-STATA-PC<span class="w">        </span>https://www.stata.com
+<span class="w">                                   </span><span class="m">979</span>-696-4600<span class="w">        </span>stata@stata.com
+
+Stata<span class="w"> </span>license:<span class="w"> </span>Single-user<span class="w"> </span>,<span class="w"> </span>expiring<span class="w"> </span><span class="m">27</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">2024</span>
+Serial<span class="w"> </span>number:<span class="w"> </span><span class="m">401809200438</span>
+<span class="w">  </span>Licensed<span class="w"> </span>to:<span class="w"> </span>Poseidon
+<span class="w">               </span>Johns<span class="w"> </span>Hopkins<span class="w"> </span>University
+
+Notes:
+<span class="w">      </span><span class="m">1</span>.<span class="w"> </span>Stata<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>batch<span class="w"> </span>mode.
+<span class="w">      </span><span class="m">2</span>.<span class="w"> </span>Unicode<span class="w"> </span>is<span class="w"> </span>supported<span class="p">;</span><span class="w"> </span>see<span class="w"> </span><span class="nb">help</span><span class="w"> </span>unicode_advice.
+<span class="w">      </span><span class="m">3</span>.<span class="w"> </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>variables<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">5</span>,000<span class="w"> </span>but<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>increased<span class="p">;</span>
+<span class="w">          </span>see<span class="w"> </span><span class="nb">help</span><span class="w"> </span>set_maxvar.
+
+.<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do<span class="w"> </span>
+
+.<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
+.<span class="w"> </span>
+.<span class="w">     </span><span class="nb">cd</span><span class="w"> </span>/applications/stata
+.<span class="w">     </span>ls<span class="w"> </span>-kla
+.<span class="w">     </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/applications/stata/statase.app/contents/macos/
+.<span class="w">     </span>stata-se<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>stata.do
+.<span class="w"> </span>
+.<span class="w"> </span><span class="o">}</span>
+
+.<span class="w"> </span>
+.<span class="w"> </span>webuse<span class="w"> </span>auto,<span class="w"> </span>clear<span class="w"> </span>
+<span class="o">(</span><span class="m">1978</span><span class="w"> </span>automobile<span class="w"> </span>data<span class="o">)</span>
+
+.<span class="w"> </span>l<span class="w"> </span>make<span class="w"> </span>price<span class="w"> </span>mpg<span class="w"> </span>foreign<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span>/9
+
+<span class="w">     </span>+-----------------------------------------+
+<span class="w">     </span><span class="p">|</span><span class="w"> </span>make<span class="w">             </span>price<span class="w">   </span>mpg<span class="w">    </span>foreign<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span><span class="p">|</span>-----------------------------------------<span class="p">|</span>
+<span class="w">  </span><span class="m">1</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Concord<span class="w">      </span><span class="m">4</span>,099<span class="w">    </span><span class="m">22</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">2</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Pacer<span class="w">        </span><span class="m">4</span>,749<span class="w">    </span><span class="m">17</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">3</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>AMC<span class="w"> </span>Spirit<span class="w">       </span><span class="m">3</span>,799<span class="w">    </span><span class="m">22</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">4</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Century<span class="w">    </span><span class="m">4</span>,816<span class="w">    </span><span class="m">20</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">5</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Electra<span class="w">    </span><span class="m">7</span>,827<span class="w">    </span><span class="m">15</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span><span class="p">|</span>-----------------------------------------<span class="p">|</span>
+<span class="w">  </span><span class="m">6</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>LeSabre<span class="w">    </span><span class="m">5</span>,788<span class="w">    </span><span class="m">18</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">7</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Opel<span class="w">       </span><span class="m">4</span>,453<span class="w">    </span><span class="m">26</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">8</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Regal<span class="w">      </span><span class="m">5</span>,189<span class="w">    </span><span class="m">20</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="m">9</span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>Buick<span class="w"> </span>Riviera<span class="w">   </span><span class="m">10</span>,372<span class="w">    </span><span class="m">16</span><span class="w">   </span>Domestic<span class="w"> </span><span class="p">|</span>
+<span class="w">     </span>+-----------------------------------------+
+
+.<span class="w"> </span>di<span class="w"> </span><span class="s2">&quot;`c(N)&#39; obs &amp; `c(k)&#39; vars&quot;</span>
+<span class="m">74</span><span class="w"> </span>obs<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="m">12</span><span class="w"> </span>vars
+
+.<span class="w"> </span>
+end<span class="w"> </span>of<span class="w"> </span><span class="k">do</span>-file
+<span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>We can see that the script ran the <a class="reference external" href="http://stata.do">stata.do</a> file and printed the results to stata.log in the terminal. This is a simple example of how Bash can automate tasks. It’s a simple script, but it can be used to automate the execution of Stata code.</p>
+</Details>
 <p><strong>Overshadowed by Aesthetic Simplicity</strong></p>
-<p>In the face of intuitive GUIs and their user-friendly designs, the depth of Bash is often overshadowed. For many, clickable icons and immediate visual feedback make command-lines appear daunting. Yet, those willing to embrace Bash find the experience rewarding.</p>
+<p>In the face of intuitive graphical user interfaces (GUIs) such as Windows, MacOS, and Android, depth of Bash is often overshadowed. With their colorful icons and all you have to do is click on what you want, GUIs are aesthetically pleasing. For many, clickable icons and immediate visual feedback make command-lines appear daunting. Yet, those willing to embrace Bash will find the experience extremely rewarding.</p>
 <p><strong>Early steps</strong></p>
 <p><strong>Jupyter</strong></p>
-<p>Jupyter Notebooks optimize data analysis automation, integrating code, text, and visuals. They’re paramount in this Fena platform, simplifying work-sharing and reproducibility.</p>
+<p>Jupyter Notebooks optimize data analysis automation, integrating code, text, and visuals. They’re paramount in this Fena platform, simplifying work-sharing and reproducibility. This platform is built on Jupyter Notebooks and GitHub pages and seeks to automate data analysis and share analysis results (as the simple example above shows)</p>
 <p><strong>Workflow</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Initiate a Jupyter Notebook</strong>: Using Google Colab, Jupyter Lab, or VS Code.</p></li>
@@ -419,6 +547,7 @@ document.write(`
 <li><p><strong>Natural Language Processing</strong>: Use <code class="docutils literal notranslate"><span class="pre">NLTK</span></code>, <code class="docutils literal notranslate"><span class="pre">SpaCy</span></code>, or <code class="docutils literal notranslate"><span class="pre">Gensim</span></code>.</p></li>
 <li><p><strong>Network Analysis</strong>: Explore networks with <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code>, <code class="docutils literal notranslate"><span class="pre">PyGraphviz</span></code>, or <code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">Geometric</span></code>.</p></li>
 </ul>
+<p>See Python chapter for a simple <a class="reference external" href="https://jhutrc.github.io/beta/act_2/act_2_2/act_2_2_0/act_2_2_0_1.html#">handson</a> exercise</p>
 </Details>
 <p><strong>Later steps</strong></p>
 <ol class="arabic simple">
