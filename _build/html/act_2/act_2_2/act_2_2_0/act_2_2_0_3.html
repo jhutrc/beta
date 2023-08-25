@@ -364,7 +364,118 @@ document.write(`
 <p><strong>Ready to Excel with Stata?</strong></p>
 <p>Whether you’re a beginner or a seasoned data analyst, Stata provides the tools and resources to succeed. With our dedicated classes and Stata’s robust capabilities, you can confidently navigate the data landscape and make a significant impact on your research! 🚀🌟💡</p>
 <p>Join us in exploring the boundless possibilities of Stata, as we analyze data, reveal hidden patterns, and create a brighter future through evidence-based research! 📈🔬🌠</p>
-</section>
+<Details>
+<p>Visual Studio Code (VS Code) provides syntax highlighting based on file extensions and language modes. If you want to get nice colors (syntax highlighting) for your Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> files in VS Code, you can follow these steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Install a Stata Extension for VS Code</strong>:</p>
+<ul class="simple">
+<li><p>Open VS Code.</p></li>
+<li><p>Go to Extensions (you can use the shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code> on PC or <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+Command</span></code> on Mac).</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">Stata</span></code>.</p></li>
+<li><p>You should see a few extensions that provide Stata language support. One popular choice is “Stata Enhanced”. Install it (or another that you prefer).</p></li>
+</ul>
+</li>
+<li><p><strong>Save or Rename Your File</strong>:</p>
+<ul class="simple">
+<li><p>If you are creating a new Stata file, simply save it with the <code class="docutils literal notranslate"><span class="pre">.do</span></code> extension. For existing files that don’t have this extension, you can rename them to include <code class="docutils literal notranslate"><span class="pre">.do</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Select the Right Language Mode</strong>:</p>
+<ul class="simple">
+<li><p>Sometimes, VS Code might not automatically recognize the correct language mode for your file. If that’s the case, you can manually set it.</p></li>
+<li><p>In the bottom right corner of the VS Code window, you’ll see a language label (like “Plain Text” or something else). Click on it.</p></li>
+<li><p>A search bar will appear at the top. Type <code class="docutils literal notranslate"><span class="pre">Stata</span></code> and select it from the list.</p></li>
+</ul>
+</li>
+</ol>
+<p>After doing the above, your Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> file should now have proper syntax highlighting in VS Code. Remember, the effectiveness of the syntax highlighting depends on the quality of the Stata extension you’ve chosen. Some extensions may provide more detailed and accurate highlighting than others.</p>
+<Details>
+Stata syntax highlighting in Visual Studio Code, built from the ground up.
+Also available for Atom.
+<p>stata Code snippet from Gtools, a faster implementation of Stata’s collapse and egen using C plugins. Shown with the Material theme.</p>
+<p>Features
+This package highlights:</p>
+<p>System commands, functions, and function arguments
+Macros, both global and local
+Accurately colors nested macros and escaped macros in strings when you want the inner macro to evaluate at runtime
+Colors macro extended functions inside `: … ‘ as well as after local lname:
+Comments, more accurately than Stata’s Do-file Editor.
+Regular expressions
+Colors both the limited syntax provided through the regexr() and regexm() functions, as well as the vastly expanded regex syntax provided in Stata 14 and 15 through the ustrregexm(), ustrregexrf(), and ustrregexra() functions.
+Dynamic Markdown and LaTeX documents. Instructions below.
+Other nice features:</p>
+<p>Works with unicode identifiers. Use unicode anywhere it’s legal Stata syntax.
+Alerts you if your variable name is illegal, i.e. if your variable name is more than 32 chars, starts with a number, or is a reserved name.
+Alerts you if you have any text other than } on a line ending a foreach/forvalues/if/else command
+Local macro back tick autocompletion. When you write a `, Visual Studio Code automatically fills in a ‘ after your cursor
+Makes it easy to spot incorrect nesting of compound quotes
+Support for programming ligatures for all valid Stata syntax for fonts that support them, like the Fira Code font.
+Highlights SQL queries used in the odbc command. (The language-sql base package must be active.)
+Note
+Some themes may not color all parts of the syntax.</p>
+<p>Installation
+Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.</p>
+<p>ext install stata-enhanced</p>
+<p>Running Code
+This package doesn’t have the capabilities to run your code in Stata. If you’re using Linux, you can use my scripts with the Autokey automation utility to quickly run selections of your files in a graphical session of Stata.</p>
+<p>You might also be interested in trying to port Atom’s stata-exec package.</p>
+<p>Dynamic Documents</p>
+<p>Stata 15 brought new features for working with dynamic documents. The dyndoc command lets you write in Markdown and converts your file and code to HTML for viewing in a web browser.</p>
+<p>It also added the dyntext command, which fills in Stata output for any text file, without touching the text itself. This lets you then use third-party document generators like Pandoc and LaTeX to generate documents.</p>
+<p>This package now provides syntax highlighting for Stata code written inside Stata’s dynamic tags for Markdown and LaTeX documents.</p>
+<p>By default, this package’s Markdown and LaTeX syntax highlighting will be applied for files ending in .domd and .dotex respectively. The Markdown All in One and LaTeX Workshop packages must be installed for the highlighting to work.</p>
+<p>If you name your file with a different extension, you can manually set the highlighting by clicking on the “Plain Text” button on the bottom right of the screen (or by pressing CTRL+SHIFT+L) and then selecting Stata Dyndoc (Markdown) or Stata Dyndoc (LaTeX) from the drop-down menu.</p>
+<p>Examples
+An example of the PDF output of using dyntext and Pandoc is in the examples folder: dyntext.pdf.</p>
+<p>That file was created by running</p>
+<p>dyntext dyntext.domd, saving(<a class="reference external" href="http://dyntext.md">dyntext.md</a>) replace</p>
+<p>from inside Stata 15, and then with</p>
+<p>pandoc <a class="reference external" href="http://dyntext.md">dyntext.md</a> -o dyntext.pdf</p>
+<p>on the command line using Pandoc.</p>
+<p>The file dyntext.dotex is a proof-of-concept and should compile with LaTeX but the output is not shown here.</p>
+</Details>
+<Details>
+<p>Description
+<strong>stataRun</strong> allow you to run stata codes (.do .ado) and commands from within Visual Studio Code editor. Thus you can take advantage of an editor for syntax highlighting. You may want to install Stata-Enhanced and Stata-Language for syntax highlighting and other features</p>
+<p>Features
+The following command and keyboard shortcut are implemented (crtl to be replace by cmd on MacOS)</p>
+<p>shift+ctrl+a: Run All Lines ==&gt; This will run the entire file
+shift+ctrl+s: Run Selection ==&gt; To run a given slection. If no selection is made it default to Run All
+shift+ctrl+c: Run Current Line ==&gt; This will run the current line code
+shift+ctrl+d: Run Downward Lines==&gt; from current line to downward
+shift+ctrl+f: Run Frontward Lines ==&gt; from first line till current line
+Settings derived from stata-exec, which provide the same features for Atom. run-command</p>
+<p>Requirements
+Linux
+Requirements for Linux are xdotool and xclip as in the Atom version</p>
+<p>Windows
+Installation instructions for Windows basically follows the original Atom stata-exec building manual with some modifications for code.</p>
+<p>Install the runStata package. I also recommend the Stata Enhanced package for code highlighting.</p>
+<p>Install Node. The original instructions indicated to install this specific version of Node with default settings. I followed the instructions and haven’t tried it with other versions.</p>
+<p>The stataRun extension needs a module called wimax to be compiled into a binary file. To do this Node needs windows-build-tools with Python2.7 and Visual Studio compiler packages. The installation takes some time (over 20 min. in my case) and couple of GB of disk space. To install it open up an administrator PowerShell (you can right click on the Windows icon at the bottom left and select “Windows PowerShell (Admin)”) and type in:</p>
+<p>npm install –global –production windows-build-tools</p>
+<p>In my case the original command ended with an error, so I used this one with success:</p>
+<p>npm install –global –production windows-build-tools&#64;2.2.1</p>
+<p>Open up Command Prompt (type cmd in the search bar in the dock, and it will be the first result) and type in:</p>
+<p>cd %USERPROFILE%.vscode\extensions\yeaoh.statarun-1.1.8
+npm install winax –python=%USERPROFILE%.windows-build-tools\python27\python.exe</p>
+<p>In VSCode go into Help -&gt; About. From there save the Electron version. In the next command replace ELECTRON_VERSION with the version from the About dialogue.</p>
+<p>npm rebuild winax –runtime=electron –target=ELECTRON_VERSION  –build-from-source</p>
+<p>Link the Stata Automation library. The following steps worked for me on Windows 10. The Stata executable is most likely in the folder C:\Program Files (x86)\Stata15.</p>
+<p>In the installation directory, right-click on the Stata executable, for example, StataSE.exe. Choose “Create Shortcut”.
+Right-click on the newly created “Shortcut to StataSE.exe”, choose “Property”, and change the Target from “C:\Program Files\Stata13\StataSE.exe” to “C:\Program Files\Stata13\StataSE.exe” /Register. Click “OK”.
+Right-click on the updated “Shortcut to StataSE.exe”; choose “Run as administrator”
+While you’re doing that, add the path of the Stata executable to the “Stata Path” option in the settings.</p>
+<p>Restart code and enjoy executing Stata code from code! (I hope…).</p>
+<p>Known Issues
+Only tested with Mac Os so far. Please and try create issues if any. Feel free to contributes.</p>
+<p>Installation
+Install as a normal vscode extension by searcing for stataRun in the vscode extension marketplace</p>
+<p>Release
+2.0.3</p>
+<p>Improvement for working on Windows and Linux</p>
+</Details>
+</Details></section>
 
     <script type="text/x-thebe-config">
     {
