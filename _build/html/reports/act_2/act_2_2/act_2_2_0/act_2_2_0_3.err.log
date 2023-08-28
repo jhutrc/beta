@@ -18,18 +18,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+# method 1
 # !pip install stata_setup
 import stata_setup
-stata_setup.config("/Applications/stata/", "se")
+stata_setup.config("/Applications/stata/", "se", splash=False)
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[2], line 2[0m
-[1;32m      1[0m [38;5;66;03m# !pip install stata_setup[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mstata_setup[39;00m
-[1;32m      3[0m stata_setup[38;5;241m.[39mconfig([38;5;124m"[39m[38;5;124m/Applications/stata/[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mse[39m[38;5;124m"[39m)
+Cell [0;32mIn[2], line 3[0m
+[1;32m      1[0m [38;5;66;03m# method 1[39;00m
+[1;32m      2[0m [38;5;66;03m# !pip install stata_setup[39;00m
+[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mstata_setup[39;00m
+[1;32m      4[0m stata_setup[38;5;241m.[39mconfig([38;5;124m"[39m[38;5;124m/Applications/stata/[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mse[39m[38;5;124m"[39m, splash[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
 
 [0;31mModuleNotFoundError[0m: No module named 'stata_setup'
 
