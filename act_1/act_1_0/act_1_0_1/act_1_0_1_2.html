@@ -346,6 +346,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="code">
 <h1>5. Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YxABYd2Qsxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>In the previous chapter, we discussed how version control using Git can be a superhero sidekick for managing your documents, allowing you to keep track of changes and maintain a clear history of your work. But did you know that version control has its origins in the world of code development?</p>
 <p><strong>Evolution of Version Control for Code</strong>
 Before Git, developers faced similar challenges to those encountered with multiple manuscript versions. They would create multiple files like “table1_jhu_v1.ado,” “table1_jhu_v2.ado,” or even “table1_jhu_final.ado” as they iteratively improved their code to generate Table 1, a crucial component in medical and epidemiological research (see below for an in-house example).</p>
@@ -365,13 +366,16 @@ As version control became an integral part of the software development process, 
 Today, Git has become the industry standard for version control, transforming how developers approach code development and fostering a vibrant and collaborative open-source community. Its adoption extends far beyond software development, as it has proven to be an invaluable tool for managing any project involving files and collaboration, including projects like “table1_jhu.ado” in medical and epidemiological research.</p>
 <p><strong>Streamlining Workflows</strong>
 So, whether you’re working on a manuscript or developing code like “table1_jhu.ado,” version control systems like Git have become indispensable tools for modern collaborative workflows. By embracing version control principles, you can streamline your work, avoid confusion, and focus on what truly matters – delivering high-quality research and impactful contributions to your field. Happy version controlling! 🚀👩‍💻</p>
-<p><strong>Excerp from Table 1 Code</strong></p>
+<p>Certainly! Let’s weave that transition smoothly:</p>
+<hr class="docutils" />
+<p><strong>Sample Table 1 Code: Before the Dawn of Git’s Era</strong></p>
+<p>The snippet below provides a fascinating window into the world before the widespread adoption of version control. These lines, with their inline annotations and versioning notes, encapsulate the diligent efforts developers made to manually track the evolution of their code.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">*! inspired by PH.340.600</span>
 <span class="c1">*! by Vincent Jin &amp; Abi Muzaale</span>
 <span class="c1">*! July 5, 2022 </span>
 <span class="c1">*! version 3.01</span>
 <span class="c1">*! fixed rounding issue for non-by table</span>
-<span class="c1">*! a space added to between median and IQR for cont vars</span>
+<span class="c1">*! space added between median &amp; IQR for cont vars</span>
 
 <span class="k">capture program drop</span> table1_afecdvi
 <span class="k">program</span> define table1_afecdvi
@@ -385,13 +389,16 @@ So, whether you’re working on a manuscript or developing code like “table1_j
 <span class="k">				  </span>
 <span class="k">	quietly</span> {
 		
-		<span class="c1">// sreen if if syntax is called</span>
+		<span class="c1">// screen if &#39;if&#39; syntax is invoked</span>
 <span class="k">		if</span> <span class="s">&quot;</span><span class="nv">`if&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
 <span class="k">			local</span> if_helper = <span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`if&#39;</span><span class="s">&quot;</span>, <span class="m">3</span>, .)
 <span class="k">			local</span> if_helper :<span class="k"> di</span> <span class="s">&quot;&amp; &quot;</span> <span class="s">&quot;</span><span class="nv">`if_helper&#39;</span><span class="s">&quot;</span>
 		}
 </pre></div>
 </div>
+<p>Imagine, for a moment, navigating such changes across multiple files, each with its own set of annotations and edits. Now, let’s contrast this with the convenience of Git. With Git, instead of scattered annotations, each change gets a commit – a snapshot, if you will, that clearly records alterations, complete with meaningful descriptions. Over time, these commits accumulate to form a Git history, a comprehensive log of all changes made to the codebase.</p>
+<p>For those who are visual learners, I’ve prepared a demonstration on how Git seamlessly manages these changes, allowing for a streamlined coding experience. Dive into this video I’ve uploaded on YouTube to see Git in action: [link to your YouTube video here].</p>
+<p>In the video, you’ll witness the power of Git commits and history firsthand, illustrating just how transformative this tool has been for developers, especially when contrasted with the manual methods of yesteryears.</p>
 </section>
 
     <script type="text/x-thebe-config">
