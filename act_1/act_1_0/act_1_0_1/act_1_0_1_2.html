@@ -377,8 +377,8 @@ So, whether you’re working on a manuscript or developing code like “table1_j
 <span class="c1">*! fixed rounding issue for non-by table</span>
 <span class="c1">*! space added between median &amp; IQR for cont vars</span>
 
-<span class="k">capture program drop</span> table1_afecdvi
-<span class="k">program</span> define table1_afecdvi
+<span class="k">capture program drop</span> table1_jhu_v3_01
+<span class="k">program</span> define table1_v3_01
 <span class="k">     syntax</span> [if],  title(string) <span class="cs">///  </span>
 	              [cont(varlist)] <span class="cs">///  </span>
 			      [binary(varlist)]  <span class="cs">/// </span>
