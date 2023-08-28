@@ -347,18 +347,57 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="error">
 <h1>2. Error<a class="headerlink" href="#error" title="Permalink to this heading">#</a></h1>
 <p><strong>Transition from Chapter 1</strong></p>
-<p>Having traversed the realm of rigor in clinical research, we recognize that the odds ratio or any point estimate doesn’t simply stand alone. Just as we discussed the importance of these measures, it’s essential to delve into the imperfections that might subtly influence them. These imperfections, or errors, can cloud our understanding and lead to misleading conclusions, no matter how rigorous our approach. Thus, let’s dissect the nature of these errors and how they interact with our research conclusions.</p>
+<p>Emerging from the basics, we learned that metrics like the odds ratio aren’t standalone entities. They reside within a vast landscape shaped by error and variance. While both play pivotal roles in the interpretation of results, their distinction can often blur, especially in regression analyses. In this chapter, we delve deeper into understanding these intertwined concepts, especially within the context of hierarchical data.</p>
 <p><strong>Introduction</strong></p>
-<p>Error in clinical research is like the undercurrent in a vast ocean. While the surface might appear calm, these hidden forces can steer our research ship off course. They symbolize the inaccuracies that might emerge at various stages, subtly affecting the final outcomes we so carefully measure.</p>
-<p><strong>Types of Error</strong></p>
-<p><strong>Random Error</strong></p>
-<p>Random errors are those unpredictable fluctuations, akin to static on a radio. When we talked about the 95% CI of the odds ratio in the previous chapter, random error is what makes the interval wide or narrow. It’s the uncertainty wrapped around our point estimate. While they can’t be completely obliterated, the right design and statistical techniques can keep them in check. As you reflect on the challenges posed by random errors, consider the future possibilities. In <a class="reference internal" href="../../../act_3/act_3_1/act_3_1_0/act_3_1_0_2.html"><span class="doc std std-doc">Chapter 14</span></a>, we’ll introduce tools that utilize the prowess of modern technology to mitigate them.</p>
-<p><strong>Systematic Error</strong></p>
-<p>Recall our discussion on odds ratios. Now, imagine if our methods or processes subtly favored a particular outcome, consistently inflating or deflating our odds ratio. That’s systematic error for you. These errors can mislead us into believing something that isn’t true. They’re crafty, introducing a consistent bias that can deviate our findings from reality. Their origins can be varied, from a flawed study design to biases in data collection.</p>
-<p><strong>Mitigating Errors</strong></p>
-<p>To ensure our odds ratios, 95% CIs, and other metrics are as accurate as they can be, we must be vigilant. Recognizing and confronting errors is a quest for clarity. Through regular checks, employing precise tools, and a dash of innovative techniques from <a class="reference internal" href="../../../act_3/act_3_1/act_3_1_0/act_3_1_0_2.html"><span class="doc std std-doc">Chapter 14</span></a>, we can steer our research closer to the truth, ensuring the light of rigor isn’t dimmed by the shadows of error.</p>
-<hr class="docutils" />
-<p>This iteration introduces the concept of error using familiar terms (odds ratio and 95% CI) from Chapter 1, easing the reader into the topic while building upon their existing knowledge.</p>
+<p>In clinical research, every observation, every reading, carries with it some element of uncertainty. This uncertainty is shared between error and variance. Yet, when diving deep into datasets or regressions, teasing apart the two becomes a Herculean task. Let’s embark on this journey to differentiate and understand them better.</p>
+<p><strong>Error and Variance: Two Sides of the Same Coin</strong></p>
+<p><strong>Error</strong>: Refers to the difference between the observed value and the true value. It’s the deviation we wish wasn’t there, and it speaks to the accuracy of our measurements.</p>
+<p><strong>Variance</strong>: While error speaks to accuracy, variance deals with precision. It tells us about the dispersion or spread of our data points around the mean.</p>
+<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">datasets or regressions</a>, however, this distinction becomes nebulous. When we observe a spread in data points in a regression analysis, is it due to the natural variability (variance) in the population? Or is it a result of the inaccuracies in our measurement or study design (errors)? Often, we can’t tell them apart directly, but we can make informed judgments based on study design and prior knowledge.</p>
+<Details>
+ <Summary>Bias</Summary>
+<p>Here’s a grouping that provides a simplified yet clear understanding of the <a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">bias-variance tradeoff</a> and the ideal outcomes one should aim for in research or modeling. It also gives a structured approach to distinguishing between bias and variance. Here’s a breakdown:</p>
+<ol class="arabic simple">
+<li><p><strong>Bias (Accuracy)</strong></p>
+<ul class="simple">
+<li><p>This is linked to the idea of systematic error.</p></li>
+<li><p>Bias is a consistent deviation from the true (or expected) value.</p></li>
+<li><p>The key feature of bias is that it’s predictable and doesn’t change regardless of how many times you repeat the experiment or data collection.</p></li>
+<li><p>With the right methods or understanding of the system, bias can be corrected for or adjusted.</p></li>
+</ul>
+</li>
+<li><p><strong>Variance (Precision)</strong></p>
+<ul class="simple">
+<li><p>Variance is intrinsically tied to the concept of random error.</p></li>
+<li><p>Unlike bias, variance speaks to unpredictable changes in measurements or predictions. Even if you repeat the experiment or data collection under the same conditions, the random error may differ.</p></li>
+<li><p>Due to its unpredictable nature, variance can’t be completely eradicated, but it can be minimized or managed with appropriate techniques.</p></li>
+</ul>
+</li>
+<li><p><strong>Truth</strong></p>
+<ul class="simple">
+<li><p>The goal in many analyses, modeling, or experiments is to approach the “truth” — to make predictions or measurements that are both accurate (low bias) and precise (low variance).</p></li>
+<li><p>“Ideal methods” would achieve this balance, providing reliable and consistent results.</p></li>
+<li><p>“Sloppy” methods might consistently miss the mark (high bias) but do so in a predictable manner (low variance).</p></li>
+<li><p>“Overfit” refers to methods that fit the given data too closely, capturing not only the underlying patterns but also the noise or random error. This results in low bias but high variance, making the model less generalizable to new or unseen data.</p></li>
+</ul>
+</li>
+</ol>
+<p>This framework can serve as a useful reference for anyone trying to grasp these concepts, whether they’re seasoned researchers or newcomers to the field.</p>
+</Details>
+<p><strong>Hierarchical Data: Adding Layers of Complexity</strong></p>
+<p>Clinical data, with its nested structures, further complicates the error-variance interplay:</p>
+<ul class="simple">
+<li><p><strong>Longitudinal Data</strong>: In repeated measures, within-person fluctuations might introduce both error (if measurements are inconsistent) and variance (if there’s a natural rhythm or pattern to the changes). The correlation between measurements, especially those taken closer in time, adds another layer to decipher.</p></li>
+<li><p><strong>Phenotypic Clustering</strong>: Grouping by phenotype or characteristics introduces variance at multiple levels. Within a cluster, measurements might show low variance, but across clusters, differences can be significant. However, errors in measurement or biases in data collection can permeate these clusters, further muddying the waters.</p></li>
+</ul>
+<p><strong>Decoding the Conundrum in Practical Scenarios</strong></p>
+<p>When you dive into regression analyses or hierarchical datasets:</p>
+<ul class="simple">
+<li><p><strong>Clinical Medicine</strong>: Focus on patterns. Is a patient’s response to treatment consistent across time? If fluctuations are beyond expected variance, consider the role of error.</p></li>
+<li><p><strong>Public Health</strong>: While population-level trends provide insights, diving deeper into phenotypic clusters can reveal nuanced stories. Are observed variations typical of a phenotype, or could they result from systematic biases or errors in data collection?</p></li>
+</ul>
+<p><strong>Concluding Thoughts</strong></p>
+<p>Clinical research is both an art and a science. While the dance between error and variance can be intricate and at times confusing, appreciating their roles and potential interplay ensures our interpretations are both grounded and discerning. As we continue our journey, keeping an eye on these subtle dynamics will ensure our path remains as clear as possible, even in the midst of data-driven complexities.</p>
 </section>
 
     <script type="text/x-thebe-config">
