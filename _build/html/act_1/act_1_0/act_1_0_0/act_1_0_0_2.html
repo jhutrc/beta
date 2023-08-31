@@ -159,6 +159,10 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="act_1_0_0_1.html">1. Rigor</a></li>
+
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Error</a></li>
 <li class="toctree-l1"><a class="reference internal" href="act_1_0_0_3.html">3. Sloppiness</a></li>
 </ul>
@@ -347,13 +351,13 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="error">
 <h1>2. Error<a class="headerlink" href="#error" title="Permalink to this heading">#</a></h1>
 <p><strong>Transition from Chapter 1</strong></p>
-<p>Emerging from the basics, we learned that metrics like the odds ratio aren’t standalone entities. They reside within a vast landscape shaped by error and variance. While both play pivotal roles in the interpretation of results, their distinction can often blur, especially in regression analyses. In this chapter, we delve deeper into understanding these intertwined concepts, especially within the context of hierarchical data.</p>
+<p>Emerging from the basics, we learned that metrics like the odds ratio aren’t standalone entities. They reside within a vast landscape shaped by error, which includes bias (systematic error) &amp; variance (random error). While both types of error play pivotal roles in the interpretation of results, their distinction can often blur, especially in regression analyses. In this chapter, we delve deeper into understanding these intertwined concepts, especially within the context of hierarchical data.</p>
 <p><strong>Introduction</strong></p>
-<p>In clinical research, every observation, every reading, carries with it some element of uncertainty. This uncertainty is shared between error and variance. Yet, when diving deep into datasets or regressions, teasing apart the two becomes a Herculean task. Let’s embark on this journey to differentiate and understand them better.</p>
-<p><strong>Error and Variance: Two Sides of the Same Coin</strong></p>
-<p><strong>Error</strong>: Refers to the difference between the observed value and the true value. It’s the deviation we wish wasn’t there, and it speaks to the accuracy of our measurements.</p>
-<p><strong>Variance</strong>: While error speaks to accuracy, variance deals with precision. It tells us about the dispersion or spread of our data points around the mean.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">datasets or regressions</a>, however, this distinction becomes nebulous. When we observe a spread in data points in a regression analysis, is it due to the natural variability (variance) in the population? Or is it a result of the inaccuracies in our measurement or study design (errors)? Often, we can’t tell them apart directly, but we can make informed judgments based on study design and prior knowledge.</p>
+<p>In clinical research, every observation, every reading, carries with it some element of uncertainty. This uncertainty or error is shared between bias and variance. Yet, when diving deep into datasets or regressions, teasing apart the two becomes a Herculean task. Let’s embark on this journey to differentiate and understand them better.</p>
+<p><strong>Bias and Variance: Two Sides of the Same Coin</strong></p>
+<p><strong>Bias</strong>: Refers to the difference between the observed value and the true value. It’s the deviation we wish wasn’t there, and it speaks to the accuracy of our measurements.</p>
+<p><strong>Variance</strong>: While bias speaks to accuracy, variance deals with precision. It tells us about the dispersion or spread of our data points around the mean.</p>
+<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">datasets or regressions</a>, however, this distinction becomes nebulous. When we observe a spread in data points in a regression analysis, is it due to inaccuracies stemming from design, measurement, or analysis (bias)? Or is it due to the inherent differences in the population (variance)? Often, we can’t tell them apart directly, but we can make informed judgments based on study design and prior knowledge.</p>
 <Details>
  <Summary>Bias</Summary>
 <p>Here’s a grouping that provides a simplified yet clear understanding of the <a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">bias-variance tradeoff</a> and the ideal outcomes one should aim for in research or modeling. It also gives a structured approach to distinguishing between bias and variance. Here’s a breakdown:</p>
@@ -363,7 +367,7 @@ document.write(`
 <li><p>This is linked to the idea of systematic error.</p></li>
 <li><p>Bias is a consistent deviation from the true (or expected) value.</p></li>
 <li><p>The key feature of bias is that it’s predictable and doesn’t change regardless of how many times you repeat the experiment or data collection.</p></li>
-<li><p>With the right methods or understanding of the system, bias can be corrected for or adjusted.</p></li>
+<li><p>With the right methods or understanding of the system, we can control or adjust for bias.</p></li>
 </ul>
 </li>
 <li><p><strong>Variance (Precision)</strong></p>
@@ -373,12 +377,13 @@ document.write(`
 <li><p>Due to its unpredictable nature, variance can’t be completely eradicated, but it can be minimized or managed with appropriate techniques.</p></li>
 </ul>
 </li>
-<li><p><strong>Truth</strong></p>
+<li><p><strong>Truth (Explanation)</strong></p>
 <ul class="simple">
 <li><p>The goal in many analyses, modeling, or experiments is to approach the “truth” — to make predictions or measurements that are both accurate (low bias) and precise (low variance).</p></li>
 <li><p>“Ideal methods” would achieve this balance, providing reliable and consistent results.</p></li>
 <li><p>“Sloppy” methods might consistently miss the mark (high bias) but do so in a predictable manner (low variance).</p></li>
 <li><p>“Overfit” refers to methods that fit the given data too closely, capturing not only the underlying patterns but also the noise or random error. This results in low bias but high variance, making the model less generalizable to new or unseen data.</p></li>
+<li><p>A hallmark of all clinical science and epidemiology is to “Explain” variance. We want to understand the sources of variance and explain them. This is the essence of the scientific method.</p></li>
 </ul>
 </li>
 </ol>
