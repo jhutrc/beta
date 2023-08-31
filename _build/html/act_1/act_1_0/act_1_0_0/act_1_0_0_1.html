@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'act_1/act_1_0/act_1_0_0/act_1_0_0_1';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -344,63 +346,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="rigor">
+  <p><span class="math notranslate nohighlight">\(
+\left\{
+\begin{array}{ll}
+\text{Truth} \\
+\text{Knowledge}  \left\{ \begin{array}{ll} \text{Rigor} \\ \text{Error} \\ \text{Sloppiness} \end{array} \right.  \\ 
+\text{Morality} \\
+\end{array}
+\right.
+\)</span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="rigor">
 <h1>1. Rigor<a class="headerlink" href="#rigor" title="Permalink to this heading">#</a></h1>
+<p><strong>The Unsung Hero of Medical Breakthroughs</strong></p>
 <p><strong>Introduction</strong></p>
-<p>In medicine, just as in surgical procedures, the key to success lies in precision and attention to detail. That’s what ‘rigor’ stands for in clinical research. When we talk about rigor, we’re referring to the thoroughness and precision in research that makes our findings reliable and actionable. Think of it as the preparations a surgeon would do before an operation. We want our research to be set up perfectly, so the results truly benefit patient care.</p>
-<p><img alt="" src="https://github.com/jhutrc/beta/blob/main/act_0/act_0_2/act_0_2_1/fig1_cisplatin.png?raw=true" /></p>
-<p><strong>Understanding the Clinical Problem</strong></p>
-<p>Every research journey begins with a question. This could be about a specific treatment’s effectiveness, or understanding a disease pattern. To tackle this, we first need a crystal clear definition of our problem. It’s much like a surgeon needing a detailed diagnosis before determining the best surgical approach.</p>
-<p><strong>Designing the Study and Gathering Data</strong></p>
-<p>Designing a study is akin to mapping out a surgical strategy. We need the right ‘patients’ (participants), dependable methods to gather our data, and to ensure our data is consistent and spot-on. Any misstep can blur our findings, similar to how a surgical procedure can go awry without a proper plan.</p>
-<p><strong>Analysis and Sharing Results</strong></p>
-<p>Once our data is ready, it’s interpretation time. Imagine a post-surgery review, evaluating if all went as planned. Here’s where terms like ‘odds’ come in. Let’s gently unpack this:</p>
+<p>Imagine you’re about to board an airplane. You see the pilot meticulously checking the aircraft, adhering to a pre-flight checklist, ensuring every dial is accurate, every bolt is tight, and every engine is roaring at its best. That, in essence, is what rigor is in medical research—a set of checks and balances that makes sure the science we trust is as dependable as the planes we fly. Let’s buckle up and explore why rigor is the unsung hero that underpins every medical breakthrough.</p>
+<Details>
+  <Summary>Informed Decisions</Summary>
 <p><strong>The Image Explained</strong>: Imagine a group of patients with bladder cancer. For each patient, there’s a decision to make - are they suitable for a specific treatment called cisplatin? It’s crucial because this treatment, while potentially beneficial, can also have adverse outcomes.</p>
 <p>We have two tools, or methods, to help make this decision: CKD-EPI 2021 (a newer, race-free equation) and CKD-EPI 2009. These methods give us “odds”, essentially the chances, of a patient being eligible for the treatment (Cisplatin+) or not (Cisplatin-). But there’s more: these odds also hint at the likelihood of a patient facing adverse outcomes if they receive the treatment.</p>
 <p>Now, you might wonder, which method do we trust? To figure that out, we compare the odds given by both methods. This comparison, known as the ‘odds ratio’, is our compass. It shows us how the odds from one method stack up against the other. And because in medicine we always deal with uncertainties, we also present a range (the 95% CI) to show where the true odds ratio likely lies. Think of it as the margin of error in our compass, helping us navigate the decision-making journey more confidently.</p>
 <p>In essence, the image serves as a visual guide, simplifying complex decisions and potential outcomes into understandable terms.</p>
 <p>Being transparent in how we reached our results is as crucial as a surgeon discussing outcomes with a patient’s family. It builds trust and allows others to understand, replicate, and expand on our work.</p>
-<p><strong>In Conclusion</strong></p>
-<p>Rigor in research is all about detail and reliability. From framing the right questions to interpreting and communicating findings, it’s a journey to provide the best possible answers for better patient care.</p>
+</Details>
+<p><img alt="Decision Making in Medicine" src="https://github.com/jhutrc/beta/blob/main/act_0/act_0_2/act_0_2_1/fig1_cisplatin.png?raw=true" /></p>
+<p><strong>The Forensics of the Clinical Problem</strong></p>
+<p>Medical researchers are akin to detectives arriving at a crime scene (truth, knowledge, and morality are to be parsed - think: <a class="reference external" href="https://en.wikipedia.org/wiki/Dr._Watson">Dr. John H. Watson</a>). To solve the case—or in our context, to answer the research question—they need a forensic-level understanding of the clinical problem. This goes beyond just what or who; it delves into how, why, and what if.</p>
+<p><strong>The Architect and the Blueprint</strong></p>
+<p>Creating the research design is like constructing a skyscraper. It starts with a blueprint that lays out what the study aims to achieve and how it plans to get there, a carefully orchestrated composition of methods, participants, and metrics.</p>
+<p><strong>The Compass and the Navigator</strong></p>
+<p>Data analysis in medical research is like navigating through a dense jungle; a good compass is essential for survival. Here, the compass is our statistical methodology, helping us sift through a thicket of numbers to find our way to clear, actionable insights.</p>
 <Details>
-  <Summary>Analytic Design</Summary>
+  <Summary>The Nitty-Gritty: Analytic Design</Summary>
 <ol class="arabic simple">
-<li><p><strong>Eligibility: Study Design (Figure 1)</strong>:</p></li>
+<li><p>Eligibility and the Art of Selection</p></li>
 </ol>
-<ul class="simple">
-<li><p><strong>Factorial Design</strong>: An example is given above on cisplatin therapy in patients with bladder cancer.</p></li>
-</ul>
+<p>Imagine casting for a film. Not just any actor fits every role; likewise, not just any patient fits every study. The casting decisions you make are critical to the story you’ll ultimately tell.</p>
 <ol class="arabic simple" start="2">
-<li><p><strong>Binary: Study vs. Control (Table 1)</strong></p></li>
+<li><p>Propensity for Outcomes: Leveling the Playing Field</p></li>
 </ol>
-<ul class="simple">
-<li><p><strong>Propensity for Outcomes</strong>: Similar propensity for outcomes (<em>ceteris paribas</em>) between the study and control group. If the study is randomized, the propensity for outcomes should theoretically be balanced across groups. If not, you might consider using statistical techniques like propensity score matching to balance observed confounders. Multivariable regression doesn’t ensure balance between groups, so it’s not a substitute for propensity score matching.</p></li>
-</ul>
+<p>If you’ve ever balanced a seesaw, you know it’s all about equal weight on both sides. In clinical studies, this balance is known as propensity for outcomes between study and control groups.</p>
 <ol class="arabic simple" start="3">
-<li><p><strong>Continuous: Difference in Means (Figure 2)</strong></p></li>
+<li><p>Continuity in Measures: Why Consistency Matters</p></li>
 </ol>
+<p>A carpenter measures twice but cuts once. In the same vein, ensuring continuous measures in our study helps us make ‘cuts’ that are accurate and telling.</p>
+<Details>
+  <Summary>Variance in measures as explanation, not as bias</Summary>
 <ul class="simple">
-<li><p><strong>Surrogate of Outcome of Interest</strong>: It’s important that the continuous measure is a valid surrogate for the ultimate outcome of interest. Its validity and reliability should be well-established.</p>
-<ul>
+<li><p><strong>Surrogate of Outcome of Interest</strong>: It’s important that the continuous measure is a valid surrogate for the ultimate outcome of interest. Its validity and reliability should be well-established.</p></li>
 <li><p><strong>Longitudinal</strong>: Repeated measures of the same individuals over time can be powerful but require specialized statistical models like mixed-effects models or generalized estimating equations to account for within-subject correlation.</p></li>
 <li><p><strong>Hierarchical</strong>: If data are clustered by some phenotype or other categorization (like hospital or geographic location), you’ll need to use hierarchical or multilevel models to account for this clustering. This is particularly important for avoiding Type I errors (false positives).</p></li>
 </ul>
-</li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p><strong>Time-to-event: Survival Analysis (Figure 3)</strong></p></li>
-</ol>
-<ul class="simple">
-<li><p><strong>Hard Clinical Outcomes with ICD10 Code</strong>: Using ICD10 codes for outcomes is a strong approach as these are standardized diagnoses. However, ensure the data quality and consistency in how these codes are assigned.</p></li>
-</ul>
-<ol class="arabic simple" start="5">
-<li><p><strong>Interaction Effects</strong>: You might also consider if there are any interaction effects between these different types of data (e.g., does the impact of a treatment vary over time?).</p></li>
-<li><p><strong>Multiple Comparisons</strong>: If you’re looking at multiple outcomes or conducting numerous subgroup analyses, you’ll need to adjust for multiple comparisons to maintain the study’s Type I error rate.</p></li>
-<li><p><strong>Missing Data</strong>: Plan how to handle missing data, as this can significantly impact your results. Note that “not handling missing data” is equivalent to complete case analysis (i.e., only including individuals with complete data). This can introduce bias if the missing data are not missing completely at random (MCAR). Multiple imputation is a common approach to handling missing data. If data are missing completely at random (MCAR), then complete case analysis is a valid approach but resulting in a loss of power.</p></li>
-<li><p><strong>Data Visualization</strong>: A well-designed table or figure can be worth a thousand words but be cautious of over-interpretation. Make sure the visualization clearly conveys what the data represent.</p></li>
-<li><p><strong>External Validity</strong>: Finally, consider how generalizable your findings are to the broader population, a historical population, or a future one (which is often the target).</p></li>
-</ol>
 </Details>
+<ol class="arabic simple" start="4">
+<li><p>Tick-Tock: The Time Bomb of Clinical Outcomes</p></li>
+</ol>
+<p>Time waits for no one, and in clinical research, it’s a ticking time bomb that could either validate or annihilate our hypotheses.</p>
+<ol class="arabic simple" start="5">
+<li><p>Data Interaction: The Plot Twists of Medical Research</p></li>
+</ol>
+<p>In a novel, plot twists keep us hooked. Similarly, interaction effects in a study can reveal unexpected but critical information that keeps researchers on their toes.</p>
+<ol class="arabic simple" start="6">
+<li><p>Multiple Comparisons: Juggling with Data</p></li>
+</ol>
+<p>Imagine juggling. The more balls in the air, the higher the chance of a mistake. Likewise, conducting multiple comparisons in a study requires a higher level of skill to prevent errors.</p>
+<ol class="arabic simple" start="7">
+<li><p>Missing Data: The Ghosts in Our Machine</p></li>
+</ol>
+<p>Think of data as the cast of a play. If key characters go missing, the story falls apart. The same goes for our research.</p>
+<ol class="arabic simple" start="8">
+<li><p>Visualization: A Snapshot Worth a Thousand Data Points</p></li>
+</ol>
+<p>A compelling visual can go viral in today’s digital age. Similarly, a well-crafted visualization in a study can rapidly communicate complex data to a wide audience.</p>
+<ol class="arabic simple" start="9">
+<li><p>Generalizability: From Local Stage to Global Impact</p></li>
+</ol>
+<p>Ever watched a local artist become a global superstar? That’s what generalizability is all about in research—making sure your findings are ready for the big league.</p>
+</Details>
+<p>Conclusion</p>
+<p>So there you have it—rigor may be the unsung hero of medical research, but it’s what turns average science into life-saving breakthroughs. Much like a pilot’s checklist ensures a safe flight, rigor ensures that medical research is dependable, ethical, and impactful. So, the next time you hear about a new revolutionary treatment or vaccine, remember that rigor was its co-pilot, steering it safely from question to answer, from the lab bench to your medicine cabinet.</p>
 </section>
 
     <script type="text/x-thebe-config">
