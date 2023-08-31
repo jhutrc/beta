@@ -370,7 +370,7 @@ document.write(`
 </Details>
 <p><img alt="Decision Making in Medicine" src="https://github.com/jhutrc/beta/blob/main/act_0/act_0_2/act_0_2_1/fig1_cisplatin.png?raw=true" /></p>
 <p><strong>The Forensics of the Clinical Problem</strong></p>
-<p>Medical researchers are akin to detectives arriving at a crime scene (truth, knowledge, and morality are to be parsed - think: <a class="reference external" href="https://en.wikipedia.org/wiki/Dr._Watson">Dr. John H. Watson</a>). To solve the case—or in our context, to answer the research question—they need a forensic-level understanding of the clinical problem. This goes beyond just what or who; it delves into how, why, and what if.</p>
+<p>Medical researchers are akin to <a class="reference external" href="https://en.wikipedia.org/wiki/Dr._Watson">detectives</a> arriving at a crime scene. To solve the case—or in our context, to answer the research question—they need a forensic-level understanding of the clinical problem. This goes beyond just what or who; it delves into how, why, and what if.</p>
 <p><strong>The Architect and the Blueprint</strong></p>
 <p>Creating the research design is like constructing a skyscraper. It starts with a blueprint that lays out what the study aims to achieve and how it plans to get there, a carefully orchestrated composition of methods, participants, and metrics.</p>
 <p><strong>The Compass and the Navigator</strong></p>
@@ -386,21 +386,21 @@ document.write(`
 </ol>
 <p>If you’ve ever balanced a seesaw, you know it’s all about equal weight on both sides. In clinical studies, this balance is known as propensity for outcomes between study and control groups.</p>
 <ol class="arabic simple" start="3">
-<li><p>Continuity in Measures: Why Consistency Matters</p></li>
+<li><p>Surrogate Markers of Outcomes: Continuous Measures</p></li>
 </ol>
-<p>A carpenter measures twice but cuts once. In the same vein, ensuring continuous measures in our study helps us make ‘cuts’ that are accurate and telling.</p>
+<p>Changes in a surrogate marker over time may be a good indicator of the ultimate outcome of interest. But there are a few things to keep in mind when using continuous measures.</p>
 <Details>
   <Summary>Variance in measures as explanation, not as bias</Summary>
 <ul class="simple">
-<li><p><strong>Surrogate of Outcome of Interest</strong>: It’s important that the continuous measure is a valid surrogate for the ultimate outcome of interest. Its validity and reliability should be well-established.</p></li>
+<li><p><strong>Calibration</strong>: Ensuring the continuous measure serves as a valid surrogate for the ultimate outcome is not a one-off process. New technologies will keep emerging and require recalibration of the measure to ensure it remains a valid surrogate.</p></li>
 <li><p><strong>Longitudinal</strong>: Repeated measures of the same individuals over time can be powerful but require specialized statistical models like mixed-effects models or generalized estimating equations to account for within-subject correlation.</p></li>
 <li><p><strong>Hierarchical</strong>: If data are clustered by some phenotype or other categorization (like hospital or geographic location), you’ll need to use hierarchical or multilevel models to account for this clustering. This is particularly important for avoiding Type I errors (false positives).</p></li>
 </ul>
 </Details>
 <ol class="arabic simple" start="4">
-<li><p>Tick-Tock: The Time Bomb of Clinical Outcomes</p></li>
+<li><p>Time-to-event data: Survival Analysis</p></li>
 </ol>
-<p>Time waits for no one, and in clinical research, it’s a ticking time bomb that could either validate or annihilate our hypotheses.</p>
+<p>The evolution of a disease might be like a sprint, a marathon, or something in-between. Everyone who reaches the finish line has an outcome. This is known as an event (often an ICD code or death).</p>
 <ol class="arabic simple" start="5">
 <li><p>Data Interaction: The Plot Twists of Medical Research</p></li>
 </ol>
