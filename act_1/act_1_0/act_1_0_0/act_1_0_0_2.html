@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'act_1/act_1_0/act_1_0_0/act_1_0_0_2';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -164,6 +166,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Error</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="act_1_0_0_3.html">3. Sloppiness</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
@@ -323,7 +329,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -339,6 +347,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"></a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -350,13 +371,45 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="error">
 <h1>2. Error<a class="headerlink" href="#error" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(
+\Large
+\begin{array}{l}
+\text{Error} \ \
+\left\{ 
+\begin{array}{l} 
+\text{Variance} 
+\Large 
+\left\{ \ \
+\begin{array}{l} 
+\text{Within} \\
+\text{} \\
+\text{Between} 
+\end{array} 
+\right. \\
+\text{Bias}
+\end{array} 
+\right.
+\end{array}
+\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
 <p><strong>Transition from Chapter 1</strong></p>
 <p>Emerging from the basics, we learned that metrics like the odds ratio aren’t standalone entities. They reside within a vast landscape shaped by error, which includes bias (systematic error) &amp; variance (random error). While both types of error play pivotal roles in the interpretation of results, their distinction can often blur, especially in regression analyses. In this chapter, we delve deeper into understanding these intertwined concepts, especially within the context of hierarchical data.</p>
 <p><strong>Introduction</strong></p>
 <p>In clinical research, every observation, every reading, carries with it some element of uncertainty. This uncertainty or error is shared between bias and variance. Yet, when diving deep into datasets or regressions, teasing apart the two becomes a Herculean task. Let’s embark on this journey to differentiate and understand them better.</p>
 <p><strong>Bias and Variance: Two Sides of the Same Coin</strong></p>
 <p><strong>Bias</strong>: Refers to the difference between the observed value and the true value. It’s the deviation we wish wasn’t there, and it speaks to the accuracy of our measurements.</p>
-<p><strong>Variance</strong>: While bias speaks to accuracy, variance deals with precision. It tells us about the dispersion or spread of our data points around the mean.</p>
+<p><strong>Variance</strong>: While bias speaks to accuracy, variance deals with precision. It tells us about the dispersion or spread of our data points around the mean (within a group or between groups).</p>
 <p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">datasets or regressions</a>, however, this distinction becomes nebulous. When we observe a spread in data points in a regression analysis, is it due to inaccuracies stemming from design, measurement, or analysis (bias)? Or is it due to the inherent differences in the population (variance)? Often, we can’t tell them apart directly, but we can make informed judgments based on study design and prior knowledge.</p>
 <Details>
  <Summary>Bias</Summary>
@@ -463,6 +516,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
