@@ -354,16 +354,182 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sloppiness">
 <h1>3. Sloppiness<a class="headerlink" href="#sloppiness" title="Permalink to this heading">#</a></h1>
-<p><strong>Bridging the Gap from Chapter 2</strong></p>
-<p>After unpacking the inherent challenges posed by errors in research, there’s another critical factor that, while human-made, can be just as detrimental: Sloppiness. Whereas errors may be unpredictable or unavoidable, sloppiness arises from lapses in our own diligence.</p>
-<p><strong>Introduction</strong></p>
-<p>Think of sloppiness as the cracks in the foundation of a house. Just like a home built on a faulty base can crumble, a study built on carelessness can falter. It’s not the natural quirks of the land (akin to errors) but rather a result of subpar workmanship.</p>
-<p><strong>Impact on Research</strong></p>
-<p>A single slip can cast a long shadow. Sloppiness can introduce invalid data, lead our analyses astray, and tarnish the reputation of the study. Remember our discussions on odds ratios and 95% CIs? Imagine the implications if sloppiness crept in – our conclusions could drastically deviate from the truth.</p>
-<p><strong>Preventing Sloppiness</strong></p>
-<p>Combatting sloppiness starts with a commitment to excellence. Much like how we design studies to minimize errors, we must actively work against sloppiness. Regular audits to ensure data integrity, thorough peer reviews to catch oversights, and a culture that emphasizes meticulousness can make all the difference. It’s about championing diligence at every step, from the initial data collection to the final analysis.</p>
-<p><strong>Conclusion</strong></p>
-<p>As we journey through the landscape of clinical research, the triad of Rigor, Error, and Sloppiness comes into focus. Rigor sets our gold standard, errors remind us of the inherent uncertainties, and sloppiness stands as a testament to the imperfections we must guard against. To elevate clinical research, it’s not just about the tools or methods, but also the conscientious effort of every researcher involved. By recognizing and tackling these challenges head-on, we pave the way for more meaningful and impactful discoveries.</p>
+<p>The Achilles’ Heel of Research - Sloppiness</p>
+<p><strong>The Overarching Landscape: A Network of Traits and Challenges</strong></p>
+<p>Before diving deep, let’s visualize the ecosystem of clinical research. Take a look at this network graph:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set seed for layout</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># Directory structure</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="p">{</span>
+
+
+    <span class="s2">&quot;Challenges&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Rigor&quot;</span><span class="p">,</span> <span class="s2">&quot;Sloppiness&quot;</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,],</span>
+    <span class="s2">&quot;Knowledge&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Skills&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">,</span> <span class="s2">&quot;Morality&quot;</span><span class="p">,</span> <span class="s2">&quot;Truth&quot;</span><span class="p">,],</span>
+    <span class="s2">&quot;Skills&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Literacy&quot;</span><span class="p">,</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span><span class="s2">&quot;Workflow&quot;</span><span class="p">,],</span>
+<span class="p">}</span>
+
+<span class="c1"># Gentle colors for children</span>
+<span class="n">child_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s2">&quot;lightyellow&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;lavender&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;azure&#39;</span><span class="p">,</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
+<span class="p">]</span>
+
+<span class="n">child_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s2">&quot;lightyellow&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;lavender&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;azure&#39;</span><span class="p">,</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
+<span class="p">]</span>
+
+<span class="c1"># &#39;lightsteelblue&#39;, &#39;lightgray&#39;, &#39;mintcream&#39;,&#39;mintcream&#39;, &#39;azure&#39;, &#39;linen&#39;, &#39;aliceblue&#39;, &#39;lemonchiffon&#39;, &#39;mistyrose&#39;</span>
+
+<span class="c1"># List of nodes to color light blue</span>
+<span class="n">light_blue_nodes</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Numeracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Challenges&quot;</span><span class="p">]</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="c1"># Function to capitalize the first letter of each word</span>
+<span class="k">def</span> <span class="nf">capitalize_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">children</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">parent_name</span> <span class="o">=</span> <span class="n">capitalize_name</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">parent_name</span><span class="p">)</span>
+    
+    <span class="c1"># Set the color for Skills</span>
+    <span class="k">if</span> <span class="n">parent_name</span> <span class="o">==</span> <span class="s2">&quot;Knowledge&quot;</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightgray&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>
+        
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+        <span class="n">child_name</span> <span class="o">=</span> <span class="n">capitalize_name</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">parent_name</span><span class="p">,</span> <span class="n">child_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">child_name</span> <span class="ow">in</span> <span class="n">light_blue_nodes</span><span class="p">:</span>
+            <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightblue&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node_colors</span><span class="p">[</span><span class="n">child_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">child_colors</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_colors</span><span class="p">)]</span>  <span class="c1"># You can customize the logic here to assign colors</span>
+
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">node_colors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+
+<span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">70000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>  <span class="c1"># Boundary color set here</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9e1d3653527be442f4ecb511f6210eee0788c44e20e4c33493257520f80980b6.png" src="../../../_images/9e1d3653527be442f4ecb511f6210eee0788c44e20e4c33493257520f80980b6.png" />
+</div>
+</div>
+<p>At the core, you see “Knowledge” surrounded by ‘Skills,’ ‘Challenges,’ ‘Morality,’ and ‘Truth.’ This is the universe we operate in, a multidimensional space where ‘Skills’ like literacy and numeracy combat ‘Challenges’ like rigor, sloppiness, and error. The color-coded nodes illustrate the interconnectedness and varying complexities of these components.</p>
+<p><strong>When Challenges Become Adversaries: The Perpetual Duel</strong></p>
+<p>You’re not just a researcher. You’re a warrior armed with ‘Skills,’ perpetually pitted against a formidable adversary: ‘Challenges.’ In this never-ending duel, your most sinister foe is Sloppiness. It’s the chink in your armor, the Achilles’ heel that can cause your downfall.</p>
+<p><strong>The Devastating Impact of Sloppiness</strong></p>
+<p>A single misclick, a hurried calculation, or an overlooked variable: these seemingly trivial acts of sloppiness are the landmines lurking in your research path. Consider odds ratios or 95% CIs—if contaminated by sloppiness, they don’t just mislead; they catastrophically implode the study’s integrity.</p>
+<p><strong>Your Weaponry Against Sloppiness: Hyper-Vigilance and Adaptability</strong></p>
+<p>Think of Sloppiness as a cunning rival that thrives in the murky corners of haste and neglect. To counteract it, you need a robust defense and a proactive offense.</p>
+<p><strong>Defense: Rigor as Your Shield</strong>
+Your first line of defense is Rigor—painstaking attention to detail. With regular audits and a culture of hyper-vigilance, you build a shield that Sloppiness can’t easily penetrate.</p>
+<p><strong>Offense: Innovate and Adapt</strong>
+On the offense, you don’t always need a high-tech arsenal. The essence is in adaptability. If advanced technology like generative adversarial networks is the special ops team in the world of data science, then in clinical research, your offense could be as straightforward yet effective as submission to the peer-review process and besting your competition (for publication and grants). It’s about leveraging the best tools and methods available to you, even if they’re metaphorical slingshots and not AI-powered machine guns.</p>
+<p><strong>The Eternal Recurrence: A Never-Ending Quest for Perfection</strong></p>
+<p>In the age-old battle between Skills and Challenges, there are no final victories. It’s a Mobius strip, an eternally recurrent challenge. Your proof of concept is not just in the outcomes but in the journey—a lifetime committed to learning, growing, innovating, and above all, overcoming sloppiness:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create data for the skill and challenge levels</span>
+<span class="n">skill_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">challenge_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Define the flow channel boundaries</span>
+<span class="n">flow_channel</span> <span class="o">=</span> <span class="n">skill_levels</span>
+
+<span class="c1"># Adjust the phase and amplitude of the sinusoid wave</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">16</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">sinusoid</span> <span class="o">=</span> <span class="n">flow_channel</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">skill_levels</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span> <span class="o">*</span> <span class="n">amplitude</span>
+
+<span class="c1"># Define the yellow zone boundaries, making it wider</span>
+<span class="n">yellow_zone_low</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">-</span> <span class="mf">1.5</span>  <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+<span class="n">yellow_zone_high</span> <span class="o">=</span> <span class="n">skill_levels</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="c1"># Adjust this value to make the yellow zone wider or narrower</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot the anxiety and boredom areas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Place/Identification&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time/Revelation&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">yellow_zone_low</span><span class="p">,</span> <span class="n">yellow_zone_high</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Agent/Evolution&#39;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot the sinusoid function with the diagonal as its axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">,</span> <span class="n">sinusoid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add arrowhead to the sinusoid line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">skill_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sinusoid</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Set plot labels and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Skill-level&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Challenge-level&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Set plot limits and grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set tick labels</span>
+<span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">tick_labels</span><span class="p">)</span>
+
+<span class="c1"># Add text annotations to label the areas without shaded background</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Anxious&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="s1">&#39;Flow&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Bored&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/61614cff1f63ce716bbfe800aef5f16e0867dc75623431594aa07128bc19fe58.png" src="../../../_images/61614cff1f63ce716bbfe800aef5f16e0867dc75623431594aa07128bc19fe58.png" />
+</div>
+</div>
+<p><strong>Takeaways: Your Battle Plan</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Identify the Enemy:</strong> Acknowledge that Sloppiness is not just an error—it’s a volitional act with origins in boredom and relaxation, anxiety and haste, that can sabotage your work.</p></li>
+<li><p><strong>Strengthen Your Defense:</strong> Incorporate regular audits and peer reviews.</p></li>
+<li><p><strong>Go on the Offense:</strong> Utilize cutting-edge tools akin to generative adversarial networks to outsmart sloppiness. Embrace the peer-review process and competition as your allies. Step up your game and become a better researcher; get in the “flow” and enjoy the process.</p></li>
+</ol>
+<p>By treating sloppiness as an adversary to be bested, we forge a future where every researcher becomes a stalwart guardian of integrity. With every triumph, we come one step closer to defeating our perennial foe, marching forward into a realm of more rigorous, impactful discoveries.</p>
 </section>
 
     <script type="text/x-thebe-config">
