@@ -353,6 +353,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
 </ul>
 </li>
 </ul>
@@ -376,247 +377,375 @@ document.write(`
 <h3>Demonstration of the <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> command in Stata; ultimately translate to R<a class="headerlink" href="#demonstration-of-the-mepoisson-command-in-stata-ultimately-translate-to-r" title="Permalink to this heading">#</a></h3>
 <section id="id1">
 <h4>1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> timeout1 <span class="m">1000</span>
-<span class="c1">//global data &quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
-<span class="c1">//use $data, clear</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Document session using .log file</span>
+
+<span class="k">capture log close</span> 
+<span class="k">log</span> using<span class="k"> poisson</span><span class="m">.</span>log,<span class="k"> replace</span> 
+
+<span class="c1">* Setting timeout to 10000 milliseconds</span>
+<span class="k">set</span> timeout1 <span class="m">10000</span> 
+
+<span class="c1">* Comment indicating external data source  </span>
+<span class="k">global</span> repo <span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+<span class="c1">* Actual loading of data</span>
+<span class="k">use</span> <span class="vg">${repo}</span>donor_live_keep<span class="m">.</span>dta,<span class="k"> clear</span>
+
+<span class="c1">* Change directory and load the dataset</span>
 <span class="k">cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span>
-<span class="k">use</span> donor_live_keep_v,<span class="k"> clear</span>
-<span class="k">if</span> <span class="m">0</span> { <span class="c1">//no need to collapse &amp; merge with this syntax!</span>
+
+
+<span class="k">if</span> <span class="m">1</span> {
+<span class="c1">	</span>
+<span class="c1">	* Recode donor relationship and race variables</span>
 <span class="k">    recode</span> don_relation (<span class="m">1</span><span class="o">/</span><span class="m">4</span>=<span class="m">1</span>)(<span class="m">5</span><span class="o">/</span><span class="m">999</span>=<span class="m">0</span>),<span class="k"> gen</span>(related)
-<span class="k">    recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>),<span class="k"> gen</span>(racecat)
-<span class="k">    </span>
+<span class="k">    recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>), <span class="cs">///</span>
+<span class="k">	    gen</span>(racecat)
+<span class="c1">    </span>
+<span class="c1">	* Create year and month variables based on donation recovery date</span>
 <span class="k">    gen</span> year = <span class="nf">year</span>(don_recov_dt)
 <span class="k">    gen</span> month = <span class="nf">month</span>(don_recov_dt)
-<span class="k">    </span>
+<span class="c1">    </span>
+<span class="c1">	* Tabulate donations by year</span>
 <span class="k">    tab</span> year 
-<span class="k">    </span>
-<span class="k">    egen</span> n_year =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year)
-<span class="k">    egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month)
-<span class="k">    </span>
-<span class="k">    poisson</span> n_year year
-<span class="k">    poisson</span> n_month year month
-<span class="k">    </span>
+<span class="c1">	</span>
+<span class="c1">	* Tabulate month and calculate the June-to-January ratio</span>
 <span class="k">    tab</span> month, matcell(cellvalues)
-<span class="k">    </span>
 <span class="k">    local</span> freq_jan = cellvalues[<span class="m">1</span>,<span class="m">1</span>]
 <span class="k">    local</span> freq_jun = cellvalues[<span class="m">6</span>,<span class="m">1</span>]
 <span class="k">    local ratio</span> = <span class="nv">`freq_jun&#39;</span> <span class="o">/</span> <span class="nv">`freq_jan&#39;</span>
-<span class="k">    </span>
 <span class="k">    di</span> <span class="nv">`ratio&#39;</span>
-<span class="k">    </span>
+<span class="c1">    </span>
+<span class="c1">	* Create a constant variable &#39;count&#39; and recode &#39;month&#39; for summer vs. rest of the year</span>
 <span class="k">    gen count</span> = <span class="m">1</span>
-<span class="k">    </span>
 <span class="k">    recode</span> month (<span class="m">1</span><span class="o">/</span><span class="m">5</span> <span class="m">9</span><span class="o">/</span><span class="m">12</span>=<span class="m">0</span>)(<span class="m">6</span><span class="o">/</span><span class="m">8</span>=<span class="m">1</span>),<span class="k"> gen</span>(summer)
+	
+}
+
+<span class="c1">    </span>
+<span class="c1">* Currently deactivated by &#39;if 0&#39;: but more efficient than &quot;collapse&quot;</span>
+<span class="k">if</span> <span class="m">0</span> { 
+
+<span class="c1">	* Count donations by year and by month-year</span>
+<span class="k">    egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month summer related)
+    
 }
 
 <span class="c1">* We have individual-level data to this point</span>
+<span class="c1">* Preserve the original dataset</span>
 <span class="k">preserve</span>
-<span class="k">    collapse</span> (count)<span class="k"> count</span>=pers_id,<span class="k"> by</span>(summer)
-<span class="k">    di</span> (count[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(count[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
+<span class="k">    collapse</span> (count) donations=pers_id,<span class="k"> by</span>(summer)
+<span class="k">    di</span> (donations[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(donations[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
 <span class="k">restore</span> 
 <span class="k">preserve</span> 
-<span class="c1">    * Collapse the data to get the total count for each group</span>
-<span class="k">    collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer)
-    <span class="c1">//twoway (scatter count year)</span>
-<span class="c1">    * Save the aggregated data</span>
+<span class="c1">    * Collapse the data by year, month, summer, and relation</span>
+<span class="k">    collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer related)
+<span class="c1">	</span>
+<span class="c1">	* Generate and save graphs for related and unrelated donors</span>
+<span class="k">    twoway</span> <span class="cs">///</span>
+	    (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>)  <span class="cs">///</span>
+		(lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>, <span class="cs">///</span>
+		   legend(off) <span class="cs">///</span>
+		   xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+		   xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+		 )
+<span class="k">	graph save</span> related<span class="m">.</span>gph,<span class="k"> replace</span>  
+<span class="k">    twoway</span> <span class="cs">///</span>
+	    (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>)  <span class="cs">///</span>
+		(lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>, <span class="cs">///</span>
+		   legend(off) <span class="cs">///</span>
+		   xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+		   xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+		 )
+<span class="k">	graph save</span> unrelated<span class="m">.</span>gph,<span class="k"> replace</span> 
+<span class="c1">	</span>
+<span class="c1">	* Combine graphs and save as PNG</span>
+<span class="k">	graph</span> combine related<span class="m">.</span>gph unrelated<span class="m">.</span>gph, <span class="cs">///</span>
+	    ycommon  <span class="cs">///</span>
+		ti(<span class="s">&quot;Number of living kidney donors per month&quot;</span>)
+<span class="k">	graph</span> export donations_years<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="c1">    </span>
+<span class="c1">	* Save the collapsed data to a temporary file</span>
 <span class="k">    tempfile</span> aggregated_data
 <span class="k">    save</span> <span class="nv">`aggregated_data&#39;</span>
 <span class="k">restore</span> 
 
 <span class="c1">* Merge the aggregated count back to the individual-level data</span>
-<span class="k">merge m</span>:<span class="m">1</span> year month summer using <span class="nv">`aggregated_data&#39;</span>
+<span class="k">merge m</span>:<span class="m">1</span> year month summer related using <span class="nv">`aggregated_data&#39;</span>
 
 <span class="c1">* Now, you&#39;ve both group-level and individual-level variables as predictors</span>
 <span class="c1">* Run the single-level Poisson model first to get starting estimates</span>
 <span class="k">poisson</span> donations summer related, irr iter(<span class="m">5</span>)
 
-<span class="c1">* Capture the estimates</span>
+<span class="c1">* Capture the estimates for future use</span>
 <span class="k">matrix</span> start_vals =<span class="k"> e</span>(b)
 
 <span class="k">if</span> <span class="m">0</span> {
-<span class="c1">	* Assuming `start_vals&#39; is a matrix containing your starting values</span>
-<span class="k">    matrix</span> start_vals = (<span class="m">0.1</span> \ <span class="m">0.2</span> \ <span class="m">0.3</span>) 
 
-<span class="c1">    * Use the `from()&#39; option to start the optimization from these values</span>
-    mepoisson donations || summer:, irr from(start_vals) iter(<span class="m">3</span>)
+<span class="c1">* Placeholder for setting initial estimates</span>
+<span class="k">matrix list</span> start_vals  <span class="o">*</span> To check the starting values before using them
+
+<span class="c1">* Run multilevel Poisson model using initial estimates</span>
+mepoisson donations || summer:, irr from(start_vals) iter(<span class="m">3</span>)
 
 }
+
+<span class="k">log close</span> 
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="id2">
 <h4>2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> do</span> <span class="s">&quot;/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T//SD16143.000000&quot;</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------------------------------------------------------------------------------------</span>
+      name:  <span class="o">&lt;</span>unnamed<span class="o">&gt;</span>
+<span class="k">       log</span>:  <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>poisson<span class="m">.</span>log
+<span class="k">  log type</span>:  text
+ opened<span class="k"> on</span>:   <span class="m">5</span> Sep <span class="m">2023</span>, <span class="m">15</span>:<span class="m">18</span>:<span class="m">48</span>
 
-.<span class="k"> set</span> timeout1 <span class="m">1000</span>
+. 
+. <span class="o">*</span> Setting timeout to <span class="m">10000</span> milliseconds
+.<span class="k"> set</span> timeout1 <span class="m">10000</span> 
 
-. <span class="c1">//global data &quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
-. <span class="c1">//use $data, clear</span>
+. 
+. <span class="o">*</span> Comment indicating external data source  
+.<span class="k"> global</span> repo <span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+. 
+. <span class="o">*</span> Actual loading of data
+.<span class="k"> use</span> <span class="vg">${repo}</span>donor_live_keep<span class="m">.</span>dta,<span class="k"> clear</span>
+
+. 
+. <span class="o">*</span> Change directory and load the dataset
 .<span class="k"> cd</span> <span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span>
 <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology
 
-.<span class="k"> use</span> donor_live_keep_v,<span class="k"> clear</span>
-
-.<span class="k"> if</span> <span class="m">0</span> { <span class="c1">//no need to collapse &amp; merge</span>
+. 
+. 
+.<span class="k"> if</span> <span class="m">1</span> {
+.         
+.         <span class="o">*</span> Recode donor relationship and race variables
 .    <span class="k"> recode</span> don_relation (<span class="m">1</span><span class="o">/</span><span class="m">4</span>=<span class="m">1</span>)(<span class="m">5</span><span class="o">/</span><span class="m">999</span>=<span class="m">0</span>),<span class="k"> gen</span>(related)
-.    <span class="k"> recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>),<span class="k"> gen</span>(racecat)
+(<span class="m">161</span>,<span class="m">880</span> differences between don_relationship_ty and related)
+.    <span class="k"> recode</span> don_race (<span class="m">8</span>=<span class="m">1</span>)(<span class="m">16</span>=<span class="m">2</span>)(<span class="m">2000</span>=<span class="m">3</span>)(<span class="m">64</span>=<span class="m">4</span>)(<span class="m">24</span><span class="o">/</span><span class="m">1500</span> .=<span class="m">5</span>), <span class="cs">///</span>
+<span class="o">&gt;</span>            <span class="k"> gen</span>(racecat)
+(<span class="m">186</span>,<span class="m">545</span> differences between don_race and racecat)
 .     
+.         <span class="o">*</span> Create year and month variables based<span class="k"> on</span> donation recovery date
 .    <span class="k"> gen</span> year = <span class="nf">year</span>(don_recov_dt)
 .    <span class="k"> gen</span> month = <span class="nf">month</span>(don_recov_dt)
 .     
+.         <span class="o">*</span> Tabulate donations<span class="k"> by</span> year
 .    <span class="k"> tab</span> year 
-.     
-.    <span class="k"> egen</span> n_year =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year)
-.    <span class="k"> egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month)
-.     
-.    <span class="k"> poisson</span> n_year year
-.    <span class="k"> poisson</span> n_month year month
-.     
+
+       year |      Freq.     Percent        Cum.
+<span class="o">------------+-----------------------------------</span>
+       <span class="m">1987</span> |        <span class="m">402</span>        <span class="m">0.22</span>        <span class="m">0.22</span>
+       <span class="m">1988</span> |      <span class="m">1</span>,<span class="m">829</span>        <span class="m">0.98</span>        <span class="m">1.20</span>
+       <span class="m">1989</span> |      <span class="m">1</span>,<span class="m">918</span>        <span class="m">1.03</span>        <span class="m">2.22</span>
+       <span class="m">1990</span> |      <span class="m">2</span>,<span class="m">122</span>        <span class="m">1.14</span>        <span class="m">3.36</span>
+       <span class="m">1991</span> |      <span class="m">2</span>,<span class="m">427</span>        <span class="m">1.30</span>        <span class="m">4.66</span>
+       <span class="m">1992</span> |      <span class="m">2</span>,<span class="m">571</span>        <span class="m">1.38</span>        <span class="m">6.04</span>
+       <span class="m">1993</span> |      <span class="m">2</span>,<span class="m">905</span>        <span class="m">1.56</span>        <span class="m">7.60</span>
+       <span class="m">1994</span> |      <span class="m">3</span>,<span class="m">104</span>        <span class="m">1.66</span>        <span class="m">9.26</span>
+       <span class="m">1995</span> |      <span class="m">3</span>,<span class="m">496</span>        <span class="m">1.87</span>       <span class="m">11.14</span>
+       <span class="m">1996</span> |      <span class="m">3</span>,<span class="m">803</span>        <span class="m">2.04</span>       <span class="m">13.17</span>
+       <span class="m">1997</span> |      <span class="m">4</span>,<span class="m">067</span>        <span class="m">2.18</span>       <span class="m">15.36</span>
+       <span class="m">1998</span> |      <span class="m">4</span>,<span class="m">570</span>        <span class="m">2.45</span>       <span class="m">17.80</span>
+       <span class="m">1999</span> |      <span class="m">5</span>,<span class="m">046</span>        <span class="m">2.70</span>       <span class="m">20.51</span>
+       <span class="m">2000</span> |      <span class="m">5</span>,<span class="m">947</span>        <span class="m">3.19</span>       <span class="m">23.70</span>
+       <span class="m">2001</span> |      <span class="m">6</span>,<span class="m">621</span>        <span class="m">3.55</span>       <span class="m">27.25</span>
+       <span class="m">2002</span> |      <span class="m">6</span>,<span class="m">631</span>        <span class="m">3.55</span>       <span class="m">30.80</span>
+       <span class="m">2003</span> |      <span class="m">6</span>,<span class="m">828</span>        <span class="m">3.66</span>       <span class="m">34.46</span>
+       <span class="m">2004</span> |      <span class="m">7</span>,<span class="m">005</span>        <span class="m">3.76</span>       <span class="m">38.22</span>
+       <span class="m">2005</span> |      <span class="m">6</span>,<span class="m">904</span>        <span class="m">3.70</span>       <span class="m">41.92</span>
+       <span class="m">2006</span> |      <span class="m">6</span>,<span class="m">733</span>        <span class="m">3.61</span>       <span class="m">45.53</span>
+       <span class="m">2007</span> |      <span class="m">6</span>,<span class="m">315</span>        <span class="m">3.39</span>       <span class="m">48.91</span>
+       <span class="m">2008</span> |      <span class="m">6</span>,<span class="m">218</span>        <span class="m">3.33</span>       <span class="m">52.25</span>
+       <span class="m">2009</span> |      <span class="m">6</span>,<span class="m">610</span>        <span class="m">3.54</span>       <span class="m">55.79</span>
+       <span class="m">2010</span> |      <span class="m">6</span>,<span class="m">561</span>        <span class="m">3.52</span>       <span class="m">59.31</span>
+       <span class="m">2011</span> |      <span class="m">6</span>,<span class="m">023</span>        <span class="m">3.23</span>       <span class="m">62.54</span>
+       <span class="m">2012</span> |      <span class="m">5</span>,<span class="m">868</span>        <span class="m">3.15</span>       <span class="m">65.68</span>
+       <span class="m">2013</span> |      <span class="m">5</span>,<span class="m">989</span>        <span class="m">3.21</span>       <span class="m">68.89</span>
+       <span class="m">2014</span> |      <span class="m">5</span>,<span class="m">820</span>        <span class="m">3.12</span>       <span class="m">72.01</span>
+       <span class="m">2015</span> |      <span class="m">5</span>,<span class="m">989</span>        <span class="m">3.21</span>       <span class="m">75.22</span>
+       <span class="m">2016</span> |      <span class="m">5</span>,<span class="m">975</span>        <span class="m">3.20</span>       <span class="m">78.42</span>
+       <span class="m">2017</span> |      <span class="m">6</span>,<span class="m">181</span>        <span class="m">3.31</span>       <span class="m">81.74</span>
+       <span class="m">2018</span> |      <span class="m">6</span>,<span class="m">845</span>        <span class="m">3.67</span>       <span class="m">85.41</span>
+       <span class="m">2019</span> |      <span class="m">7</span>,<span class="m">389</span>        <span class="m">3.96</span>       <span class="m">89.37</span>
+       <span class="m">2020</span> |      <span class="m">5</span>,<span class="m">725</span>        <span class="m">3.07</span>       <span class="m">92.44</span>
+       <span class="m">2021</span> |      <span class="m">6</span>,<span class="m">539</span>        <span class="m">3.51</span>       <span class="m">95.94</span>
+       <span class="m">2022</span> |      <span class="m">6</span>,<span class="m">466</span>        <span class="m">3.47</span>       <span class="m">99.41</span>
+       <span class="m">2023</span> |      <span class="m">1</span>,<span class="m">103</span>        <span class="m">0.59</span>      <span class="m">100.00</span>
+<span class="o">------------+-----------------------------------</span>
+      Total |    <span class="m">186</span>,<span class="m">545</span>      <span class="m">100.00</span>
+.         
+.         <span class="o">*</span> Tabulate month and calculate the June<span class="o">-</span>to<span class="o">-</span>January<span class="k"> ratio</span>
 .    <span class="k"> tab</span> month, matcell(cellvalues)
-.     
+
+      month |      Freq.     Percent        Cum.
+<span class="o">------------+-----------------------------------</span>
+          <span class="m">1</span> |     <span class="m">15</span>,<span class="m">331</span>        <span class="m">8.22</span>        <span class="m">8.22</span>
+          <span class="m">2</span> |     <span class="m">14</span>,<span class="m">245</span>        <span class="m">7.64</span>       <span class="m">15.85</span>
+          <span class="m">3</span> |     <span class="m">15</span>,<span class="m">096</span>        <span class="m">8.09</span>       <span class="m">23.95</span>
+          <span class="m">4</span> |     <span class="m">14</span>,<span class="m">290</span>        <span class="m">7.66</span>       <span class="m">31.61</span>
+          <span class="m">5</span> |     <span class="m">14</span>,<span class="m">788</span>        <span class="m">7.93</span>       <span class="m">39.53</span>
+          <span class="m">6</span> |     <span class="m">17</span>,<span class="m">795</span>        <span class="m">9.54</span>       <span class="m">49.07</span>
+          <span class="m">7</span> |     <span class="m">17</span>,<span class="m">460</span>        <span class="m">9.36</span>       <span class="m">58.43</span>
+          <span class="m">8</span> |     <span class="m">16</span>,<span class="m">147</span>        <span class="m">8.66</span>       <span class="m">67.09</span>
+          <span class="m">9</span> |     <span class="m">14</span>,<span class="m">361</span>        <span class="m">7.70</span>       <span class="m">74.79</span>
+         <span class="m">10</span> |     <span class="m">15</span>,<span class="m">490</span>        <span class="m">8.30</span>       <span class="m">83.09</span>
+         <span class="m">11</span> |     <span class="m">15</span>,<span class="m">598</span>        <span class="m">8.36</span>       <span class="m">91.45</span>
+         <span class="m">12</span> |     <span class="m">15</span>,<span class="m">944</span>        <span class="m">8.55</span>      <span class="m">100.00</span>
+<span class="o">------------+-----------------------------------</span>
+      Total |    <span class="m">186</span>,<span class="m">545</span>      <span class="m">100.00</span>
 .    <span class="k"> local</span> freq_jan = cellvalues[<span class="m">1</span>,<span class="m">1</span>]
 .    <span class="k"> local</span> freq_jun = cellvalues[<span class="m">6</span>,<span class="m">1</span>]
 .    <span class="k"> local ratio</span> = <span class="nv">`freq_jun&#39;</span> <span class="o">/</span> <span class="nv">`freq_jan&#39;</span>
-.     
 .    <span class="k"> di</span> <span class="nv">`ratio&#39;</span>
+<span class="m">1.1607201</span>
 .     
+.         <span class="o">*</span> Create a constant variable &#39;count&#39; and<span class="k"> recode</span> &#39;month&#39;<span class="k"> for</span> summer vs. rest of the year
 .    <span class="k"> gen count</span> = <span class="m">1</span>
-.     
 .    <span class="k"> recode</span> month (<span class="m">1</span><span class="o">/</span><span class="m">5</span> <span class="m">9</span><span class="o">/</span><span class="m">12</span>=<span class="m">0</span>)(<span class="m">6</span><span class="o">/</span><span class="m">8</span>=<span class="m">1</span>),<span class="k"> gen</span>(summer)
+(<span class="m">186</span>,<span class="m">545</span> differences between month and summer)
+.         
+. }
+
+. 
+.     
+. <span class="o">*</span> Currently deactivated<span class="k"> by</span> &#39;if <span class="m">0</span>&#39;: but<span class="k"> more</span> efficient than <span class="s">&quot;collapse&quot;</span>
+.<span class="k"> if</span> <span class="m">0</span> { 
+. 
+.         <span class="o">*</span> Count donations<span class="k"> by</span> year and<span class="k"> by</span> month<span class="o">-</span>year
+.    <span class="k"> egen</span> n_month =<span class="k"> count</span>(don_recov_dt),<span class="k"> by</span>(year month summer related)
+.     
 . }
 
 . 
 . <span class="o">*</span> We have individual<span class="o">-</span>level data to this point
+. <span class="o">*</span> Preserve the original dataset
 .<span class="k"> preserve</span>
 
-.    <span class="k"> collapse</span> (count)<span class="k"> count</span>=pers_id,<span class="k"> by</span>(summer)
+.    <span class="k"> collapse</span> (count) donations=pers_id,<span class="k"> by</span>(summer)
 
-.    <span class="k"> di</span> (count[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(count[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
+.    <span class="k"> di</span> (donations[<span class="m">2</span>]<span class="o">/</span><span class="m">3</span>)<span class="o">/</span>(donations[<span class="m">1</span>]<span class="o">/</span><span class="m">9</span>) <span class="c1">//back-of-envelope irr</span>
 <span class="m">1.141058</span>
 
 .<span class="k"> restore</span> 
 
 .<span class="k"> preserve</span> 
 
-.     <span class="o">*</span> Collapse the data to get the<span class="k"> total count for</span> each group
-.    <span class="k"> collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer)
+.     <span class="o">*</span> Collapse the data<span class="k"> by</span> year, month, summer, and relation
+.    <span class="k"> collapse</span> (count) donations=pers_id,<span class="k"> by</span>(year month summer related)
 
-.     <span class="c1">//twoway (scatter count year)</span>
-.     <span class="o">*</span> Save the aggregated data
+.         
+.         <span class="o">*</span> Generate and<span class="k"> save</span> graphs<span class="k"> for</span> related and unrelated donors
+.    <span class="k"> twoway</span> <span class="cs">///</span>
+<span class="o">&gt;</span>             (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>)  <span class="cs">///</span>
+<span class="o">&gt;</span>                 (lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">1</span>, <span class="cs">///</span>
+<span class="o">&gt;</span>                    legend(off) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                  )
+
+.        <span class="k"> graph save</span> related<span class="m">.</span>gph,<span class="k"> replace</span>  
+<span class="k">file</span> related<span class="m">.</span>gph saved
+
+.    <span class="k"> twoway</span> <span class="cs">///</span>
+<span class="o">&gt;</span>             (scatter donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>)  <span class="cs">///</span>
+<span class="o">&gt;</span>                 (lowess donations year<span class="k"> if</span> related<span class="o">==</span><span class="m">0</span>, <span class="cs">///</span>
+<span class="o">&gt;</span>                    legend(off) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xlab(<span class="m">1990</span>(<span class="m">10</span>)<span class="m">2020</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                    xti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+<span class="o">&gt;</span>                  )
+
+.        <span class="k"> graph save</span> unrelated<span class="m">.</span>gph,<span class="k"> replace</span> 
+<span class="k">file</span> unrelated<span class="m">.</span>gph saved
+
+.         
+.         <span class="o">*</span> Combine graphs and<span class="k"> save as</span> PNG
+.        <span class="k"> graph</span> combine related<span class="m">.</span>gph unrelated<span class="m">.</span>gph, <span class="cs">///</span>
+<span class="o">&gt;</span>             ycommon  <span class="cs">///</span>
+<span class="o">&gt;</span>                 ti(<span class="s">&quot;Number of living kidney donors per month&quot;</span>)
+
+.        <span class="k"> graph</span> export donations_years<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">file</span> <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>donations_years<span class="m">.</span>png saved<span class="k"> as</span> PNG<span class="k"> format</span>
+
+.     
+.         <span class="o">*</span> Save the collapsed data to a temporary<span class="k"> file</span>
 .    <span class="k"> tempfile</span> aggregated_data
 
 .    <span class="k"> save</span> <span class="nv">`aggregated_data&#39;</span>
-<span class="k">file</span> <span class="o">/</span>var<span class="o">/</span>folders<span class="o">/</span>sx<span class="o">/</span>fd6zgj191mx45hspzbgwzlnr0000gn<span class="o">/</span>T<span class="o">//</span>S_16143<span class="m">.000003</span> saved<span class="k"> as</span> .dta<span class="k">	format</span>
+<span class="k">file</span> <span class="o">/</span>var<span class="o">/</span>folders<span class="o">/</span>sx<span class="o">/</span>fd6zgj191mx45hspzbgwzlnr0000gn<span class="o">/</span>T<span class="o">//</span>S_16143<span class="m">.000003</span> saved<span class="k"> as</span> .dta<span class="k"> format</span>
 
 .<span class="k"> restore</span> 
 
 . 
 . <span class="o">*</span> Merge the aggregated<span class="k"> count</span> back to the individual<span class="o">-</span>level data
-.<span class="k"> merge m</span>:<span class="m">1</span> year month summer using <span class="nv">`aggregated_data&#39;</span>
+.<span class="k"> merge m</span>:<span class="m">1</span> year month summer related using <span class="nv">`aggregated_data&#39;</span>
 
-Result                      Number of obs
-
-Not matched                             <span class="m">0</span>
-Matched                           <span class="m">186</span>,<span class="m">545</span>  (_merge<span class="o">==</span><span class="m">3</span>)
-
+    Result                      Number of obs
+    <span class="o">-----------------------------------------</span>
+    Not matched                             <span class="m">0</span>
+    Matched                           <span class="m">186</span>,<span class="m">545</span>  (_merge<span class="o">==</span><span class="m">3</span>)
+    <span class="o">-----------------------------------------</span>
 
 . 
-. <span class="o">*</span> Now, you can perform a regression with the<span class="k"> count as</span> the dependent variable, and	both group<span class="o">-</span>level	and	individ
-<span class="o">&gt;</span> ual<span class="o">-</span>level variables<span class="k"> as</span> predictors
-. <span class="c1">//poisson donations summer related, irr maxiter(5)</span>
-. mepoisson donations  summer:, irr maxiter(<span class="m">3</span>)
-option maxiter() not allowed
-<span class="nf">r</span>(<span class="m">198</span>);
-
-<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
-
-<span class="nf">r</span>(<span class="m">198</span>);
-
-.<span class="k"> do</span> <span class="s">&quot;/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T//SD16143.000000&quot;</span>
-
+. <span class="o">*</span> Now, you&#39;ve both group<span class="o">-</span>level and individual<span class="o">-</span>level variables<span class="k"> as</span> predictors
+. <span class="o">*</span> Run the single<span class="o">-</span>level Poisson model first to get starting<span class="k"> estimates</span>
 .<span class="k"> poisson</span> donations summer related, irr iter(<span class="m">5</span>)
 
-Iteration <span class="m">0</span>:  Log likelihood = <span class="o">-</span><span class="m">3695885.2</span>  
-Iteration <span class="m">1</span>:  Log likelihood = <span class="o">-</span><span class="m">3695885.2</span>  
+Iteration <span class="m">0</span>:  Log likelihood =   <span class="o">-</span><span class="m">2917852</span>  
+Iteration <span class="m">1</span>:  Log likelihood =   <span class="o">-</span><span class="m">2917852</span>  
 
 Poisson regression                                   Number of obs =   <span class="m">184</span>,<span class="m">671</span>
-LR <span class="nf">chi2</span>(<span class="m">2</span>)    = <span class="m">678618.06</span>
-Prob <span class="o">&gt;</span> chi2   =    <span class="m">0.0000</span>
-Log likelihood = <span class="o">-</span><span class="m">3695885.2</span>                          Pseudo R2     =    <span class="m">0.0841</span>
+                                                     LR <span class="nf">chi2</span>(<span class="m">2</span>)    = <span class="m">369742.82</span>
+                                                     Prob <span class="o">&gt;</span> chi2   =    <span class="m">0.0000</span>
+Log likelihood = <span class="o">-</span><span class="m">2917852</span>                            Pseudo R2     =    <span class="m">0.0596</span>
 
-
-donations         IRR   Std.<span class="k"> err</span>.      z    P<span class="o">&gt;</span>z     [<span class="m">95</span>%<span class="k"> conf</span>. interval]
-
-summer    <span class="m">1.140067</span>   .<span class="m">0002599</span>   <span class="m">574.93</span>   <span class="m">0.000</span>     <span class="m">1.139558</span>    <span class="m">1.140577</span>
-related    .<span class="m">8815915</span>  .<span class="m">0001849</span>  <span class="o">-</span><span class="m">600.86</span>   <span class="m">0.000</span>     .<span class="m">8812292</span>     .<span class="m">881954</span>
-_cons     <span class="m">506.0029</span>   .<span class="m">0827662</span>  <span class="m">3.8e+04</span>   <span class="m">0.000</span>     <span class="m">505.8407</span>    <span class="m">506.1651</span>
-
+<span class="o">------------------------------------------------------------------------------</span>
+   donations |        IRR   Std.<span class="k"> err</span>.      z    P<span class="o">&gt;</span>|z|     [<span class="m">95</span>%<span class="k"> conf</span>. interval]
+<span class="o">-------------+----------------------------------------------------------------</span>
+      summer |   <span class="m">1.148387</span>   .<span class="m">0003555</span>   <span class="m">446.89</span>   <span class="m">0.000</span>      <span class="m">1.14769</span>    <span class="m">1.149084</span>
+     related |   .<span class="m">8867447</span>   .<span class="m">0002529</span>  <span class="o">-</span><span class="m">421.42</span>   <span class="m">0.000</span>     .<span class="m">8862491</span>    .<span class="m">8872406</span>
+       _cons |   <span class="m">272.2428</span>    .<span class="m">060666</span>  <span class="m">2.5e+04</span>   <span class="m">0.000</span>     <span class="m">272.1239</span>    <span class="m">272.3617</span>
+<span class="o">------------------------------------------------------------------------------</span>
 Note: _cons<span class="k"> estimates</span> baseline incidence rate.
 
 . 
-<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
-
-.<span class="k"> do</span> <span class="s">&quot;/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T//SD16143.000000&quot;</span>
-
-. mepoisson donations  summer:, irr iter(<span class="m">3</span>)
-
-Fitting fixed<span class="o">-</span>effects model:
-
-Iteration <span class="m">0</span>:  Log likelihood = <span class="o">-</span><span class="m">4216081.9</span>  
-Iteration <span class="m">1</span>:  Log likelihood = <span class="o">-</span><span class="m">4146341.1</span>  
-Iteration <span class="m">2</span>:  Log likelihood = <span class="o">-</span><span class="m">4146315.8</span>  
-Iteration <span class="m">3</span>:  Log likelihood = <span class="o">-</span><span class="m">4146315.8</span>  
-
-Refining starting values:
-
-Grid node <span class="m">0</span>:  Log likelihood =          .
-Grid node <span class="m">1</span>:  Log likelihood =          .
-Grid node <span class="m">2</span>:  Log likelihood =          .
-Grid node <span class="m">3</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>
-
-Refining starting values (unscaled likelihoods):
-
-Grid node <span class="m">0</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>
-
-Fitting full model:
-
-Iteration <span class="m">0</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>  
-Iteration <span class="m">1</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>  (not concave)
-Iteration <span class="m">2</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>  (not concave)
-Iteration <span class="m">3</span>:  Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>  (not concave)
-convergence not achieved
-
-Mixed<span class="o">-</span>effects Poisson regression                Number of obs     =    <span class="m">186</span>,<span class="m">545</span>
-Group variable: summer                          Number of groups  =          <span class="m">2</span>
-
-Obs per group:
-min =     <span class="m">51</span>,<span class="m">402</span>
-avg =   <span class="m">93</span>,<span class="m">272.5</span>
-max =    <span class="m">135</span>,<span class="m">143</span>
-
-Integration method: mvaghermite                 Integration pts.  =          <span class="m">7</span>
-
-Wald <span class="nf">chi2</span>(<span class="m">0</span>)      =          .
-Log likelihood = <span class="o">-</span><span class="m">3985497.5</span>                     Prob <span class="o">&gt;</span> chi2       =          .
-
-donations   Inc. rate   Std.<span class="k"> err</span>.      z        P<span class="o">&gt;</span>z       [<span class="m">95</span>%<span class="k"> conf</span>. interval]
-
-_cons       <span class="m">491.1811</span>   .<span class="m">3627498</span>       <span class="m">8390.79</span>   <span class="m">0.000</span>     <span class="m">490.4706</span>    <span class="m">491.8926</span>
-
-summer       
-<span class="k">var</span>(_cons)   <span class="m">10.00109</span>          .                             .           .
-
-Note: Estimates are transformed only<span class="k"> in</span> the first equation to incidence rate.
-Warning: Convergence not achieved.
+. <span class="o">*</span> Capture the<span class="k"> estimates for</span> future<span class="k"> use</span>
+.<span class="k"> matrix</span> start_vals =<span class="k"> e</span>(b)
 
 . 
-<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
+.<span class="k"> if</span> <span class="m">0</span> {
+. 
+. <span class="o">*</span> Placeholder<span class="k"> for</span> setting initial<span class="k"> estimates</span>
+.<span class="k"> matrix list</span> start_vals  <span class="o">*</span> To check the starting values before using them
+. 
+. <span class="o">*</span> Run multilevel Poisson model using initial<span class="k"> estimates</span>
+. mepoisson donations || summer:, irr from(start_vals) iter(<span class="m">3</span>)
+. 
+. }
+
+. 
+.<span class="k"> log close</span> 
+      name:  <span class="o">&lt;</span>unnamed<span class="o">&gt;</span>
+<span class="k">       log</span>:  <span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Dropbox (Personal)<span class="o">/</span>1f<span class="m">.</span>ἡἔρις,κ<span class="o">/</span><span class="m">1.</span>ontology<span class="o">/</span>poisson<span class="m">.</span>log
+<span class="k">  log type</span>:  text
+ closed<span class="k"> on</span>:   <span class="m">5</span> Sep <span class="m">2023</span>, <span class="m">15</span>:<span class="m">18</span>:<span class="m">56</span>
+<span class="o">----------------------------------------------------------------------------------------------------------------</span>
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="id3">
 <h4>3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p><img alt="" src="act_0/act_0_0/act_0_0_3/donations_years.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h4>4<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <p>If your single-level Poisson model has provided reasonable results, you can potentially use these to set the starting values for the corresponding parameters in the multi-level model. However, note that <code class="docutils literal notranslate"><span class="pre">mepoisson</span></code> doesn’t have a straightforward <code class="docutils literal notranslate"><span class="pre">from()</span></code> option like some other optimization functions in Stata to input starting values.</p>
 <p>Here’s an example with the hypothetical Stata code. In this case, the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{}</span></code> part is a condition to check; you can replace it with an actual condition or ignore it:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Run the single-level Poisson model first to get starting estimates</span>
@@ -755,6 +884,7 @@ mepoisson donations || summer:, irr iter(<span class="m">3</span>)
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
 </ul>
 </li>
 </ul>
